@@ -1,9 +1,13 @@
 const express = require('express');
 const app = express.Router();
-const User = require('../models/users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
+const passport = require('passport');
+
+const Users = require('../models/User');
+
+app.get("/test", (req, res) => res.json({ msg: "Users work" }));
 
 app.post('/register',(req,res)=>{
 

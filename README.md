@@ -3,40 +3,20 @@
 
 The project deals with collection of data from large number of patients , through a website, make suitable analysis and based on the analysis suggest another patient of same type to choose from  few good options out of many options available.
 
-## Installation Instructions
-### Frontend
-* Clone or download the repo. into any fresh temporary folder.
-```
-git clone https://github.com/Paarmita/MedicalProject
-```
-* Cd into that root folder you just cloned locally.
-```
-cd MedicalProject && cd client
-```
-* Open terminal in the current folder and to install all dependencies type and 
-```
-npm install
-```
-* Now typing to start client 
-``` 
- npm start
- ```
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/makes-people-smile.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://forthebadge.com)
 
- 
-### Backend
-* Clone or download the repo. into any fresh temporary folder.
-```
-git clone https://github.com/Paarmita/MedicalProject
-```
-* Cd into that root folder you just cloned locally.
-```
-cd MedicalProject && cd server
-```
-* Open terminal in the current folder and to install all dependencies type and 
-```
-npm install
-```
-* Now typing to start client 
-``` 
- npm start
- ```
+### Tech stack:
+
+* NodeJs and passport powers the REST API and other web pages
+* React.js and Redux are used for the dynamic parts of the interface
+
+
+### Features:
+
+* Ask Suggestions and Share Experience (A collaborative blog)
+* Comments to the shared blog posts
+* View details of Diseases and their cure in different Pathy
+

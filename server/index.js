@@ -10,6 +10,9 @@ const router = express.Router();
 
 const port = process.env.PORT || 4000;
 
+const passport = require("passport");
+const path = require("path");
+
 const User = require('./models/users');
 const config = require('./config');
 const user = require('./routes/user');
@@ -26,6 +29,14 @@ app.use(bodyParser.json());
 
 // using morgan to log requests to the console
 app.use(morgan('dev'));
+mongoose.connect(config.mongoUrl);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+
+    console.log("CORS-enabled web server correctly connected!");
+
+});
 
 
 app.use(function (req, res, next) {

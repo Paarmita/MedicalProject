@@ -1,13 +1,13 @@
 {
-  "name": "react-n",
+  "name": "Medical Counselling App",
   "version": "1.0.0",
-  "description": "",
+  "description": "Social Network for patients",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Paarmita Bhargava",
+  "license": "MIT",
   "dependencies": {
     "bcrypt": "^3.0.3",
     "body-parser": "^1.18.3",
@@ -16,6 +16,7 @@
     "jsonwebtoken": "^8.4.0",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.9",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0"
   }
 }

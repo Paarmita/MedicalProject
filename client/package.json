@@ -1,16 +1,24 @@
 {
-  "name": "frontend",
+  "name": "Medical Counselling App",
   "version": "0.1.0",
   "private": true,
+  "description": "Social Network for patients",
+  "author": "Paarmita Bhargava",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
     "font-awesome": "^4.7.0",
+    "lodash": "^4.17.11",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-loadable": "^5.5.0",
+    "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.3"
+    "react-router-hash-link": "^1.2.1",
+    "react-scripts": "2.1.3",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

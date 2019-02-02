@@ -3,12 +3,16 @@
 import React, { Component } from 'react';
 import { Switch,Route } from 'react-router-dom';
 import './App.css';
-import Navigation   from './Components/Navbar';
+import Navigation   from './Components/Navbar/Navbar';
+// import DashboardHeader from './Components/Dashboard/DashboardHeader';
+import Footer   from './Components/Footer/Footer';
 
-
-import Signin       from './Components/Signin';
-import Signup      from './Components/Signup';
-
+import Signin       from './Components/Signin/Signin';
+import Signup      from './Components/Signup/Signup';
+import AboutUs     from './Components/AboutUs/AboutUs';
+import Home from './Components/Home/Home';
+import ContactUs from './Components/ContactUs/ContactUs';
+import Data from './Components/ContactUs/Testimonial_data';
 import loader       from './Images/loader.gif';
 
 class App extends Component {
@@ -34,17 +38,23 @@ if(this.state.isLoading){
       )
     }
     return (
+          <React.Fragment>
+      <Navigation />
       <Switch>
         <Route exact path='/' render={() => {
           return (
           <div>
-            <Navigation />
+          <Home/>
           </div>
             )
         }}/>
         <Route  path ='/signin' component ={Signin}/>
         <Route  path ='/signup' component ={Signup}/>
+        <Route  path ='/aboutus' component ={AboutUs}/>
+        <Route  path ='/contactus' data={Data} component ={ContactUs}/>
       </Switch>
+      <Footer/>
+      </React.Fragment>
     );
   
 
