@@ -1,19 +1,37 @@
-import React from "react";
+import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import './Home.css';
+import CardLayout from "../WhatWeDo/CardLayout";
+import Stats from "../Stats/Stats";
 
-const Home = () => (
-  <div className="started--container">
-    <div className="started">
-      Get started for free - join thousands of students and researchers already
-      using Ignitus to share their knowledge, work together, and get amazing
-      opportunites.
-    </div>
-    <Link to="/signup">
-      <button className="btn btn-secondary button-get-started" type="button">
-        Sign-Up
-      </button>
+class Home extends Component {
+	render() {
+		return(
+<div>
+  <iframe width="100%" height="500px"
+src="https://www.youtube.com/embed/tgbNymZ7vqY">
+</iframe>
+<div className="container" >
+      <h1 className="text-center intro">Experience of common man help each other</h1>
+
+  </div>
+  <CardLayout/>
+  <Stats/>
+<div className="container">
+    <Link to="/Signup">
+     
+      <button type="button" className="btn btn-success button_join">Join Us</button>
     </Link>
   </div>
-);
+
+  </div>
+
+
+
+
+			);
+	}
+  
+}
 
 export default Home;

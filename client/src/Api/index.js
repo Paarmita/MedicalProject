@@ -1,17 +1,31 @@
-
-
 import axios from 'axios';
-import * as t from './Constants';
 
-if(sessionStorage.getItem('jwtToken')){
+const BASE_URL = 'http://localhost:4000';
+
+function get_food_jokes_data() {
+  const url = `${BASE_URL}/api/jokes/food`;
+  return axios.get(url).then(response => response.data)
+  .catch( (err) =>{
+  	console.log('err',err);
+  	return err;
+  })
+}
+
+function get_celebrity_jokes_data() {
+
+  if(sessionStorage.getItem('jwtToken')){
     axios.defaults.headers.common['access-token'] = sessionStorage.getItem('jwtToken');
+  }
+
+  return axios.get(BASE_URL + '/api/jokes/celebrity')
+      .then( (response) => {
+         console.log('response',response.data.length);
+         return response.data
+      })
+      .catch( (error) => {
+        console.log('error',error);
+        return [];
+      });
 }
 
-export function signUp(email, password){
-	return axios.post(t.SIGN_UP, { username: username, email: email, password: password})
-}
-
-export function signIn(email, password){
-	return axios.post(t.SIGN_IN, { email: email, password: password})
-}
-
+export {get_food_jokes_data, get_celebrity_jokes_data};

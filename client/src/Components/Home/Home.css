@@ -1,0 +1,16 @@
+
+
+.intro {
+	
+	padding-top: 7%;
+	position: relative;
+	z-index: 3;
+
+	
+}
+
+.button_join{
+	margin:auto;
+  display:block;
+  margin-bottom: 100px;
+}

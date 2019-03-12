@@ -21,43 +21,45 @@ const PostSchema = new Schema({
         type: String,
         required: true
     },
-    resume: {type: [String] },
-    photos: { type: [String] },
+    resume: {
+        type: [String]
+    },
+    photos: {
+        type: [String]
+    },
     allergies: {
-    type: [String],
-    required: true
-  },
-    likes: [
-        {
-            user: {
-                type: Schema.Types.ObjectId,
-                ref: "users"
-            }
+        type: [String],
+        required: true
+    },
+    likes: [{
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: "users"
         }
-    ],
-    comments: [
-        {
-            user: {
-                type: Schema.Types.ObjectId,
-                ref: "users"
-            },
-            text: {
-                type: String,
-                required: true
-            },
-            name: {
-                type: String
-            },
-            avatar: {
-                type: String
-            },
-            photos: { type: [String] },
-            date: {
-                type: Date,
-                default: Date.now
-            }
+    }],
+    comments: [{
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: "users"
+        },
+        text: {
+            type: String,
+            required: true
+        },
+        name: {
+            type: String
+        },
+        avatar: {
+            type: String
+        },
+        photos: {
+            type: [String]
+        },
+        date: {
+            type: Date,
+            default: Date.now
         }
-    ],
+    }],
     date: {
         type: Date,
         default: Date.now
