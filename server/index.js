@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
+const router = express.Router();
 
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const jwt = require('jsonwebtoken');
-const router = express.Router();
+const cors = require('cors');
+const config = require('./config');
 
 const port = process.env.PORT || 4000;
 
@@ -13,11 +15,8 @@ const passport = require("passport");
 const path = require("path");
 
 const User = require('./models/users');
-const config = require('./config');
 const user = require('./routes/user');
 const dashboard = require('./routes/dashboard');
-
-const cors = require('cors');
 const food_jokes = require('./routes/food_jokes_route');
 const celebrity_jokes = require('./routes/celebrity_jokes_route');
 
@@ -36,6 +35,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 
     console.log("CORS-enabled web server correctly connected!");
+    console.log("Connected correctly to server");
 
 });
 
@@ -104,10 +104,29 @@ app.listen(port, () => {
     console.log('Server Started on Port:' + port);
 })
 
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// development error handler will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+// production error handler no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });

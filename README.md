@@ -20,3 +20,6 @@ The project deals with collection of data from large number of patients , throug
 * Comments to the shared blog posts
 * View details of Diseases and their cure in different Pathy
 
+### Useful Links
+
+* https://scotch.io/@PratyushB/local-storage-vs-session-storage-vs-cookie
