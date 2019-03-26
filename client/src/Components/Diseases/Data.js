@@ -1,58 +1,71 @@
 /* eslint-disable import/prefer-default-export */
 // https://www.benaroyaresearch.org/what-is-bri/disease-information
 // https://www.cdc.gov/diseasesconditions/az/c.html
+import Diabetes from '../../Images/Diseases/1.png';
+import MultipleSclerosis from '../../Images/Diseases/2.png';
+import Colitis from '../../Images/Diseases/3.png';
+import Lupus from '../../Images/Diseases/4.png';
+import Arthritis from '../../Images/Diseases/5.png';
+import Asthma from '../../Images/Diseases/6.png';
+import Celiac from '../../Images/Diseases/7.png';
+import Polychondritis from '../../Images/Diseases/8.png';
+import Scleroderma from '../../Images/Diseases/9.png';
+import Liver from '../../Images/Diseases/10.png';
+import Infectious from '../../Images/Diseases/11.png';
+import Cancer from '../../Images/Diseases/12.png';
+import Heart from '../../Images/Diseases/13.png';
 
-export const DISEASES = [
+export const data = [
 	{
 		name: 'Diabetes',
-		icon: '../../Images/Diseases/1.png',
+		icon: Diabetes,
 	},
 	{
 		name: 'Multiple Sclerosis',
-		icon: '../../Images/Diseases/2.png',
+		icon: MultipleSclerosis,
 	},
 	{
 		name: "Crohn's & Colitis",
-		icon: '../../Images/Diseases/3.png',
+		icon: Colitis,
 	},
 	{
 		name: 'Lupus',
-		icon: '../../Images/Diseases/4.png',
+		icon: Lupus,
 	},
 	{
 		name: 'Rheumatoid Arthritis',
-		icon: '../../Images/Diseases/5.png',
+		icon: Arthritis,
 	},
 	{
 		name: 'Allergies & Asthma',
-		icon: '../../Images/Diseases/6.png',
+		icon: Asthma,
 	},
 	{
 		name: 'Celiac Disease',
-		icon: '../../Images/Diseases/7.png',
+		icon: Celiac,
 	},
 	{
 		name: 'Relapsing Polychondritis',
-		icon: '../../Images/Diseases/8.png',
+		icon: Polychondritis,
 	},
 	{
 		name: 'Scleroderma',
-		icon: '../../Images/Diseases/9.png',
+		icon: Scleroderma,
 	},
 	{
 		name: 'Liver Disease',
-		icon: '../../Images/Diseases/10.png',
+		icon: Liver,
 	},
 	{
 		name: 'Infectious Diseases',
-		icon: '../../Images/Diseases/11.png',
+		icon: Infectious,
 	},
 	{
 		name: 'Cancer',
-		icon: '../../Images/Diseases/12.png',
+		icon: Cancer,
 	},
 	{
 		name: 'Heart Disease',
-		icon: '../../Images/Diseases/13.png',
+		icon: Heart,
 	},
 ];

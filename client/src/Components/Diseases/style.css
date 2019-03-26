@@ -1,0 +1,31 @@
+
+  .diseases_title{
+    margin-top: 70px;
+  }
+  .card-shadow {
+    border: 0;
+  }
+  .card-shadow:hover {
+    box-shadow: 0 0.3rem 0.6rem #0000001c;
+  }
+
+  .cardHeight {
+    height: 135px;
+    border-radius: 16px !important;
+  }
+
+  .flatten-text {
+    text-align: center;
+  }
+  
+  .provide-card-row{
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .card{
+      border-radius: 16px !important;
+  }
+  

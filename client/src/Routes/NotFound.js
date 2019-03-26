@@ -1,9 +1,9 @@
-
-import React, { Component } from 'react';
-import './Styles/style.scss';
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/no-unresolved */
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const Notfound = (props) => {
+export const Notfound = () => {
 	return (
 		<div className="container-404">
 			<div className="content">
@@ -18,6 +18,5 @@ export const Notfound = (props) => {
 				</p>
 			</div>
 		</div>
-	)
-}
-
+	);
+};

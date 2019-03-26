@@ -1,31 +1,32 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:4000';
 
-function get_food_jokes_data() {
-  const url = `${BASE_URL}/api/jokes/food`;
-  return axios.get(url).then(response => response.data)
-  .catch( (err) =>{
-  	console.log('err',err);
-  	return err;
-  })
+async function getFoodJokesData() {
+	const url = `${BASE_URL}/api/jokes/food`;
+	try {
+		const response = await axios.get(url);
+		return response.data;
+	} catch (err) {
+		console.log('err', err);
+		return err;
+	}
 }
 
-function get_celebrity_jokes_data() {
+async function getCelebrityJokesData() {
+	if (sessionStorage.getItem('jwtToken')) {
+		axios.defaults.headers.common['access-token'] = sessionStorage.getItem('jwtToken');
+	}
 
-  if(sessionStorage.getItem('jwtToken')){
-    axios.defaults.headers.common['access-token'] = sessionStorage.getItem('jwtToken');
-  }
-
-  return axios.get(BASE_URL + '/api/jokes/celebrity')
-      .then( (response) => {
-         console.log('response',response.data.length);
-         return response.data
-      })
-      .catch( (error) => {
-        console.log('error',error);
-        return [];
-      });
+	try {
+		const response = await axios.get(`${BASE_URL}/api/jokes/celebrity`);
+		console.log('response', response.data.length);
+		return response.data;
+	} catch (error) {
+		console.log('error', error);
+		return [];
+	}
 }
 
-export {get_food_jokes_data, get_celebrity_jokes_data};
+export { getFoodJokesData, getCelebrityJokesData };
