@@ -20,7 +20,7 @@ import Diseases from '../Components/Diseases/Diseases';
 export const PublicRoutes = () => {
 	return (
 		<div>
-			<Navigation />
+			<ClippedDrawer />
 			<Switch>
 				<Route
 					exact
@@ -36,10 +36,15 @@ export const PublicRoutes = () => {
 				<Route path="/signup" component={Signup} />
 				<Route path="/aboutus" component={AboutUs} />
 				<Route path="/diseases" component={Diseases} />
-				<Route path="/" component={Notfound} />
+				<Route path="/posted" render={() => <div>Posted</div>} />
+				<Route path="/suggest" render={() => <div>Ask a suggestion</div>} />
+				<Route path="/share_experience" render={() => <div>Share Experience</div>} />
+				<Route path="/profile" render={() => <div>Profile</div>} />
+				<Route path="/follow" render={() => <div>Follow</div>} />
+				<Route path="/navbar" render={() => <div>Dashboard</div>} />
+				<Route path="/diseases" component={Diseases} />
+				<Route component={Notfound} />
 			</Switch>
-			<Footer />
-			<Route path="/navbar" component={ClippedDrawer} />
 		</div>
 	);
 };

@@ -1,8 +1,10 @@
+/* eslint-disable lines-between-class-members */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // https://codesandbox.io/s/l41krpz847
 // https://codesandbox.io/s/vj2moln9ny
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -20,12 +22,24 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
+import InputBase from '@material-ui/core/InputBase';
+import Badge from '@material-ui/core/Badge';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import { fade } from '@material-ui/core/styles/colorManipulator';
+import SearchIcon from '@material-ui/icons/Search';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import MoreIcon from '@material-ui/icons/MoreVert';
+import logo from '../../Images/logo.svg';
+
 const drawerWidth = 240;
 
 const styles = theme => ({
 	root: {
 		display: 'flex',
 		flexGrow: 1,
+		width: '100%',
 	},
 	grow: {
 		flexGrow: 1,
@@ -49,90 +63,236 @@ const styles = theme => ({
 		marginLeft: -12,
 		marginRight: 20,
 	},
+	title: {
+		display: 'none',
+		[theme.breakpoints.up('sm')]: {
+			display: 'block',
+		},
+	},
+	search: {
+		position: 'relative',
+		borderRadius: theme.shape.borderRadius,
+		backgroundColor: fade(theme.palette.common.white, 0.15),
+		'&:hover': {
+			backgroundColor: fade(theme.palette.common.white, 0.25),
+		},
+		marginRight: theme.spacing.unit * 2,
+		marginLeft: 0,
+		width: '100%',
+		[theme.breakpoints.up('sm')]: {
+			marginLeft: theme.spacing.unit * 3,
+			width: 'auto',
+		},
+	},
+	searchIcon: {
+		width: theme.spacing.unit * 9,
+		height: '100%',
+		position: 'absolute',
+		pointerEvents: 'none',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	inputRoot: {
+		color: 'inherit',
+		width: '100%',
+	},
+	inputInput: {
+		paddingTop: theme.spacing.unit,
+		paddingRight: theme.spacing.unit,
+		paddingBottom: theme.spacing.unit,
+		paddingLeft: theme.spacing.unit * 10,
+		transition: theme.transitions.create('width'),
+		width: '100%',
+		[theme.breakpoints.up('md')]: {
+			width: 200,
+		},
+	},
+	sectionDesktop: {
+		display: 'none',
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+		},
+	},
+	sectionMobile: {
+		display: 'flex',
+		[theme.breakpoints.up('md')]: {
+			display: 'none',
+		},
+	},
 });
+class Navigation extends React.Component {
+	state = {
+		anchorEl: null,
+		mobileMoreAnchorEl: null,
+	};
 
-function Navigation(props) {
-	const { classes } = props;
+	handleProfileMenuOpen = event => {
+		this.setState({ anchorEl: event.currentTarget });
+	};
 
-	return (
-		<div className={classes.root}>
-			<CssBaseline />
-			<AppBar position="fixed" className={classes.appBar}>
-				<Toolbar>
-					<IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-						<MenuIcon />
-					</IconButton>
-					<Typography variant="h6" color="inherit" className={classes.grow}>
-						Umbrella Health
-					</Typography>
-					<Button color="inherit">Home</Button>
-					<Button color="inherit">About Us</Button>
-					<Button color="inherit">Diseases</Button>
-					<Button color="inherit">BLog</Button>
-					<Button color="inherit">Pathy</Button>
-					<Button color="inherit">Contact Us</Button>
-					<Button color="inherit">Share Experience</Button>
-					<Button color="inherit">Ask Suggestion</Button>
-					<Button color="inherit">Login</Button>
-				</Toolbar>
-			</AppBar>
-			<Drawer
-				className={classes.drawer}
-				variant="permanent"
-				classes={{
-					paper: classes.drawerPaper,
-				}}
+	handleMenuClose = () => {
+		this.setState({ anchorEl: null });
+		this.handleMobileMenuClose();
+	};
+
+	handleMobileMenuOpen = event => {
+		this.setState({ mobileMoreAnchorEl: event.currentTarget });
+	};
+
+	handleMobileMenuClose = () => {
+		this.setState({ mobileMoreAnchorEl: null });
+	};
+	render() {
+		const { anchorEl, mobileMoreAnchorEl } = this.state;
+		const { classes } = this.props;
+		const isMenuOpen = Boolean(anchorEl);
+		const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+		const renderMenu = (
+			<Menu
+				anchorEl={anchorEl}
+				anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+				transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+				open={isMenuOpen}
+				onClose={this.handleMenuClose}
 			>
-				<div className={classes.toolbar} />
-				<List>
-					{['Profile', 'Dashboard', 'What I post', 'What I follow'].map((text, index) => (
-						<ListItem button key={text}>
-							<ListItemText primary={text} />
-						</ListItem>
-					))}
-				</List>
-				<Divider />
-				<List>
-					{['Share Experience', 'Ask Suggestion', 'Add Testimonial'].map(
-						(text, index) => (
-							<ListItem button key={text}>
-								<ListItemText primary={text} />
-							</ListItem>
-						),
-					)}
-				</List>
-			</Drawer>
-			<main className={classes.content}>
-				<div className={classes.toolbar} />
-				<Typography paragraph>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-					incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim
-					praesent elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet.
-					Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis convallis
-					tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio
-					aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-					integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate eu
-					scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis imperdiet
-					massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-					arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi
-					tincidunt. Lorem donec massa sapien faucibus et molestie ac.
-				</Typography>
-				<Typography paragraph>
-					Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget
-					nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim neque
-					volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus.
-					Purus sit amet volutpat consequat mauris. Elementum eu facilisis sed odio morbi.
-					Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt ornare massa
-					eget egestas purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-					tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant morbi
-					tristique senectus et. Adipiscing elit duis tristique sollicitudin nibh sit.
-					Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
-					accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices
-					sagittis orci a.
-				</Typography>
-			</main>
-		</div>
-	);
+				<MenuItem onClick={this.handleMenuClose}>Settings</MenuItem>
+				<MenuItem onClick={this.handleMenuClose}>Terms of use</MenuItem>
+				<MenuItem onClick={this.handleMenuClose}>Privacy Policy</MenuItem>
+				<MenuItem onClick={this.handleMenuClose}>Logout</MenuItem>
+			</Menu>
+		);
+
+		const renderMobileMenu = (
+			<Menu
+				anchorEl={mobileMoreAnchorEl}
+				anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+				transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+				open={isMobileMenuOpen}
+				onClose={this.handleMenuClose}
+			>
+				<MenuItem onClick={this.handleMobileMenuClose}>
+					<IconButton color="inherit">
+						<Badge badgeContent={4} color="secondary">
+							<MailIcon />
+						</Badge>
+					</IconButton>
+					<p>Messages</p>
+				</MenuItem>
+				<MenuItem onClick={this.handleMobileMenuClose}>
+					<IconButton color="inherit">
+						<Badge badgeContent={11} color="secondary">
+							<NotificationsIcon />
+						</Badge>
+					</IconButton>
+					<p>Notifications</p>
+				</MenuItem>
+				<MenuItem onClick={this.handleProfileMenuOpen}>
+					<IconButton color="inherit">
+						<AccountCircle />
+					</IconButton>
+					<p>Profile</p>
+				</MenuItem>
+			</Menu>
+		);
+		return (
+			<div className={classes.root}>
+				<CssBaseline />
+				<AppBar position="fixed" className={classes.appBar}>
+          <Toolbar>
+		  <IconButton
+							className={classes.menuButton}
+							color="inherit"
+							aria-label="Menu"
+						>
+							<img alt="card" height="40" width="40" src={logo} />
+    </IconButton>
+						<Typography variant="h6" color="inherit" className={classes.grow}>
+							Umbrella Health
+						</Typography>
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+			<Button color="inherit">Home</Button>
+						<Button color="inherit">About Us</Button>
+						<Button color="inherit">Diseases</Button>
+						<Button color="inherit">BLog</Button>
+						<Button color="inherit">Pathy</Button>
+						<Button color="inherit">Contact Us</Button>
+              <IconButton color="inherit">
+                <Badge badgeContent={17} color="secondary">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                aria-haspopup="true"
+                onClick={this.handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
+                <MoreIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+    </AppBar>
+		{renderMenu}
+        {renderMobileMenu}
+				<Drawer
+					className={classes.drawer}
+					variant="permanent"
+					classes={{
+						paper: classes.drawerPaper,
+					}}
+				>
+					<div className={classes.toolbar} />
+					<List>
+						{['Dashboard', 'Profile', 'What I posted', 'What I follow'].map(
+							(text, index) => (
+								<ListItem button key={text}>
+									<ListItemText primary={text} />
+								</ListItem>
+							),
+						)}
+					</List>
+					<MenuItem>
+						{' '}
+						<a href="/navbar">Dashboard </a>
+					</MenuItem>
+					<MenuItem>
+						{' '}
+						<a href="/profile">Profile </a>
+					</MenuItem>
+					<MenuItem>
+						{' '}
+						<a href="/posted">What I posted </a>
+					</MenuItem>
+					<MenuItem>
+						{' '}
+						<a href="/follow">What I follow </a>
+					</MenuItem>
+					<Divider />
+					<List>
+						{['Share Experience', 'Ask Suggestion', 'Add Testimonial'].map(
+							(text, index) => (
+								<ListItem button key={text}>
+									<ListItemText primary={text} />
+								</ListItem>
+							),
+						)}
+					</List>
+				</Drawer>
+				<main className={classes.content}>
+					<div className={classes.toolbar} />
+					<Typography paragraph>Hello</Typography>
+				</main>
+			</div>
+		);
+	}
 }
 
 export default withStyles(styles)(Navigation);

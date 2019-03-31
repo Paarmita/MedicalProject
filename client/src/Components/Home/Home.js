@@ -1,3 +1,5 @@
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
@@ -9,6 +11,7 @@ class Home extends Component {
 		return (
 			<div>
 				<iframe
+					title="Main frame"
 					width="100%"
 					height="500px"
 					src="https://www.youtube.com/embed/tgbNymZ7vqY"

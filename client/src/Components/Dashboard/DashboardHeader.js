@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import logo from "../../Images/logo.svg"
 import { HashLink } from "react-router-hash-link";
 
@@ -29,7 +28,7 @@ class DashboardHeader extends React.Component {
       return <Redirect to="/" />;
     }
 
-    let email = "";
+    let email = "hi";
     if (localStorage.getItem("data")) {
       console.log(localStorage.getItem("data"));
       email = JSON.parse(localStorage.getItem("data")).email;

@@ -12,6 +12,7 @@ The project deals with collection of data from large number of patients , throug
 
 * NodeJs and passport powers the REST API and other web pages
 * React.js and Redux are used for the dynamic parts of the interface
+* Material UI, styling framework
 
 
 ### Features:
@@ -41,3 +42,5 @@ The project deals with collection of data from large number of patients , throug
 * https://github.com/divyanshu-rawat/jwt-encrypted-api
 * https://github.com/Ignitus/Ignitus-Client-Side-Development
 * https://github.com/Ignitus/Ignitus-rest-api
+* https://material-ui.com/demos/app-bar/
+* https://medium.com/@jishnu61/react-16-webpack-4-react-router-babel-6-material-ui-2018-10682441ad1e 
