@@ -198,50 +198,54 @@ class Navigation extends React.Component {
 		);
 		return (
 			<div className={classes.root}>
-				<CssBaseline />
+
 				<AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
-		  <IconButton
+					<Toolbar>
+						<IconButton
 							className={classes.menuButton}
 							color="inherit"
 							aria-label="Menu"
 						>
 							<img alt="card" height="40" width="40" src={logo} />
-    </IconButton>
+						</IconButton>
 						<Typography variant="h6" color="inherit" className={classes.grow}>
 							Umbrella Health
 						</Typography>
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-			<Button color="inherit">Home</Button>
-						<Button color="inherit">About Us</Button>
-						<Button color="inherit">Diseases</Button>
-						<Button color="inherit">BLog</Button>
-						<Button color="inherit">Pathy</Button>
-						<Button color="inherit">Contact Us</Button>
-              <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-            </div>
-            <div className={classes.sectionMobile}>
-              <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                <MoreIcon />
-              </IconButton>
-            </div>
-          </Toolbar>
-    </AppBar>
-		{renderMenu}
-        {renderMobileMenu}
+						<div className={classes.grow} />
+						<div className={classes.sectionDesktop}>
+							<Button color="inherit">Home</Button>
+							<Button color="inherit">About Us</Button>
+							<Button color="inherit">Diseases</Button>
+							<Button color="inherit">BLog</Button>
+							<Button color="inherit">Pathy</Button>
+							<Button color="inherit">Contact Us</Button>
+							<IconButton color="inherit">
+								<Badge badgeContent={17} color="secondary">
+									<NotificationsIcon />
+								</Badge>
+							</IconButton>
+							<IconButton
+								aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+								aria-haspopup="true"
+								onClick={this.handleProfileMenuOpen}
+								color="inherit"
+							>
+								<AccountCircle />
+							</IconButton>
+						</div>
+						<div className={classes.sectionMobile}>
+							<IconButton
+								aria-haspopup="true"
+								onClick={this.handleMobileMenuOpen}
+								color="inherit"
+							>
+								<MoreIcon />
+							</IconButton>
+						</div>
+					</Toolbar>
+				</AppBar>
+				{renderMenu}
+				{renderMobileMenu}
 				<Drawer
 					className={classes.drawer}
 					variant="permanent"
@@ -250,15 +254,6 @@ class Navigation extends React.Component {
 					}}
 				>
 					<div className={classes.toolbar} />
-					<List>
-						{['Dashboard', 'Profile', 'What I posted', 'What I follow'].map(
-							(text, index) => (
-								<ListItem button key={text}>
-									<ListItemText primary={text} />
-								</ListItem>
-							),
-						)}
-					</List>
 					<MenuItem>
 						{' '}
 						<a href="/navbar">Dashboard </a>

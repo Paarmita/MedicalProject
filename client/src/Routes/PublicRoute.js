@@ -12,14 +12,14 @@ import Home from '../Components/Home/Home';
 import { Notfound } from './NotFound';
 
 // import DashboardHeader from './Components/Dashboard/DashboardHeader';
-
+import Profile from '../Components/Profile';
 import AboutUs from '../Components/AboutUs/AboutUs';
 import Diseases from '../Components/Diseases/Diseases';
 // import ContactUs from '../Components/ContactUs/ContactUs';
 
 export const PublicRoutes = () => {
 	return (
-		<div>
+			<React.Fragment>
 			<ClippedDrawer />
 			<Switch>
 				<Route
@@ -39,12 +39,13 @@ export const PublicRoutes = () => {
 				<Route path="/posted" render={() => <div>Posted</div>} />
 				<Route path="/suggest" render={() => <div>Ask a suggestion</div>} />
 				<Route path="/share_experience" render={() => <div>Share Experience</div>} />
-				<Route path="/profile" render={() => <div>Profile</div>} />
+				<Route path="/profile" component={Profile} />
 				<Route path="/follow" render={() => <div>Follow</div>} />
 				<Route path="/navbar" render={() => <div>Dashboard</div>} />
 				<Route path="/diseases" component={Diseases} />
 				<Route component={Notfound} />
 			</Switch>
-		</div>
+
+   </React.Fragment>
 	);
 };

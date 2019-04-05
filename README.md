@@ -44,3 +44,6 @@ The project deals with collection of data from large number of patients , throug
 * https://github.com/Ignitus/Ignitus-rest-api
 * https://material-ui.com/demos/app-bar/
 * https://medium.com/@jishnu61/react-16-webpack-4-react-router-babel-6-material-ui-2018-10682441ad1e 
+
+* https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-1-c405048e3669
+* https://www.youtube.com/watch?v=vZjRZkC6K64&t=0s&index=2&list=PLLGFLSZWrhm77aJ-76xzie7-PFKJSGsKa

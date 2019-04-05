@@ -1,3 +1,6 @@
+Running on - medical_councelling.surge.sh
+
+
 ## Installation Instructions
 ### Frontend
 * Clone or download the repo. into any fresh temporary folder.
