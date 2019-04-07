@@ -1,25 +1,25 @@
-const Data = [
+import paarmita from '../../Images/Diseases/1.png';
+
+const data = [
 	{
-		content:
-			'Having worked with software development since 6 years I have always seen the lack of active research opportunities for developers. Barring some really good companies , the only option is to give up your job and take up higher studies in order to get to research. This is where Ignitus is makes the difference.In simple words Ignitus is an ocean of opportunities , knowledge and hopes',
-		author: 'Amit Bhatkal',
-		source: 'Machine Learning Engineer at Mercedes Benz Research',
-	},
-	{
-		content: 'I love what you’re doing with ignitus!',
-		author: 'Santhosh Subramanian',
-		source: 'University of California, Berkeley',
-	},
-	{
-		content: 'This Intiative, Sounds Really Interesting.',
-		author: 'Walter Bender',
-		source: 'Former Executive Director MIT Media Lab',
-	},
-	{
-		content: 'I am actually waiting eagerly to contribute to Ignitus.',
-		author: 'Shreya Mahipal Jain',
-		source: 'University of Southern California, Los Angeles',
+		_id: '1',
+		full_name: 'Paarmita Bhargava',
+		username: 'paarmita',
+		profile_pic: paarmita,
+		location: {
+			city: 'Jaipur',
+			state: 'Rajasthan',
+			country: 'India',
+		},
+		basicInformation: {
+			email: 'paarmita1998@gmail.com',
+			age: '20',
+			gender: 'Female',
+			phoneno: '9460893037',
+			birthday: '28-07-1998',
+		},
+		bio: 'Student in some college. Leads a healthy lifestyle',
 	},
 ];
 
-export default Data;
+export default data;

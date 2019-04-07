@@ -18,11 +18,15 @@ const ProfileSchema = new Schema({
         type: String
     },
     basicInformation: [{
-        Age: {
+        age: {
             type: String,
             required: true
         },
-        Gender: {
+        email: {
+            type: String,
+            required: true
+        },
+        gender: {
             type: Boolean,
             required: true
         },

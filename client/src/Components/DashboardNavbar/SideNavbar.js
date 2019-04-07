@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
-import './SideNavbar.css';
+import { Link } from 'react-router-dom';
+import './style.css';
 
 class DashboardHeader extends React.Component {
 	render() {
@@ -9,61 +10,61 @@ class DashboardHeader extends React.Component {
 			<div>
 				<ul className="nav flex-column sideBar">
 					<li className="nav-item">
-						<a className="nav-link active" href="#">
+						<Link className="nav-link active" to="/dashboard/profile">
 							Profile
-						</a>
+						</Link>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="#">
+						<Link className="nav-link" to="/dashboard">
 							Dashboard
-						</a>
+						</Link>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="#">
+						<Link className="nav-link" to="/dashboard/follow">
 							Posts I follow
-						</a>
+						</Link>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="#">
+						<Link className="nav-link" to="/dashboard/posted">
 							My posts
-						</a>
+						</Link>
 					</li>
 					<span className="border-top my-3" />
 					<li className="nav-item">
-						<a className="nav-link" href="#">
+						<Link className="nav-link" to="/dashboard/share_experience">
 							Share Experience
-						</a>
+						</Link>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="#">
+						<Link className="nav-link" to="/dashboard/ask_suggestion">
 							Ask Suggestion
-						</a>
+						</Link>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="#">
+						<Link className="nav-link" to="/dashboard/testimonial">
 							Add Testimonial
-						</a>
+						</Link>
 					</li>
 					<span className="border-top my-3" />
 					<li className="nav-item">
-						<a className="nav-link" href="#">
+						<Link className="nav-link" to="/settings">
 							Settings
-						</a>
+						</Link>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="#">
+						<Link className="nav-link" to="/privacy">
 							Privacy Policy
-						</a>
+						</Link>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="#">
+						<Link className="nav-link" to="/termsofuse">
 							Terms & Conditions
-						</a>
+						</Link>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="#">
+						<Link className="nav-link" to="/">
 							Logout
-						</a>
+						</Link>
 					</li>
 				</ul>
 			</div>

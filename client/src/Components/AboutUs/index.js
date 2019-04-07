@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import './AboutUs.css';
+import './style.css';
 
 const About = () => (
 	<Fragment>

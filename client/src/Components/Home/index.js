@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './Home.css';
+import './style.css';
 import CardLayout from '../WhatWeDo';
 import Stats from '../Stats';
 

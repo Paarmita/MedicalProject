@@ -11,7 +11,7 @@ const html = [...data].map((x, key) => <Card key={key} image={x.icon} name={x.na
 class Diseases extends React.Component {
 	render() {
 		return (
-			<div className="container main">
+			<div className="container">
 				<div className="mt-2">
 					<div>
 						<h1 className="diseases_title">Diseases</h1>

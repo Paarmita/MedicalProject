@@ -10,7 +10,6 @@ class App extends Component {
 		return (
 			<div className="content-container">
 				<Switch>
-					<Route path="/dashboard" component={ProtectedRoutes} />
 					<Route path="/" component={PublicRoutes} />
 				</Switch>
 			</div>

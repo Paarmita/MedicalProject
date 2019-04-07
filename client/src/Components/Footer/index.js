@@ -2,7 +2,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import logo from '../../Images/logo.svg';
-import './Footer.css';
+import './style.css';
 
 class Footer extends Component {
 	render() {
