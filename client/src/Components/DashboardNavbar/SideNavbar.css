@@ -1,0 +1,35 @@
+.sideBar {
+  height: 100%; 
+  width: 190px; 
+  position: fixed; 
+  z-index: 1; 
+  top: 7%;
+  left: 0;
+  background-color: white; 
+  overflow-x: hidden; 
+  padding-top: 20px;
+  border-right: 1px solid rgb(218, 218, 218);
+}
+
+.sideBar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #555353;
+  display: block;
+}
+
+.sideBar a:hover {
+  color:Black;
+  background: rgb(221, 221, 221);
+}
+
+.main {
+  margin-left: 160px; 
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

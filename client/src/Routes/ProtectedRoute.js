@@ -5,13 +5,13 @@ import { Switch, Route } from 'react-router-dom';
 
 import { Notfound } from './NotFound';
 import PrivateRoute from './PrivateRoute';
-import Dashboard from '../Components/Dashboard/Dashboard';
-import DashBoardHeader from '../Components/Dashboard/DashboardHeader';
+import Dashboard from '../Components/Dashboard';
+import DashBoardHeader from '../Components/DashboardNavbar/DashboardHeader';
 
 export const ProtectedRoutes = () => {
 	return (
 		<div>
-			<DashBoardHeader.containers.DashboardHeaderContainer />
+			<DashBoardHeader />
 			<Switch>
 				<Route
 					exact
@@ -22,7 +22,6 @@ export const ProtectedRoutes = () => {
 						</div>
 					)}
 				/>
-				<PrivateRoute path="/dashboard" component={Dashboard.components.Dashboard} />
 			</Switch>
 		</div>
 	);

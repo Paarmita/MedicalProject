@@ -1,21 +1,18 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable import/no-unresolved */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import './NotFound.css';
 
 export const Notfound = () => {
 	return (
-		<div className="container-404">
-			<div className="content">
-				<p>404</p>
-				<p>We could not find what you were looking for.</p>
-				<p>
-					Please check your URL or return&nbsp;
-					<Link to="/">
-						<span className="_link">home</span>
-					</Link>
-					.
-				</p>
+		<div className="notFound">
+			<div className="c">
+				<div className="_404">404</div>
+				<div className="_1">THE PAGE</div>
+				<div className="_2">WAS NOT FOUND</div>
+				<a className="btn not_btn" href="/">
+					BACK TO HOME
+				</a>
 			</div>
 		</div>
 	);

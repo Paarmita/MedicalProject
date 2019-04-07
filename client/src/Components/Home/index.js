@@ -3,8 +3,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
-import CardLayout from '../WhatWeDo/CardLayout';
-import Stats from '../Stats/Stats';
+import CardLayout from '../WhatWeDo';
+import Stats from '../Stats';
 
 class Home extends Component {
 	render() {

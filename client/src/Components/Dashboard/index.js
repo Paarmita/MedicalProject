@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
+/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 
 class Dashboard extends React.Component {
