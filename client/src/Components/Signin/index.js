@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import './Signin.css';
+import './style.css';
 
 class Signin extends Component {
 	render() {
@@ -34,7 +34,7 @@ class Signin extends Component {
 										<label htmlFor="inputPassword">Password</label>
 									</div>
 									<button
-										className="btn btn-lg btn-primary btn-block text-uppercase"
+										className="btn btn-lg btn-primary btn-block text-uppercase signBtn"
 										type="submit"
 									>
 										Sign in

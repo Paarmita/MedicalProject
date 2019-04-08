@@ -14,6 +14,10 @@ import Blog from '../Components/Blog';
 import Profile from '../Components/Profile';
 import AboutUs from '../Components/AboutUs';
 import Diseases from '../Components/Diseases';
+import ShareExperience from '../Components/ShareExperience';
+import AskSuggestion from '../Components/AskSuggestion';
+import AddTestimonial from '../Components/AddTestimonial';
+
 // import ContactUs from '../Components/ContactUs/ContactUs';
 
 export const PublicRoutes = () => {
@@ -37,15 +41,9 @@ export const PublicRoutes = () => {
 				<Route path="/diseases" component={Diseases} />
 				<Route path="/blog" component={Blog} />
 				<Route path="/dashboard/posted" render={() => <div>Posted</div>} />
-				<Route path="/dashboard/testimonial" render={() => <div>Testimonial</div>} />
-				<Route
-					path="/dashboard/ask_suggestion"
-					render={() => <div>Ask a suggestion</div>}
-				/>
-				<Route
-					path="/dashboard/share_experience"
-					render={() => <div>Share Experience</div>}
-				/>
+				<Route path="/dashboard/testimonial" component={AddTestimonial} />
+				<Route path="/dashboard/ask_suggestion" component={AskSuggestion} />
+				<Route path="/dashboard/share_experience" component={ShareExperience} />
 				<Route path="/dashboard/profile" component={Profile} />
 				<Route path="/dashboard/follow" render={() => <div>Follow</div>} />
 				<Route path="/dashboard" component={Dashboard} />

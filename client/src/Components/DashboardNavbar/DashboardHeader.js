@@ -59,12 +59,12 @@ class DashboardHeader extends React.Component {
 								</a>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="/signup">
+								<a className="nav-link" href="/dashboard/share_experience">
 									Share Experience
 								</a>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="/signup">
+								<a className="nav-link" href="/dashboard/ask_suggestion">
 									Ask Suggestions
 								</a>
 							</li>
