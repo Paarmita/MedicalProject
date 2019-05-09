@@ -1,4 +1,4 @@
-.main {
+.mainProfile {
     margin-left: 190px; 
     /* padding: 0px 10px; */
   }
@@ -94,4 +94,15 @@
 .profile-tab p{
     font-weight: 600;
     color: #0062cc;
+}
+
+.edit_intro {
+    margin-top: 100px;
+}
+.text-divider{margin: 2em 0; line-height: 0; text-align: center;}
+.text-divider span{background-color: white; padding: 1em;}
+.text-divider:before{ content: " "; display: block; border-top: 1px solid #e3e3e3; border-bottom: 1px solid #f7f7f7;}
+
+.btnProfile {
+    margin: 20px;
 }

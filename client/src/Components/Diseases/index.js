@@ -1,13 +1,14 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable import/named */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prefer-stateless-function */
 /* eslint-disable no-unused-vars */
-import React, { Component, Fragment } from 'react';
-import { data } from './Data';
+import React from 'react';
+import diseaseData from '../../Data/DiseasesData';
 import Card from './Card';
 import './style.css';
 
-const html = [...data].map((x, key) => <Card key={key} image={x.icon} name={x.name} />);
+const html = [...diseaseData].map((x, key) => <Card key={key} image={x.icon} name={x.name} />);
 class Diseases extends React.Component {
 	render() {
 		return (
@@ -26,3 +27,6 @@ class Diseases extends React.Component {
 }
 
 export default Diseases;
+
+// https://bootsnipp.com/snippets/nNQyv
+// https://reactjs.org/docs/lists-and-keys.html

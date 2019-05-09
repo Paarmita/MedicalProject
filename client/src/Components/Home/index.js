@@ -23,7 +23,7 @@ class Home extends Component {
 				<Stats />
 				<div className="container">
 					<Link to="/Signup">
-						<button type="button" className="btn btn-success button_join">
+						<button type="button" className="btn btn-success buttonJoin">
 							Join Us
 						</button>
 					</Link>

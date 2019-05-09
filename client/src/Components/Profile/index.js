@@ -6,21 +6,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
-import data from './Data';
+import { Link } from 'react-router-dom';
+import profileData from '../../Data/ProfileData';
 import './style.css';
 import DashboardHeader from '../DashboardNavbar/DashboardHeader';
 
-const html = [...data].map(profile => (
-	<div className="container emp-profile main">
+const html = [...profileData].map(profile => (
+	<div className="container emp-profile mainProfile">
 		<form>
 			<div className="row">
 				<div className="col-md-4">
 					<div className="profile-img">
 						<img src={profile.profile_pic} alt="profile pic" />
-						<div className="file btn btn-lg btn-primary">
-							Change Photo
-							<input type="file" name="file" />
-						</div>
 					</div>
 				</div>
 				<div className="col-md-6">
@@ -61,12 +58,11 @@ const html = [...data].map(profile => (
 					</div>
 				</div>
 				<div className="col-md-2">
-					<input
-						type="submit"
-						className="profile-edit-btn"
-						name="btnAddMore"
-						value="Edit Profile/Report Profile"
-					/>
+					<Link to="/dashboard/profile/edit">
+						<button className="profile-edit-btn" type="submit">
+							Edit Profile-Report Profile
+						</button>
+					</Link>
 				</div>
 			</div>
 			<div className="row">
