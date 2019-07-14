@@ -1,200 +1,64 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable camelcase */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import './ContactUs.css';
+import './style.css';
+import Testimonial from './Testimonial';
+import Testimonial_data from '../../Data/Testimonial_data';
 
-class CarouselIndicator extends Component {
-	render() {
-		return (
-			<li>
-				<a
-					className={
-						this.props.index === this.props.activeIndex
-							? 'carousel__indicator carousel__indicator--active'
-							: 'carousel__indicator'
-					}
-					onClick={this.props.onClick}
-				/>
-			</li>
-		);
-	}
-}
-
-class CarouselSlide extends Component {
-	render() {
-		return (
-			<li
-				className={
-					this.props.index === this.props.activeIndex
-						? 'carousel__slide carousel__slide--active '
-						: 'carousel__slide'
-				}
-			>
-				<div className="carousel-slide__content">{this.props.slide.content}</div>
-
-				<div className="author-source-container">
-					<small className="carousel-slide__source">
-						<div>
-							<strong className="carousel-slide__author">
-								{this.props.slide.author}
-							</strong>
-						</div>
-						{this.props.slide.source}
-					</small>
-				</div>
-			</li>
-		);
-	}
-}
-
-class CarouselLeftArrow extends Component {
-	render() {
-		return (
-			<a
-				href="#"
-				className="carousel__arrow carousel__arrow--left padding-on-left"
-				onClick={this.props.onClick}
-			>
-				<i className="fa fa-2x fa-angle-left" />
-			</a>
-		);
-	}
-}
-
-class CarouselRightArrow extends Component {
-	render() {
-		return (
-			<a
-				href="#"
-				className="carousel__arrow carousel__arrow--right padding-on-right"
-				onClick={this.props.onClick}
-			>
-				<i className="fa fa-2x fa-angle-right" />
-			</a>
-		);
-	}
-}
-
-// Carousel wrapper component
 class ContactUs extends Component {
-	constructor(props) {
-		super(props);
-
-		this.goToSlide = this.goToSlide.bind(this);
-		this.goToPrevSlide = this.goToPrevSlide.bind(this);
-		this.goToNextSlide = this.goToNextSlide.bind(this);
-		this.timer = this.timer.bind(this);
-		this.getData = this.getData.bind(this);
-
-		this.state = {
-			activeIndex: 0,
-		};
-	}
-
-	componentWillMount() {
-		// this.getData()
-	}
-
-	componentDidUpdate() {
-		console.log('updated state', this.props.state.TestimonialReducer[0].data);
-	}
-
-	async getData() {
-		const response = await axios.get(API_URL);
-		const json = await response.data;
-
-		this.props.set_testimonial_data(json);
-	}
-
-	componentDidMount() {
-		this.getData();
-		const interval = setInterval(this.timer, 4000);
-	}
-
-	componentWillUnmount() {
-		clearInterval(this.state.interval);
-	}
-
-	timer() {
-		if (this.state.activeIndex === this.props.slides.length - 1) {
-			this.setState({ activeIndex: -1 });
-		}
-
-		this.setState({ activeIndex: this.state.activeIndex + 1 });
-	}
-
-	goToSlide(index) {
-		this.setState({
-			activeIndex: index,
-		});
-	}
-
-	goToPrevSlide(e) {
-		e.preventDefault();
-		let index = this.state.activeIndex;
-		const { slides } = this.props;
-		const slidesLength = slides.length;
-
-		if (index < 1) {
-			index = slidesLength;
-		}
-
-		--index;
-
-		this.setState({
-			activeIndex: index,
-		});
-	}
-
-	goToNextSlide(e) {
-		e.preventDefault();
-		let index = this.state.activeIndex;
-		const { slides } = this.props;
-		const slidesLength = slides.length - 1;
-
-		if (index === slidesLength) {
-			index = -1;
-		}
-
-		++index;
-
-		this.setState({
-			activeIndex: index,
-		});
-	}
-
 	render() {
-		const { activeIndex } = this.state;
-		const { goToPrevSlide, goToSlide, goToNextSlide } = this;
-
 		return (
-			<div className="carousel">
-				<div>
-					<CarouselLeftArrow onClick={e => goToPrevSlide(e)} />
+			<div className="container mb-5">
+				<h1 className="my-4 blogTitle">Contact Us</h1>
+				<p> Contact Us now to know more about the diseases and its cure</p>
+				<p>
+					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+					Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+					unknown printer took a galley of type and scrambled it to make a type specimen
+					book. It has survived not only five centuries, but also the leap into electronic
+					typesetting, remaining essentially unchanged. It was popularised in the 1960s
+					with the release of Letraset sheets containing Lorem Ipsum passages, and more
+					recently with desktop publishing software like Aldus PageMaker including
+					versions of Lorem Ipsum.
+				</p>
+				<div className="contactDesc">
+					<h6 className="col-md-2">Follow us on:</h6>
+					<div className="col-md-12 col-sm-12">
+						<ul className="social-network social-circle">
+							<li>
+								<a href="#" className="icoRss" title="Rss">
+									<i className="fa fa-rss" />
+								</a>
+							</li>
+							<li>
+								<a href="#" className="icoFacebook" title="Facebook">
+									<i className="fa fa-facebook" />
+								</a>
+							</li>
+							<li>
+								<a href="#" className="icoTwitter" title="Twitter">
+									<i className="fa fa-twitter" />
+								</a>
+							</li>
+							<li>
+								<a href="#" className="icoGoogle" title="Google +">
+									<i className="fa fa-google-plus" />
+								</a>
+							</li>
+							<li>
+								<a href="#" className="icoLinkedin" title="Linkedin">
+									<i className="fa fa-linkedin" />
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 				<div>
-					<ul className="carousel__slides container">
-						{this.props.slides.map((slide, index) => (
-							<CarouselSlide
-								key={index}
-								index={index}
-								activeIndex={activeIndex}
-								slide={slide}
-							/>
-						))}
-					</ul>
-					<ul className="carousel__indicators">
-						{this.props.slides.map((slide, index) => (
-							<CarouselIndicator
-								key={index}
-								index={index}
-								activeIndex={activeIndex}
-								isActive={activeIndex === index}
-								onClick={() => goToSlide(index)}
-							/>
-						))}
-					</ul>
-				</div>
-				<div className="arrow-fix">
-					<CarouselRightArrow onClick={e => goToNextSlide(e)} />
+					<h4 className="text-center mb-4 mt-5">What people say about our platform</h4>
+					<Testimonial slides={Testimonial_data} />
 				</div>
 			</div>
 		);

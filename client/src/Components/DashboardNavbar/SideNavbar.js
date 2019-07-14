@@ -10,13 +10,18 @@ class DashboardHeader extends React.Component {
 			<div>
 				<ul className="nav flex-column sideBar">
 					<li className="nav-item">
+						<Link className="nav-link" to="/dashboard">
+							Dashboard
+						</Link>
+					</li>
+					<li className="nav-item">
 						<Link className="nav-link active" to="/dashboard/profile">
 							Profile
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Link className="nav-link" to="/dashboard">
-							Dashboard
+						<Link className="nav-link" to="/dashboard/posted">
+							My Feed
 						</Link>
 					</li>
 					<li className="nav-item">
@@ -25,8 +30,8 @@ class DashboardHeader extends React.Component {
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Link className="nav-link" to="/dashboard/posted">
-							My posts
+						<Link className="nav-link" to="/dashboard/follow">
+							Posts I Like
 						</Link>
 					</li>
 					<span className="border-top my-3" />

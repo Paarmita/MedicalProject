@@ -16,7 +16,7 @@ import Blog from '../Components/Blog';
 import AboutUs from '../Components/AboutUs';
 import Diseases from '../Components/Diseases';
 import DiseaseDetail from '../Components/DiseaseDetail';
-// import ContactUs from '../Components/ContactUs/ContactUs';
+import ContactUs from '../Components/ContactUs';
 
 import Dashboard from '../Components/Dashboard';
 import Profile from '../Components/Profile';
@@ -50,6 +50,7 @@ export const PublicRoutes = () => {
 					render={props => <DiseaseDetail {...props.match.params} />}
 				/>
 				<Route path="/blog" component={Blog} />
+				<Route path="/contactus" component={ContactUs} />
 				<Route path="/dashboard/posted" render={() => <div>Posted</div>} />
 				<Route path="/dashboard/testimonial" component={AddTestimonial} />
 				<Route path="/dashboard/ask_suggestion" component={AskSuggestion} />

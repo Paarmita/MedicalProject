@@ -1,0 +1,113 @@
+
+  .diseases_title{
+    margin-top: 70px;
+  }
+  .card-shadow {
+    border: 0;
+  }
+  .card-shadow:hover {
+    box-shadow: 0 0.3rem 0.6rem #0000001c;
+  }
+
+  .cardHeight {
+    height: 135px;
+    border-radius: 16px !important;
+  }
+
+  .flatten-text {
+    text-align: center;
+  }
+  
+  .provide-card-row{
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .card{
+      border-radius: 16px !important;
+  }
+  
+
+  .firma-card{
+    background: #fff;
+    border: 1px solid;
+    border-color: #c7bdbd40;
+    margin: 1rem auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px -1px rgb(198, 207, 234);
+    margin-bottom: 1.6%;
+    overflow: hidden;
+  }
+  .firma-resim{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transition: -webkit-transform .2s;
+    transition: transform .2s;
+    background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg);
+  }
+  .firmalar{
+    background: #f1f4f5c7;
+  }
+  
+  @media (max-width: 768px) {
+  
+    .firma-logo{
+          width: calc(33.66667% - .75rem);
+          height: 6.5rem;
+          margin: 5px .375rem;
+    }
+    .firma-resim {
+      position: relative;
+      z-index: 0;
+      height: 200px;
+    }
+    .img-padding-no{
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+  }
+
+  .searchfield {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    width: 100%;
+  }
+  
+  .no-suggestions {
+    color: #999;
+    padding: 0.5rem;
+  }
+  
+  .suggestions {
+    border: 1px solid #999;
+    border-top-width: 0;
+    list-style: none;
+    margin-top: 0;
+    max-height: 143px;
+    overflow-y: auto;
+    padding-left: 0;
+    width: 100%;
+  }
+  
+  .suggestions li {
+    padding: 0.5rem;
+  }
+  
+  .suggestion-active,
+  .suggestions li:hover {
+    background-color: #cecece;
+    color: black;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  
+  .suggestions li:not(:last-of-type) {
+    border-bottom: 1px solid #999;
+  }

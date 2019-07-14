@@ -1,11 +1,17 @@
 {
-  "name": "Medical_Counselling_App",
+  "name": "medical_backend_api",
   "version": "1.0.0",
   "description": "Social Network for patients",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
+  "keywords": [
+    "node",
+    "api"
+  ],
   "author": "Paarmita Bhargava",
   "license": "MIT",
   "dependencies": {
@@ -18,6 +24,7 @@
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.9",
     "morgan": "^1.9.1",
+    "nodemon": "^1.19.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "validator": "^10.11.0"

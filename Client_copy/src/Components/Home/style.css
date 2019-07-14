@@ -1,0 +1,23 @@
+.intro {	
+	padding-top: 7%;
+	position: relative;
+	z-index: 3;
+}
+
+.buttonJoin {
+	margin:auto;
+  display:block;
+	margin-bottom: 100px;
+	font-size: 18px;
+	padding: 10px;
+	text-decoration: none !important;
+}
+
+.buttonJoin:hover {
+	margin:auto;
+  display:block;
+	margin-bottom: 100px;
+	font-size: 18px;
+	padding: 10px;
+	text-decoration: none !important;
+}

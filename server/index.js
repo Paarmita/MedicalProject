@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const config = require('./config');
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 
 const passport = require("passport");
 const path = require("path");
@@ -20,14 +20,12 @@ const dashboard = require('./routes/dashboard');
 const food_jokes = require('./routes/food_jokes_route');
 const celebrity_jokes = require('./routes/celebrity_jokes_route');
 
-
-
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
 
-// using morgan to log requests to the console
+// Middleware: using morgan to log requests to the console
 app.use(morgan('dev'));
 mongoose.connect(config.mongoUrl);
 var db = mongoose.connection;
@@ -98,17 +96,15 @@ app.use(function(req, res) {
     })
 });
 
-
-app.set('port', (process.env.PORT || 5000));
 app.listen(port, () => {
     console.log('Server Started on Port:' + port);
 })
 
-// catch 404 and forward to error handler
+// Middleware: catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
-  next(err);
+  next(err); // when req, res is done pass to next middleware
 });
 
 // development error handler will print stacktrace
