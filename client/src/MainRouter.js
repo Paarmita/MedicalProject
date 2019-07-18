@@ -8,6 +8,7 @@ import Navigation from './Components/Navbar';
 import Footer from './Components/Footer';
 import Home from './Components/Home';
 import AboutUs from './Components/AboutUs';
+import ContactUs from './Components/ContactUs';
 import Blog from './Components/Blog';
 import Diseases from './Components/Diseases';
 import Pathy from './Components/Pathy';
@@ -22,7 +23,7 @@ import Faq from './Components/Faq';
 import TermsofUse from './Components/TermsofUse';
 import Settings from './Components/Settings';
 import Notfound from './Components/Notfound';
-import { isAuthenticated } from './Api';
+import PrivateRoute from './Routes/PrivateRoute';
 
 const MainRouter = () => (
 	<div>
@@ -33,31 +34,26 @@ const MainRouter = () => (
 			<Route exact path="/pathy" component={Pathy} />
 			<Route exact path="/diseases" component={Diseases} />
 			<Route exact path="/aboutus" component={AboutUs} />
+			<Route exact path="/contactus" component={ContactUs} />
 			<Route exact path="/signin" component={Signin} />
 			<Route exact path="/signup" component={Signup} />
 			<Route exact path="/faq" component={Faq} />
 			<Route exact path="/privacypolicy" component={PrivacyPolicy} />
 			<Route exact path="/termsofuse" component={TermsofUse} />
-			{isAuthenticated() && (
-				<>
-					<Route exact path="/user/settings/:userId" component={Settings} />
-					<Route exact path="/user/dashboard/:userId" component={Settings} />
-					<Route exact path="/user/findpeople/:userId" component={Settings} />
-					<Route exact path="/user/:userId" component={Profile} />
-					<Route exact path="/user/edit/:userId" component={EditProfile} />
-					<Route exact path="/users" component={Users} />
-					<Route exact path="/user/feed/:userId" component={Settings} />
-					<Route exact path="/user/postfollowing/:userId" component={Settings} />
-					<Route exact path="/user/postlike/:userId" component={Settings} />
-					<Route
-						exact
-						path="/user/share_experience/:userId"
-						component={ShareExperience}
-					/>
-					<Route exact path="/user/ask_suggestion/:userId" component={AskSuggestion} />
-					<Route exact path="/user/testimonial/:userId" component={AddTestimonial} />
-				</>
-			)}
+
+			<PrivateRoute exact path="/user/dashboard/:userId" component={Settings} />
+			<PrivateRoute exact path="/user/findpeople/:userId" component={Settings} />
+			<PrivateRoute exact path="/user/:userId" component={Profile} />
+			<PrivateRoute exact path="/user/edit/:userId" component={EditProfile} />
+			<PrivateRoute exact path="/users" component={Users} />
+			<PrivateRoute exact path="/user/feed/:userId" component={Settings} />
+			<PrivateRoute exact path="/user/postfollowing/:userId" component={Settings} />
+			<PrivateRoute exact path="/user/postlike/:userId" component={Settings} />
+			<PrivateRoute exact path="/user/share_experience/:userId" component={ShareExperience} />
+			<PrivateRoute exact path="/user/ask_suggestion/:userId" component={AskSuggestion} />
+			<PrivateRoute exact path="/user/testimonial/:userId" component={AddTestimonial} />
+			<PrivateRoute exact path="/user/settings/:userId" component={Settings} />
+
 			<Route component={Notfound} />
 		</Switch>
 		<Footer />

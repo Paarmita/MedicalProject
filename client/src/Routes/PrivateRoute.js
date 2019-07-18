@@ -1,25 +1,25 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prefer-stateless-function */
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { isAuthenticated } from '../Api';
 
-class PrivateRoute extends React.Component {
-	render() {
-		const Component = this.props.component;
-		return (
-			<Route
-				render={_props =>
-					localStorage.getItem('authenticated') ? (
-						<Component {...this.props} />
-					) : (
-						<Redirect to="/signin" />
-					)
-				}
-			/>
-		);
-	}
-}
+const PrivateRoute = ({ component: Component, ...rest }) => (
+	// props means components passed down to this pricate route component
+	<Route
+		{...rest}
+		render={props =>
+			isAuthenticated() ? (
+				<Component {...props} />
+			) : (
+				<Redirect
+					to={{
+						pathname: '/signin',
+						state: { from: props.location },
+					}}
+				/>
+			)
+		}
+	/>
+);
 
 export default PrivateRoute;

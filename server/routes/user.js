@@ -1,108 +1,24 @@
-const express = require('express');
-const app = express.Router();
-const User = require('../models/users');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const config = require('../config');
+const express = require("express");
+const {
+    userById,
+    allUsers,
+    getUser,
+    updateUser,
+    deleteUser,
+    userPhoto
+} = require("../controllers/user");
+const { requireSignin } = require("../controllers/auth");
 
-app.get("/test", (req, res) => res.json({
-    msg: "Users work"
-}));
+const router = express.Router();
 
+router.get("/users", allUsers); // access to all and no authentication for this
+router.get("/user/:userId", requireSignin, getUser); // need middleware requireSignin
+router.put("/user/:userId", requireSignin, updateUser);        // PATCH is for making small update and PUT for whole obj update
+// photo
+router.get("/user/photo/:userId", userPhoto);
+router.delete("/user/:userId", requireSignin, deleteUser);
 
-app.post('/register', (req, res) => {
+// any route containing :userId, our app will first execute userByID()
+router.param("userId", userById);
 
-    bcrypt.hash(req.body.password, 10, function(err, hash) {
-
-        if (err) {
-            return res.json({
-                error: err
-            });
-        } else {
-
-            User.find({
-                    email: req.body.email
-                })
-                .exec((err, result) => {
-
-                    if (result.length >= 1) {
-                        res.json({
-                            success: false,
-                            error: 'User Already Exists'
-                        })
-                    } else {
-
-                        const user = new User({
-                            username: req.body.username,
-                            email: req.body.email,
-                            password: hash
-                        })
-
-                        user.save().then((err, user) => {
-                                res.json({
-                                    success: true
-                                })
-                            })
-                            .catch((err) => {
-                                res.json({
-                                    error: err
-                                })
-                            })
-                    }
-                })
-        }
-    });
-})
-
-app.post('/authenticate', (req, res) => {
-
-    User.findOne({
-        email: req.body.email
-    }, (err, user) => {
-
-        if (err) {
-            res.json({
-                error: err
-            })
-        } else {
-            bcrypt.compare(req.body.password, user.password, (err, result) => {
-
-                if (result == true) {
-
-                    const new_user = {
-                        email: user.email,
-                        password: user.password
-                    }
-
-                    jwt.sign(new_user, config.secretKey, {
-                        expiresIn: 60 * 60 * 24
-                    }, (err, token) => {
-
-                        if (err) {
-                            res.json({
-                                error: err
-                            })
-                        } else {
-                            res.json({
-                                user: user,
-                                authenticate: true,
-                                token: token
-                            })
-                        }
-
-                    });
-
-                } else {
-                    res.json({
-                        error: "Incorrect Password"
-                    })
-                }
-            });
-        }
-    })
-})
-
-
-
-
-module.exports = app;
+module.exports = router;

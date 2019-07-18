@@ -1,128 +1,64 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const router = express.Router();
+const mongoose = require("mongoose");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+const cors = require("cors");
+const expressValidator = require("express-validator");
+const fs = require("fs");
+// dotenv to remove this error MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+const dotenv = require("dotenv");
+dotenv.config();
 
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const jwt = require('jsonwebtoken');
-const cors = require('cors');
-const config = require('./config');
+// db
+// MONGO_URI=mongodb://localhost/nodeapi
+mongoose
+    .connect(
+        process.env.MONGO_URI,
+        { useNewUrlParser: true }
+    )
+    .then(() => console.log("DB Connected"));
 
-const port = process.env.PORT || 5000;
-
-const passport = require("passport");
-const path = require("path");
-
-const User = require('./models/users');
-const user = require('./routes/user');
-const dashboard = require('./routes/dashboard');
-const food_jokes = require('./routes/food_jokes_route');
-const celebrity_jokes = require('./routes/celebrity_jokes_route');
-
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json());
-
-// Middleware: using morgan to log requests to the console
-app.use(morgan('dev'));
-mongoose.connect(config.mongoUrl);
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-
-    console.log("CORS-enabled web server correctly connected!");
-    console.log("Connected correctly to server");
-
+mongoose.connection.on("error", err => {
+    console.log(`DB connection error: ${err.message}`);
 });
 
+// bring in routes
+const postRoutes = require("./routes/post");
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/user");
 
-app.use(function(req, res, next) {
-
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://glacial-river-90152.herokuapp.com/');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
-    next();
+// apiDocs
+app.get("/", (req, res) => {
+    fs.readFile("docs/apiDocs.json", (err, data) => {
+        if (err) {
+            res.status(400).json({
+                error: err
+            });
+        }
+        const docs = JSON.parse(data);
+        res.json(docs);
+    });
 });
 
+// middleware
+app.use(morgan("dev"));             // Middleware: using morgan to log requests to the console
+app.use(bodyParser.json());         // to parse the msg otherwise it shows undefined
+app.use(cookieParser());            // cookieParser(secret, options)
+app.use(expressValidator());
 app.use(cors());
-
-app.use('/api', dashboard);
-app.use('/api/user', user);
-
-app.use('/api/food_jokes', food_jokes);
-
-
-
-app.use((req, res, next) => {
-
-    const token = req.body.token || req.query.token || req.headers['access-token'];
-
-    if (token) {
-        jwt.verify(token, config.secretKey, function(err, user) {
-            if (err) {
-                res.json({
-                    err: err
-                });
-            } else {
-                next();
-            }
-        });
-    } else {
-        return res.status(403).send({
-            success: false,
-            message: 'No token provided.'
-        });
+// app.get('/', postRoutes.getPosts);
+app.use("/", postRoutes);
+app.use("/", authRoutes);
+app.use("/", userRoutes);
+app.use(function(err, req, res, next) {
+    if (err.name === "UnauthorizedError") {             // if encountered UnauthorizedError, provide this validation 
+        res.status(401).json({ error: "Unauthorized!" });
     }
 });
 
-app.use('/api/celeb_jokes', celebrity_jokes);
-
-app.use(function(req, res) {
-    res.status(404).send({
-        url: req.originalUrl + ' not found'
-    })
-});
-
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
-    console.log('Server Started on Port:' + port);
-})
-
-// Middleware: catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err); // when req, res is done pass to next middleware
-});
-
-// development error handler will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// production error handler no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+    console.log(`A Node Js API is listening on port: ${port}`);
 });

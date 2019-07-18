@@ -1,12 +1,56 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-autofocus */
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import { signup } from '../../Api';
 import './style.css';
 
 class Signup extends Component {
+	constructor() {
+		super();
+		this.state = {
+			// create state
+			name: '',
+			email: '',
+			password: '',
+			error: '',
+			open: false, //  for info message display
+		};
+	}
+
+	handleChange = name => event => {
+		// using name as placeholder argument, can be anything
+		this.setState({ error: '' }); // when handle change remove the old error so they are not displayed
+		this.setState({ [name]: event.target.value }); // one event for all the changes
+	};
+
+	clickSubmit = event => {
+		// on click submit takes the event
+		event.preventDefault(); // to not reload page without making any changes
+		const { name, email, password } = this.state;
+		const user = {
+			// create new user with these parameters
+			name,
+			email,
+			password,
+		};
+		// console.log(user);
+		// this.signup(user).then(data =>{
+		signup(user).then(data => {
+			if (data.error) this.setState({ error: data.error });
+			else
+				this.setState({
+					error: '',
+					name: '',
+					email: '',
+					password: '',
+					open: true,
+				});
+		});
+	};
+
 	render() {
+		const { name, email, password, error, open } = this.state; // Destruct
 		return (
 			<div className="container">
 				<div className="row">
@@ -14,57 +58,58 @@ class Signup extends Component {
 						<div className="card card-signin my-5">
 							<div className="card-body">
 								<h5 className="card-title text-center">Sign Up</h5>
+								<div
+									className="alert alert-danger"
+									style={{ display: error ? '' : 'none' }} // conditional inline css
+								>
+									{error}
+								</div>
+
+								<div
+									className="alert alert-info"
+									style={{ display: open ? '' : 'none' }}
+								>
+									New account is successfully created. Please Sign In.
+								</div>
 								<form className="form-signin">
 									<div className="form-label-group">
 										<input
+											onChange={this.handleChange('name')}
 											type="text"
-											id="inputUserame"
 											className="form-control"
-											placeholder="Username"
+											value={name}
 											required
-											autoFocus
 										/>
-										<label htmlFor="inputUserame">Username</label>
+										<label>Name</label>
 									</div>
 
 									<div className="form-label-group">
 										<input
+											onChange={this.handleChange('email')}
 											type="email"
-											id="inputEmail"
 											className="form-control"
-											placeholder="Email address"
+											value={email}
 											required
 										/>
-										<label htmlFor="inputEmail">Email address</label>
+										<label>Email address</label>
 									</div>
 
 									<div className="form-label-group">
 										<input
+											onChange={this.handleChange('password')}
 											type="password"
-											id="inputPassword"
 											className="form-control"
-											placeholder="Password"
+											value={password}
 											required
 										/>
-										<label htmlFor="inputPassword">Password</label>
-									</div>
-									<div className="form-label-group">
-										<input
-											type="password"
-											id="inputConfirmPassword"
-											className="form-control"
-											placeholder="Password"
-											required
-										/>
-										<label htmlFor="inputConfirmPassword">
-											Confirm password
-										</label>
+										<label>Password</label>
 									</div>
 									<button
 										className="btn btn-lg btn-primary btn-block text-uppercase signBtn"
 										type="submit"
+										onClick={this.clickSubmit}
 									>
-										Sign in
+										SignUp
 									</button>
 									<hr className="my-4" />
 									<p className="text-center">

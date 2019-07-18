@@ -16,7 +16,6 @@ export const read = async (userId, token) => {
 };
 
 export const update = (userId, token, user) => {
-	console.log("jwdnhnefhb",userId, token, user);
 	return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}`, {
 		method: 'PUT',
 		headers: {
@@ -27,7 +26,6 @@ export const update = (userId, token, user) => {
 		body: JSON.stringify(user),
 	})
 		.then(response => {
-			console.log("qqqqqqqqqqqq",response);
 			return response.json();
 		})
 		.catch(err => console.log(err));
