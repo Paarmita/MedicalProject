@@ -6,7 +6,6 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import './style.css';
-import DashboardHeader from '../DashboardNavbar/DashboardHeader';
 
 const controlCss = {
 	marginRight: '40px',
@@ -16,7 +15,6 @@ class AskSuggestion extends Component {
 	render() {
 		return (
 			<div>
-				<DashboardHeader />
 				<div className="container signIn main">
 					<div className="row">
 						<div className="col-sm-9 col-md-12 col-lg-12 mx-auto">

@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-autofocus */
 import React, { Component } from 'react';
-import { signup } from '../../Auth';
+import { signup } from '../../Api';
 import './style.css';
 
 class Signup extends Component {

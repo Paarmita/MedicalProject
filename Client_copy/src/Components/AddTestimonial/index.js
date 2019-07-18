@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/accessible-emoji */
@@ -8,7 +9,6 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import './style.css';
-import DashboardHeader from '../DashboardNavbar/DashboardHeader';
 
 const range = (min, max) =>
 	Array(max - min + 1)
@@ -20,7 +20,7 @@ const RatingItem = ({ checked, colored, onChange, value }) => (
 		<input
 			checked={checked}
 			className="rating__input"
-			onChange={e => onChange(value)}
+			onChange={_e => onChange(value)}
 			type="radio"
 			value={value}
 		/>
@@ -52,7 +52,6 @@ class AddTestimonial extends Component {
 	render() {
 		return (
 			<div>
-				<DashboardHeader />
 				<div className="container signIn main">
 					<div className="row">
 						<div className="col-sm-9 col-md-12 col-lg-12 mx-auto">

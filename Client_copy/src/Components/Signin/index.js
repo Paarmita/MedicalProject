@@ -5,7 +5,8 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { signin, authenticate } from '../../Auth';
+import { signin, authenticate } from '../../Api';
+import loader from '../../Images/loader2.gif';
 import './style.css';
 
 class Signin extends Component {
@@ -17,6 +18,7 @@ class Signin extends Component {
 			error: '',
 			redirectToReferer: false,
 			loading: false,
+			open: false,
 		};
 	}
 
@@ -32,6 +34,7 @@ class Signin extends Component {
 		const user = {
 			email,
 			password,
+			open: true,
 		};
 		// console.log(user);
 		signin(user).then(data => {
@@ -48,7 +51,7 @@ class Signin extends Component {
 	};
 
 	render() {
-		const { email, password, error, redirectToReferer, loading } = this.state;
+		const { email, password, error, redirectToReferer, loading, open } = this.state;
 
 		if (redirectToReferer) {
 			return <Redirect to="/" />;
@@ -66,14 +69,19 @@ class Signin extends Component {
 								>
 									{error}
 								</div>
-
 								{loading ? (
-									<div className="jumbotron text-center">
-										<h2>Loading...</h2>
+									<div>
+										<img src={loader} alt="Loading..." />
 									</div>
 								) : (
 									''
 								)}
+								<div
+									className="alert alert-info"
+									style={{ display: open ? '' : 'none' }}
+								>
+									New account is successfully created. Please Sign In.
+								</div>
 								<form className="form-signin">
 									<div className="form-label-group">
 										<input

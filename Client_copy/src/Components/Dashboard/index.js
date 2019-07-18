@@ -2,15 +2,12 @@
 /* eslint-disable react/prefer-stateless-function */
 // https://bootsnipp.com/search?q=Card+List
 import React from 'react';
-import DashboardHeader from '../DashboardNavbar/DashboardHeader';
-import DashboardFooter from '../DashboardFooter';
 import './style.css';
 
 class Dashboard extends React.Component {
 	render() {
 		return (
 			<div>
-				<DashboardHeader />
 				<div className="container emp-profile">
 					<div className="container-fluid mt-3 mb-4">
 						<div className="col-lg-12">
@@ -161,7 +158,6 @@ class Dashboard extends React.Component {
 						</div>
 					</div>
 				</div>
-				<DashboardFooter />
 			</div>
 		);
 	}

@@ -34,7 +34,7 @@ class CardLayout extends Component {
 		return (
 			<div>
 				<div className="bg-white mt-5 container">
-					<div className="col-xs-12 col-md-12 col-sm-12 col-xs-12 mt-5">
+					<div className="col-xs-12 col-md-12 col-sm-12 col-xs-12 mt-5"> 
 						<div className="row">{_html}</div>
 					</div>
 				</div>

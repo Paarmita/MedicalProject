@@ -34,7 +34,8 @@ exports.allUsers = (req, res) => {
                 error: err
             });
         }
-        res.json({ users });
+        res.json(users);
+        // res.json({ users });      getting data in this format {"users":[{"_id":"5d2afa32d15a396c0da62e20","name":"paarmita","email":"paarmita@gmail.com","created":"2019-07-14T09:47:30.532Z"}]}  which cannot be mapped
     }).select("name email updated created"); // to not show password and other irrelevant stuff
 };
 
@@ -63,35 +64,53 @@ exports.getUser = (req, res) => {
 //     });
 // };
 
+// exports.updateUser = (req, res, next) => {
+//     console.log("qqqqqqqqqqqq",req.body);
+//     let form = new formidable.IncomingForm();
+//     form.keepExtensions = true;
+//     form.parse(req, (err, fields, files) => {
+//         if (err) {
+//             return res.status(400).json({
+//                 error: "Photo could not be uploaded"
+//             });
+//         }
+//         // save user
+//         let user = req.profile;
+//         console.log("wwwwwwwwww",req.profile);
+//         user = _.extend(user, fields);
+//         user.updated = Date.now();
+
+//         if (files.photo) {
+//             user.photo.data = fs.readFileSync(files.photo.path);
+//             user.photo.contentType = files.photo.type;
+//         }
+
+//         user.save((err, result) => {
+//             if (err) {
+//                 return res.status(400).json({
+//                     error: err
+//                 });
+//             }
+//             user.hashed_password = undefined;
+//             user.salt = undefined;
+//             res.json(user);
+//         });
+//     });
+// };
+
 exports.updateUser = (req, res, next) => {
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-    form.parse(req, (err, fields, files) => {
+    let user = req.profile;
+    user = _.extend(user, req.body); // extend - mutate the source object
+    user.updated = Date.now();
+    user.save(err => {
         if (err) {
             return res.status(400).json({
-                error: "Photo could not be uploaded"
+                error: "You are not authorized to perform this action"
             });
         }
-        // save user
-        let user = req.profile;
-        user = _.extend(user, fields);
-        user.updated = Date.now();
-
-        if (files.photo) {
-            user.photo.data = fs.readFileSync(files.photo.path);
-            user.photo.contentType = files.photo.type;
-        }
-
-        user.save((err, result) => {
-            if (err) {
-                return res.status(400).json({
-                    error: err
-                });
-            }
-            user.hashed_password = undefined;
-            user.salt = undefined;
-            res.json(user);
-        });
+        user.hashed_password = undefined;
+        user.salt = undefined;
+        res.json({ user });
     });
 };
 
