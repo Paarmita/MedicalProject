@@ -39,6 +39,13 @@ export const authenticate = (jwt, next) => {
 	}
 };
 
+export const setName = (name, next) => {
+	if (typeof window !== 'undefined') {
+		localStorage.setItem('username', JSON.stringify(name));
+		next();
+	}
+};
+
 export const signout = async next => {
 	if (typeof window !== 'undefined') localStorage.removeItem('jwt'); // access localstorage and remove jwt
 	next(); // callback function to redirect the user
@@ -63,4 +70,3 @@ export const isAuthenticated = () => {
 	}
 	return false;
 };
-

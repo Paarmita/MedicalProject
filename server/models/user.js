@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const uuidv1 = require("uuid/v1");
 const crypto = require("crypto");
+const { ObjectId } = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -30,8 +31,14 @@ const userSchema = new mongoose.Schema({
     about: {
         type: String,
         trim: true
-    }
+    },
+    following: [{ type: ObjectId, ref: "User" }],
+    followers: [{ type: ObjectId, ref: "User" }]
 });
+
+// When a single user is retrived from the backend, we want the user object to include the names and IDs 
+// of the users refrenced in the following and followers arrays. To retirve these details, we need to update the userById
+// controller method to populate the returned user object with followers and following.
 
 /**
  * Virtual fields are additional fields for a given model.
@@ -75,3 +82,9 @@ userSchema.methods = {
 };
 
 module.exports = mongoose.model("User", userSchema);
+
+
+
+
+
+	

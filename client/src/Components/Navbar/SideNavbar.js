@@ -37,8 +37,8 @@ class SideNavbar extends React.Component {
 					<li className="nav-item">
 						<Link
 							className="nav-link"
-							style={isActive(history, '/profile')}
-							to="/profile"
+							style={isActive(history, '/findpeople')}
+							to="/findpeople"
 						>
 							Find People
 						</Link>

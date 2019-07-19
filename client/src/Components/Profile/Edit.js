@@ -1,3 +1,6 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
@@ -8,8 +11,9 @@ import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import './style.css';
 import { isAuthenticated } from '../../Api';
-import { read, update } from '../../Api/User';
+import { read, update, updateUser } from '../../Api/User';
 import DefaultProfile from '../../Images/avatar.png';
+import loader from '../../Images/loader2.gif';
 
 class EditProfile extends React.Component {
 	constructor() {
@@ -21,6 +25,9 @@ class EditProfile extends React.Component {
 			password: '',
 			redirectToProfile: false,
 			error: '',
+			fileSize: 0,
+			loading: false,
+			about: '',
 		};
 	}
 
@@ -34,6 +41,7 @@ class EditProfile extends React.Component {
 					id: data._id,
 					name: data.name,
 					email: data.email,
+					about: data.about,
 					error: '',
 				});
 			}
@@ -41,24 +49,32 @@ class EditProfile extends React.Component {
 	};
 
 	componentDidMount() {
+		// api that takes files
+		this.userData = new FormData();
 		const userId = this.props.match.params.userId;
 		this.init(userId);
 	}
 
 	isValid = () => {
-		const { name, email, password } = this.state;
+		const { name, email, password, fileSize } = this.state;
+		if (fileSize > 100000) {
+			// upto 1Mb upload limit
+			this.setState({ error: 'File size should be less than 100kb/1Mb' });
+			return false;
+		}
 		if (name.length === 0) {
-			this.setState({ error: 'Name is required' });
+			this.setState({ error: 'Name is required', loading: false });
 			return false;
 		}
 		// email@domain.com
 		if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-			this.setState({ error: 'A valid Email is required' });
+			this.setState({ error: 'A valid Email is required', loading: false });
 			return false;
 		}
 		if (password.length >= 1 && password.length <= 5) {
 			this.setState({
 				error: 'Password must be at least 6 characters long',
+				loading: false,
 			});
 			return false;
 		}
@@ -66,31 +82,42 @@ class EditProfile extends React.Component {
 	};
 
 	handleChange = name => event => {
-		this.setState({ [name]: event.target.value });
+		// this.setState({ [name]: event.target.value });
+		this.setState({ error: '' }); // empty the error on handle change
+		const value = name === 'photo' ? event.target.files[0] : event.target.value; // check photo in name then grab the files
+
+		const fileSize = name === 'photo' ? event.target.files[0].size : 0;
+		this.userData.set(name, value);
+		this.setState({ [name]: value, fileSize });
 	};
 
 	clickSubmit = event => {
 		event.preventDefault();
-		const { name, email, password } = this.state;
-		const user = {
-			name,
-			email,
-			password: password || undefined,
-		};
+		// const { name, email, password } = this.state;
+		this.setState({ loading: true });
+		// const user = {		removed bz we are sending user.data now
+		// 	name,
+		// 	email,
+		// 	password: password || undefined,
+		// };
 		// console.log(user);
-		const userId = this.props.match.params.userId;
-		const token = isAuthenticated().token;
+		if (this.isValid()) {
+			const userId = this.props.match.params.userId;
+			const token = isAuthenticated().token;
 
-		update(userId, token, user).then(data => {
-			if (data.error) this.setState({ error: data.error });
-			else
-				this.setState({
-					redirectToProfile: true,
-				});
-		});
+			update(userId, token, this.userData).then(data => {
+				if (data.error) this.setState({ error: data.error });
+				else
+					updateUser(data, () => {
+						this.setState({
+							redirectToProfile: true,
+						});
+					});
+			});
+		}
 	};
 
-	signupForm = (id, name, email, password) => (
+	signupForm = (id, name, email, password, about, photoUrl) => (
 		<div className="container emp-profile mainProfile">
 			<div className="col-lg-4">
 				<h2>Edit Profile</h2>
@@ -99,11 +126,29 @@ class EditProfile extends React.Component {
 				<div className="row">
 					<div className="col-md-4">
 						<div className="profile-img">
-							<img src={DefaultProfile} alt="profile pic" />
+							{/* <img src={DefaultProfile} alt="profile pic" /> */}
+							<img
+								style={{ height: '200px', width: 'auto' }}
+								className="img-thumbnail"
+								src={photoUrl}
+								onError={i => (i.target.src = `${DefaultProfile}`)}
+								alt={name}
+							/>
 							<div className="file btn btn-lg btn-primary">
 								Change Photo
-								<input type="file" name="file" />
+								<input
+									onChange={this.handleChange('photo')}
+									type="file"
+									accept="image/*"
+									className="form-control"
+								/>
 							</div>
+							{/* <input
+								onChange={this.handleChange('photo')}
+								type="file"
+								accept="image/*"
+								className="form-control"
+							/> */}
 						</div>
 					</div>
 					<div className="col-md-6">
@@ -200,11 +245,11 @@ class EditProfile extends React.Component {
 					<label className="col-lg-3 col-form-label form-control-label">Bio</label>
 					<div className="col-lg-9">
 						<textarea
+							onChange={this.handleChange('about')}
+							type="text"
 							className="form-control"
-							id="exampleFormControlTextarea1"
-							rows="3"
-							value="Student in some college. Leads a healthy lifestyle"
-						/>
+							value={about}
+						/> 
 					</div>
 				</div>
 				<div className="form-group row">
@@ -251,16 +296,26 @@ class EditProfile extends React.Component {
 	);
 
 	render() {
-		const { id, name, email, password, redirectToProfile, error } = this.state;
+		const { id, name, email, password, redirectToProfile, error, loading, about } = this.state;
 		if (redirectToProfile) {
 			return <Redirect to={`/user/${id}`} />;
 		}
+		const photoUrl = id
+			? `${process.env.REACT_APP_API_URL}/user/photo/${id}?${new Date().getTime()}`
+			: DefaultProfile;
 		return (
 			<div>
 				<div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
 					{error}
 				</div>
-				{this.signupForm(id, name, email, password)}
+				{loading ? (
+					<div>
+						<img src={loader} alt="Loading..." />
+					</div>
+				) : (
+					''
+				)}
+				{this.signupForm(id, name, email, password, about, photoUrl)}
 			</div>
 		);
 	}

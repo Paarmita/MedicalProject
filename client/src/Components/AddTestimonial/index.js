@@ -1,12 +1,9 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/accessible-emoji */
-/* eslint-disable react/style-prop-object */
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/no-autofocus */
-/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import './style.css';
 

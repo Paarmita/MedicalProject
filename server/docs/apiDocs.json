@@ -10,3 +10,5 @@
     "/posts/by/:userId": "get posts by user",
     "/post/:postId": "update/delete post"
 }
+
+

@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import './style.css';

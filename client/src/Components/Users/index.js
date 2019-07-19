@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-console */
 /* eslint-disable no-shadow */
@@ -8,6 +9,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { list } from '../../Api/User';
 import DefaultProfile from '../../Images/avatar.png';
+// import FollowProfileButton from './FollowProfileButton';
 import './style.css';
 
 class Users extends Component {
@@ -29,25 +31,112 @@ class Users extends Component {
 	}
 
 	renderUsers = users => (
-		<div className="row ">
+		<div className="row">
 			{users.map((user, i) => (
-				<div className="card col-md-4" key={i}>
-					<img
-						style={{ height: '200px', width: 'auto' }}
-						className="img-thumbnail"
-						src={`${process.env.REACT_APP_API_URL}/user/photo/${user._id}`}
-						onError={i => (i.target.src = `${DefaultProfile}`)}
-						alt={user.name}
-					/>
-					<div className="card-body">
-						<h5 className="card-title">{user.name}</h5>
-						<p className="card-text">{user.email}</p>
-						<Link
-							to={`/user/${user._id}`}
-							className="btn btn-raised btn-primary btn-sm"
-						>
-							View Profile
-						</Link>
+				<div className="card col-lg-4 my-1 mx-1" key={i}>
+					<div className="profile">
+						<div className="col-sm-12 row">
+							<div className="col-xs-12 col-sm-4 text-center my-3">
+								<img
+									src={`${process.env.REACT_APP_API_URL}/user/photo/${user._id}`}
+									onError={i => (i.target.src = `${DefaultProfile}`)}
+									alt={user.name}
+									className="rounded-circle img-fluid"
+								/>
+							</div>
+							<div className="col-xs-12 col-sm-8">
+								<h3>{user.name}</h3>
+								<p>
+									<b>About: </b> {user.about}
+								</p>
+								<p>
+									<b>Email: </b> {user.email}
+								</p>
+							</div>
+						</div>
+						<div className="col-xs-12 divider text-center row">
+							<div className="col-xs-12 col-sm-6">
+								<h5>
+									<b> 20,7K </b>
+								</h5>
+								<p>
+									<small>Followers</small>
+								</p>
+								<button className="btn btn-success btn-block">
+									<span className="fa fa-plus-circle" /> Follow{' '}
+								</button>
+								{/* <FollowProfileButton
+										className="profile-edit-btn btn btn-success btn-block"
+										following={this.state.following}
+										onButtonClick={this.clickFollowButton}
+									/> */}
+							</div>
+							<div className="col-xs-12 col-sm-6">
+								<h5>
+									<b>245</b>
+								</h5>
+								<p>
+									<small>Following</small>
+								</p>
+
+								<Link
+									to={`/user/${user._id}`}
+									className="btn btn-info btn-block"
+									style={{ margin: 'auto' }}
+								>
+									<span className="fa fa-user" /> View Profile{' '}
+								</Link>
+							</div>
+							{/* <div className="col-xs-12 col-sm-4 emphasis">
+						<h2>
+							<strong>43</strong>
+						</h2>
+						<p>
+							<small>Snippets</small>
+						</p>
+						<div className="btn-group dropup btn-block">
+							<button type="button" className="btn btn-primary">
+								<span className="fa fa-gear" /> Options{' '}
+							</button>
+							<button
+								type="button"
+								className="btn btn-primary dropdown-toggle"
+								data-toggle="dropdown"
+							>
+								<span className="caret" />
+								<span className="sr-only">Toggle Dropdown</span>
+							</button>
+							<ul className="dropdown-menu text-left" role="menu">
+								<li>
+									<a href="#">
+										<span class="fa fa-envelope pull-right" /> Send
+										an email{' '}
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="fa fa-list pull-right" /> Add or
+										remove from a list{' '}
+									</a>
+								</li>
+								<li className="divider" />
+								<li>
+									<a href="#">
+										<span class="fa fa-warning pull-right" />
+										Report this user for spam
+									</a>
+								</li>
+								<li className="divider" />
+								<li>
+									<a href="#" className="btn disabled" role="button">
+										{' '}
+										Unfollow{' '}
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div> */}
+						</div>
 					</div>
 				</div>
 			))}

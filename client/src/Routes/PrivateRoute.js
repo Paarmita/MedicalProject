@@ -1,10 +1,12 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/prop-types */
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { isAuthenticated } from '../Api';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
-	// props means components passed down to this pricate route component
+	// props means components passed down to this private route component
 	<Route
 		{...rest}
 		render={props =>
@@ -21,5 +23,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 		}
 	/>
 );
+
+PrivateRoute.propTypes = {
+	location: PropTypes.string,
+	// component: PropTypes.component,
+};
 
 export default PrivateRoute;

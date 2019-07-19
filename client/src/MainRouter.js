@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-unresolved */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Signin from './Components/Signin';
@@ -15,6 +13,7 @@ import Pathy from './Components/Pathy';
 import Profile from './Components/Profile';
 import EditProfile from './Components/Profile/Edit';
 import Users from './Components/Users';
+import FindPeople from './Components/FindPeople';
 import AddTestimonial from './Components/AddTestimonial';
 import PrivacyPolicy from './Components/PrivacyPolicy';
 import AskSuggestion from './Components/AskSuggestion';
@@ -42,7 +41,7 @@ const MainRouter = () => (
 			<Route exact path="/termsofuse" component={TermsofUse} />
 
 			<PrivateRoute exact path="/user/dashboard/:userId" component={Settings} />
-			<PrivateRoute exact path="/user/findpeople/:userId" component={Settings} />
+			<PrivateRoute exact path="/findpeople" component={FindPeople} />
 			<PrivateRoute exact path="/user/:userId" component={Profile} />
 			<PrivateRoute exact path="/user/edit/:userId" component={EditProfile} />
 			<PrivateRoute exact path="/users" component={Users} />

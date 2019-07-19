@@ -1,6 +1,16 @@
 .main {
-	margin-left: 220px;
+	margin-left: 200px;
 	padding: 0px 10px;
 }
 
+.profile 
+{
+    min-height: 300px;
+	display: inline-block;
+	padding: 10px;
+    }
 
+.divider 
+{
+    border-top:1px solid rgba(0,0,0,0.1);
+    }
