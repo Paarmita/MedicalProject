@@ -46,9 +46,10 @@ exports.postById = (req, res, next, id) => {
 exports.getPosts = (req, res) => {
     const posts = Post.find()
         .populate("postedBy", "_id name")               // want properties (id and name) of posted
-        .select("_id title body")
+        .select("_id title body created")
+        .sort({created:  -1})                            //by -1 the recent created would come first
         .then(posts => {                                //to check: { "title": "First Post","body": "this is body"}
-            res.json({ posts });
+            res.json(posts);
         })
         .catch(err => console.log(err));
 };
@@ -112,19 +113,50 @@ exports.isPoster = (req, res, next) => {
     next();
 };
 
+// exports.updatePost = (req, res, next) => {
+//     let post = req.post;
+//     post = _.extend(post, req.body);
+//     post.updated = Date.now();
+//     post.save(err => {
+//         if (err) {
+//             return res.status(400).json({
+//                 error: err
+//             });
+//         }
+//         res.json(post);
+//     });
+// };
+
 exports.updatePost = (req, res, next) => {
-    let post = req.post;
-    post = _.extend(post, req.body);
-    post.updated = Date.now();
-    post.save(err => {
+    let form = new formidable.IncomingForm();
+    form.keepExtensions = true;
+    form.parse(req, (err, fields, files) => {
         if (err) {
             return res.status(400).json({
-                error: err
+                error: "Photo could not be uploaded"
             });
         }
-        res.json(post);
+        // save post
+        let post = req.post;
+        post = _.extend(post, fields);
+        post.updated = Date.now();
+
+        if (files.photo) {
+            post.photo.data = fs.readFileSync(files.photo.path);
+            post.photo.contentType = files.photo.type;
+        }
+
+        post.save((err, result) => {
+            if (err) {
+                return res.status(400).json({
+                    error: err
+                });
+            }
+            res.json(post);
+        });
     });
 };
+
 
 exports.deletePost = (req, res) => {
     let post = req.post;
@@ -138,4 +170,16 @@ exports.deletePost = (req, res) => {
             message: "Post deleted successfully"
         });
     });
+};
+
+exports.photo = (req, res, next) => {
+    if (req.post.photo.data) {
+        res.set(("Content-Type", req.post.photo.contentType));
+        return res.send(req.post.photo.data);
+    }
+    next();
+};
+
+exports.singlePost = (req, res) => {
+    return res.json(req.post);
 };

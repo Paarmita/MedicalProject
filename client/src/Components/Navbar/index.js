@@ -82,9 +82,10 @@ class Navigation extends React.Component {
 					</>
 				)}
 				<nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-					<a className="navbar-brand" href="/">
+					<Link className="navbar-brand" to="/">
 						<img src={logo} width="40" height="40" alt="logo" />
-					</a>
+					</Link>
+
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -133,10 +134,10 @@ class Navigation extends React.Component {
 							<li className="nav-item">
 								<Link
 									className="nav-link"
-									style={isActive(history, '/blog')}
-									to="/blog"
+									style={isActive(history, '/posts')}
+									to="/posts"
 								>
-									Blogs
+									Posts
 								</Link>
 							</li>
 							<li className="nav-item">

@@ -104,6 +104,11 @@ class Signin extends Component {
 										/>
 										<label>Password</label>
 									</div>
+									<p className="text-right">
+										<small>
+											<a href="/">Forgot password?</a>
+										</small>
+									</p>
 									<button
 										className="btn btn-lg btn-primary btn-block text-uppercase signBtn"
 										type="submit"

@@ -35,7 +35,7 @@ class Profile extends react.Component {
 	// check follow
 	checkFollow = user => {
 		const jwt = isAuthenticated();
-		console.log('followers', user.followers);
+		// console.log('followers', user.followers);
 		const match = user.followers.find(follower => {
 			// one id has many other ids (followers) and vice versa
 			return follower._id === jwt.user._id;
@@ -63,7 +63,6 @@ class Profile extends react.Component {
 			if (data.error) {
 				this.setState({ redirectToSignin: true });
 			} else {
-				// console.log('jhbhbh', data);
 				const following = this.checkFollow(data);
 				this.setState({ user: data, following });
 			}
@@ -85,7 +84,7 @@ class Profile extends react.Component {
 		if (redirectToSignin) return <Redirect to="/signin" />;
 
 		const photoUrl = user._id
-			? `${process.env.REACT_APP_API_URL}/user/photo/${user._id}?${new Date().getTime()}`
+			? `${process.env.REACT_APP_API_URL}/api/user/photo/${user._id}?${new Date().getTime()}`
 			: DefaultProfile;
 
 		return (

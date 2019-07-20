@@ -1,3 +1,4 @@
+// "client": "npm run start --prefix Client",
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -30,7 +31,7 @@ const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 
 // apiDocs
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
     fs.readFile("docs/apiDocs.json", (err, data) => {
         if (err) {
             res.status(400).json({
@@ -49,9 +50,9 @@ app.use(cookieParser());            // cookieParser(secret, options)
 app.use(expressValidator());
 app.use(cors());
 // app.get('/', postRoutes.getPosts);
-app.use("/", postRoutes);
-app.use("/", authRoutes);
-app.use("/", userRoutes);
+app.use("/api", postRoutes);
+app.use("/api", authRoutes);
+app.use("/api", userRoutes);
 app.use(function(err, req, res, next) {
     if (err.name === "UnauthorizedError") {             // if encountered UnauthorizedError, provide this validation 
         res.status(401).json({ error: "Unauthorized!" });

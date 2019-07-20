@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 export const signup = async user => {
 	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/signup`, {
+		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/signup`, {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -17,7 +17,7 @@ export const signup = async user => {
 
 export const signin = async user => {
 	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/signin`, {
+		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/signin`, {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -50,7 +50,7 @@ export const signout = async next => {
 	if (typeof window !== 'undefined') localStorage.removeItem('jwt'); // access localstorage and remove jwt
 	next(); // callback function to redirect the user
 	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/signout`, {
+		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/signout`, {
 			method: 'GET',
 		});
 		console.log('signout', response);

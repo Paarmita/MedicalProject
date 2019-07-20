@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/button-has-type */
@@ -64,7 +65,7 @@ class FindPeople extends Component {
 					<img
 						style={{ height: '200px', width: '200px', margin: 'auto' }}
 						className="img-thumbnail"
-						src={`${process.env.REACT_APP_API_URL}/user/photo/${user._id}`}
+						src={`${process.env.REACT_APP_API_URL}/api/user/photo/${user._id}`}
 						onError={i => (i.target.src = `${DefaultProfile}`)}
 						alt={user.name}
 					/>
@@ -96,6 +97,11 @@ class FindPeople extends Component {
 			<div className="container main">
 				<h2 className="mt-6 mb-5">Find People</h2>
 				{open && <div className="alert alert-success">{followMessage}</div>}
+				{users.length === 0 ? (
+					<h5>No users to follow. You might know all the users 😀</h5>
+				) : (
+					''
+				)}
 				{this.renderUsers(users)}
 			</div>
 		);

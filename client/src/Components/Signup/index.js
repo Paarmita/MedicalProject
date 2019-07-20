@@ -80,8 +80,19 @@ class Signup extends Component {
 											value={name}
 											required
 										/>
-										<label>Name</label>
+										<label> Name</label>
 									</div>
+
+									{/* <div className="form-label-group">
+										<input
+											onChange={this.handleChange('username')}
+											type="text"
+											className="form-control"
+											value={username}
+											required
+										/>
+										<label>Username</label>
+									</div> */}
 
 									<div className="form-label-group">
 										<input

@@ -301,7 +301,7 @@ class EditProfile extends React.Component {
 			return <Redirect to={`/user/${id}`} />;
 		}
 		const photoUrl = id
-			? `${process.env.REACT_APP_API_URL}/user/photo/${id}?${new Date().getTime()}`
+			? `${process.env.REACT_APP_API_URL}/api/user/photo/${id}?${new Date().getTime()}`
 			: DefaultProfile;
 		return (
 			<div>

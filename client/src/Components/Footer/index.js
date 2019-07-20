@@ -1,6 +1,10 @@
+/* eslint-disable react/prop-types */
+
+/* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../Images/logo.svg';
 import './style.css';
 import { isAuthenticated } from '../../Api';
@@ -10,16 +14,7 @@ class Footer extends Component {
 		return (
 			<div>
 				{isAuthenticated() ? (
-					<footer className="mt-4">
-						<div className="footer-copyright text-center py-3 copyright container">
-							<p>© 2018 Copyright</p>
-							<p>
-								{' '}
-								!All rights reserved. Information on the website is reported by our
-								members and is not a medical advice.
-							</p>
-						</div>
-					</footer>
+					<div />
 				) : (
 					<footer className="bg-dark text-white mt-4">
 						<div className="container text-center text-md-left">
@@ -30,19 +25,19 @@ class Footer extends Component {
 									<h5 className="mt-3 mb-4 heading">Features</h5>
 									<ul className="list-unstyled">
 										<li>
-											<a className="link" href="/blog">
-												Blogs
-											</a>
+											<Link className="link" to="/posts">
+												Posts
+											</Link>
 										</li>
 										<li>
-											<a className="link" href="#!">
-												Ask Suggestions
-											</a>
+											<Link className="link" to="/signin">
+												Ask Suggestion
+											</Link>
 										</li>
 										<li>
-											<a className="link" href="#!">
+											<Link className="link" to="/signin">
 												Share Experience
-											</a>
+											</Link>
 										</li>
 									</ul>
 								</div>
@@ -84,24 +79,24 @@ class Footer extends Component {
 									<h5 className=" mt-3 mb-4 heading">Company</h5>
 									<ul className="list-unstyled">
 										<li>
-											<a className="link" target="_blank" href="#">
-												Privacy
-											</a>
+											<Link className="link" to="/privacypolicy">
+												Privacy Policy
+											</Link>
 										</li>
 										<li>
-											<a className="link" target="_blank" href="#">
+											<Link className="link" to="/faq">
 												FAQ
-											</a>
+											</Link>
 										</li>
 										<li>
-											<a className="link" target="_blank" href="#">
+											<Link className="link" to="/termsofuse">
 												Terms of Use
-											</a>
+											</Link>
 										</li>
 										<li>
-											<a className="link" target="_blank" href="#">
+											<Link className="link" to="/contactus">
 												Contact Us
-											</a>
+											</Link>
 										</li>
 									</ul>
 								</div>
@@ -110,24 +105,24 @@ class Footer extends Component {
 									<h5 className=" mt-3 mb-4 heading">Links</h5>
 									<ul className="list-unstyled">
 										<li>
-											<a className="link" href="#!">
+											<Link className="link" to="/">
 												Home
-											</a>
+											</Link>
 										</li>
 										<li>
-											<a className="link" href="#">
+											<Link className="link" to="/diseases">
 												Diseases
-											</a>
+											</Link>
 										</li>
 										<li>
-											<a className="link" href="#">
+											<Link className="link" to="/pathy">
 												Pathy
-											</a>
+											</Link>
 										</li>
 										<li>
-											<a className="link" href="#">
+											<Link className="link" to="/aboutus">
 												About Us
-											</a>
+											</Link>
 										</li>
 									</ul>
 								</div>

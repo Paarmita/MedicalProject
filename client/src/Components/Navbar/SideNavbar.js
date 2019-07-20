@@ -24,13 +24,9 @@ class SideNavbar extends React.Component {
 		const { history } = this.props;
 		return (
 			<div>
-				<ul className="nav flex-column sideBar">
+				<ul className="nav flex-column sideBar ">
 					<li className="nav-item">
-						<Link
-							className="nav-link"
-							style={isActive(history, '/dashboard')}
-							to="/dashboard"
-						>
+						<Link className="nav-link" style={isActive(history, '/posts')} to="/posts">
 							Dashboard
 						</Link>
 					</li>
@@ -55,7 +51,7 @@ class SideNavbar extends React.Component {
 					</li>
 					<li className="nav-item">
 						<Link className="nav-link" style={isActive(history, '/feed')} to="/feed">
-							My Feed
+							My Posts
 						</Link>
 					</li>
 					<li className="nav-item">
@@ -74,18 +70,12 @@ class SideNavbar extends React.Component {
 					</li>
 					<span className="border-top my-3" />
 					<li className="nav-item">
-						<Link
-							className="nav-link"
-							to={`/user/share_experience/${isAuthenticated().user._id}`}
-						>
+						<Link className="nav-link" to="/share_experience">
 							Share Experience
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Link
-							className="nav-link"
-							to={`/user/ask_suggestion/${isAuthenticated().user._id}`}
-						>
+						<Link className="nav-link" to="/post/ask_suggestion">
 							Ask Suggestion
 						</Link>
 					</li>

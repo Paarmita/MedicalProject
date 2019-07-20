@@ -7,65 +7,59 @@ class AboutUs extends React.Component {
 		return (
 			<div className="container">
 				<h1 className="my-4 aboutTitle text-center">About Us</h1>
-				<div className="row mbr-justify-content-center">
-					<div className="col-lg-6 mbr-col-md-10">
+				<div className="row">
+					<div className="col-6">
 						<div className="wrap">
-							<div className="ico-wrap">
-								<span className="mbr-iconfont fa-volume-up fa" />
-							</div>
+							<span>
+								<i className="fa fa-unlock-alt fa-5x mx-4" aria-hidden="true" />
+							</span>
 							<div className="text-wrap vcenter">
-								<h2 className="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
-									Provide solutions
-								</h2>
-								<p className="mbr-fonts-style text1 mbr-text display-6">
+								<h4>Provide solutions</h4>
+								<p>
 									Integrate solutions from all therapies and provide an effective
 									solution to the disease
 								</p>
 							</div>
 						</div>
 					</div>
-					<div className="col-lg-6 mbr-col-md-10">
+					<div className="col-6">
 						<div className="wrap">
-							<div className="ico-wrap">
-								<span className="mbr-iconfont fa-calendar fa" />
-							</div>
+							<span>
+								<i className="fa fa-comments-o fa-5x mx-4" aria-hidden="true" />
+							</span>
 							<div className="text-wrap vcenter">
-								<h2 className="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
-									Collection of Testimonials
-								</h2>
-								<p className="mbr-fonts-style text1 mbr-text display-6">
+								<h4>Collection of Testimonials</h4>
+								<p>
 									Collect a large number of testimonials from people and search
 									from different sources
 								</p>
 							</div>
 						</div>
 					</div>
-					<div className="col-lg-6 mbr-col-md-10">
+					<div className="col-6">
 						<div className="wrap">
-							<div className="ico-wrap">
-								<span className="mbr-iconfont fa-globe fa" />
-							</div>
+							<span>
+								<i className="fa fa-certificate fa-5x mx-4" aria-hidden="true" />
+							</span>
 							<div className="text-wrap vcenter">
-								<h2 className="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
-									Search for good therapists
-								</h2>
-								<p className="mbr-fonts-style text1 mbr-text display-6">
+								<h4>Search for good therapists</h4>
+								<p>
 									Let you know names of good Doctors/Hospitals/ Clinics and People
 									who cure certain kind of diseases
 								</p>
 							</div>
 						</div>
 					</div>
-					<div className="col-lg-6 mbr-col-md-10">
+					<div className="col-6">
 						<div className="wrap">
-							<div className="ico-wrap">
-								<span className="mbr-iconfont fa-trophy fa" />
-							</div>
+							<span>
+								<i className="fa fa-bullseye fa-5x mx-4" aria-hidden="true" />
+							</span>
 							<div className="text-wrap vcenter">
-								<h2 className="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
+								<h4>
 									Achieve <span>Your Targets</span>
-								</h2>
-								<p className="mbr-fonts-style text1 mbr-text display-6">
+								</h4>
+								<p>
 									Gives truthful result about diseases and its treatment.
 									<span> Non-commercial service to humanity </span>
 								</p>
