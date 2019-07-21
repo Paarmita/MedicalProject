@@ -1,5 +1,3 @@
-/* eslint-disable react/prefer-stateless-function */
-/* eslint-disable react/no-array-index-key */
 import React, { Component } from 'react';
 import integrate from '../../Images/integrate.svg';
 import testimonial from '../../Images/testimonials.svg';

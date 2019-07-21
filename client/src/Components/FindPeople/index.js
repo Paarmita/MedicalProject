@@ -1,14 +1,3 @@
-/* eslint-disable jsx-a11y/accessible-emoji */
-/* eslint-disable react/no-unused-state */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/no-access-state-in-setstate */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-console */
-/* eslint-disable no-shadow */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-return-assign */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { findPeople, follow } from '../../Api/User';
@@ -81,6 +70,7 @@ class FindPeople extends Component {
 						</Link>
 						<button
 							onClick={() => this.clickFollow(user, i)}
+							type="button"
 							className="btn btn-raised btn-info float-right btn-sm"
 						>
 							Follow
@@ -94,11 +84,16 @@ class FindPeople extends Component {
 	render() {
 		const { users, open, followMessage } = this.state;
 		return (
-			<div className="container main">
-				<h2 className="mt-6 mb-5">Find People</h2>
+			<div className="container">
+				<h2 className="my-5">Find People</h2>
 				{open && <div className="alert alert-success">{followMessage}</div>}
 				{users.length === 0 ? (
-					<h5>No users to follow. You might know all the users 😀</h5>
+					<h6>
+						No users to follow. You might know all the users{' '}
+						<span role="img" aria-label="Smile">
+							😀
+						</span>
+					</h6>
 				) : (
 					''
 				)}

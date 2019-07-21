@@ -1,8 +1,3 @@
-/* eslint-disable react/prop-types */
-
-/* eslint-disable consistent-return */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../Images/logo.svg';
@@ -56,7 +51,7 @@ class Footer extends Component {
 											</a>
 										</li>
 										<li>
-											<a className="link" href="#">
+											<a className="link" href="/s">
 												YouTube Channel
 											</a>
 										</li>
@@ -134,7 +129,7 @@ class Footer extends Component {
 								<a
 									className="btn-floating mx-1 link _color"
 									target="_blank"
-									href="#"
+									href="/"
 								>
 									<i className="fa fa-facebook" />
 								</a>
@@ -143,7 +138,7 @@ class Footer extends Component {
 								<a
 									className="btn-floating mx-1 link _color"
 									target="_blank"
-									href="#"
+									href="/"
 								>
 									<i className="fa fa-youtube" />
 								</a>
@@ -152,7 +147,7 @@ class Footer extends Component {
 								<a
 									className="btn-floating mx-1 link _color"
 									target="_blank"
-									href="#"
+									href="/"
 								>
 									<i className="fa fa-envelope" />
 								</a>

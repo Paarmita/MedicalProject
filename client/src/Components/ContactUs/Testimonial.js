@@ -1,15 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-plusplus */
-/* eslint-disable react/no-access-state-in-setstate */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/anchor-has-content */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/no-multi-comp */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/prefer-stateless-function */
-
 /* https://codepen.io/alexdevero/pen/rzqxpG */
 import React, { Component } from 'react';
 import './style.css';
@@ -18,7 +6,7 @@ class CarouselLeftArrow extends Component {
 	render() {
 		return (
 			<a
-				href="#"
+				href="/#"
 				className="carousel__arrow carousel__arrow--left"
 				onClick={this.props.onClick}
 			>
@@ -32,7 +20,7 @@ class CarouselRightArrow extends Component {
 	render() {
 		return (
 			<a
-				href="#"
+				href="/#"
 				className="carousel__arrow carousel__arrow--right"
 				onClick={this.props.onClick}
 			>
@@ -112,7 +100,7 @@ class Testimonial extends Component {
 			index = slidesLength;
 		}
 
-		--index;
+		index -= 1;
 
 		this.setState({
 			activeIndex: index,
@@ -130,7 +118,7 @@ class Testimonial extends Component {
 			index = -1;
 		}
 
-		++index;
+		index += 1;
 
 		this.setState({
 			activeIndex: index,

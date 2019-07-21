@@ -1,4 +1,3 @@
-/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import './style.css';
 
@@ -6,7 +5,7 @@ class AboutUs extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<h1 className="my-4 aboutTitle text-center">About Us</h1>
+				<h2 className="my-5">About Us</h2>
 				<div className="row">
 					<div className="col-6">
 						<div className="wrap">

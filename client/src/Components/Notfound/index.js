@@ -1,5 +1,3 @@
-/* eslint-disable react/prefer-stateless-function */
-/* eslint-disable import/no-unresolved */
 import React from 'react';
 import './style.css';
 

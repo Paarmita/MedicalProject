@@ -1,77 +1,63 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prefer-stateless-function */
-/* eslint-disable no-useless-constructor */
-/* eslint-disable react/no-multi-comp */
-/* eslint-disable no-unused-vars */
-/* eslint-disable consistent-return */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'; // withRouter is higher order componenet which means it takes anaother component as argument
 import logo from '../../Images/logo.svg';
 import SideNavbar from './SideNavbar';
-import { signout, isAuthenticated } from '../../Api';
+import { isAuthenticated } from '../../Api';
 
 const isActive = (history, path) => {
 	if (history.location.pathname === path) return { color: 'white' };
 };
 
-class NavDropdown extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			isToggleOn: false,
-		};
-	}
+// class NavDropdown extends React.Component {
+// 	constructor(props) {
+// 		super(props);
+// 		this.state = {
+// 			isToggleOn: false,
+// 		};
+// 	}
 
-	showDropdown(e) {
-		e.preventDefault();
-		this.setState(prevState => ({
-			isToggleOn: !prevState.isToggleOn,
-		}));
-	}
+// 	showDropdown(e) {
+// 		e.preventDefault();
+// 		this.setState(prevState => ({
+// 			isToggleOn: !prevState.isToggleOn,
+// 		}));
+// 	}
 
-	render() {
-		const classDropdownMenu = `dropdown-menu${this.state.isToggleOn ? ' show' : ''}`;
-		return (
-			<li className="nav-item dropdown">
-				<Link
-					className="nav-link dropdown-toggle"
-					href="/"
-					id="navbarDropdown"
-					role="button"
-					data-toggle="dropdown"
-					aria-haspopup="true"
-					aria-expanded="false"
-					to={`/user/${isAuthenticated().user._id}`}
-					style={{ color: '#fff' }}
-					onClick={e => {
-						this.showDropdown(e);
-					}}
-				>
-					<i className="fa fa-user-circle fa-lg mx-2" />
-					{`${isAuthenticated().user.name}`}
-				</Link>
-				<div
-					className={classDropdownMenu}
-					aria-labelledby="navbarDropdown"
-					onMouseEnter={this.enterMenu}
-					onMouseLeave={this.leaveMenu}
-				>
-					{this.props.children}
-				</div>
-			</li>
-		);
-	}
-}
+// 	render() {
+// 		const classDropdownMenu = `dropdown-menu${this.state.isToggleOn ? ' show' : ''}`;
+// 		return (
+// 			<li className="nav-item dropdown">
+// 				<Link
+// 					className="nav-link dropdown-toggle"
+// 					href="/"
+// 					id="navbarDropdown"
+// 					role="button"
+// 					data-toggle="dropdown"
+// 					aria-haspopup="true"
+// 					aria-expanded="false"
+// 					to={`/user/${isAuthenticated().user._id}`}
+// 					style={{ color: '#fff' }}
+// 					onClick={e => {
+// 						this.showDropdown(e);
+// 					}}
+// 				>
+// 					<i className="fa fa-user-circle fa-lg mx-2" />
+// 					{`${isAuthenticated().user.name}`}
+// 				</Link>
+// 				<div
+// 					className={classDropdownMenu}
+// 					aria-labelledby="navbarDropdown"
+// 					onMouseEnter={this.enterMenu}
+// 					onMouseLeave={this.leaveMenu}
+// 				>
+// 					{this.props.children}
+// 				</div>
+// 			</li>
+// 		);
+// 	}
+// }
 
 class Navigation extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		const { history } = this.props;
 		return (
@@ -203,7 +189,13 @@ class Navigation extends React.Component {
 										<Link
 											className="nav-link"
 											to={`/user/${isAuthenticated().user._id}`}
-											style={({ color: '#fff' }, { cursor: 'pointer' })}
+											style={
+												(isActive(
+													history,
+													`/user/${isAuthenticated().user._id}`,
+												),
+												({ color: '#fff' }, { cursor: 'pointer' }))
+											}
 										>
 											<i className="fa fa-user-circle fa-lg mx-2" />
 											{`${isAuthenticated().user.name}`}

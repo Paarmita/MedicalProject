@@ -1,14 +1,16 @@
 {
-    "/": "api docs",
+    "/api": "api docs",
     "/signup": "signup",
     "/signin": "signin",
     "/signout": "signout",
     "/users": "get all users",
     "/user/:userId": "get/update/delete user",
+    "/user/photo/:userId": "get user photo",
+    "/user/findpeople/:userId": "get list of users to follow",
+    "/user/follow": "update following & follower",
     "/posts": "get all posts",
     "/post/new/:userId": "create new post",
     "/posts/by/:userId": "get posts by user",
-    "/post/:postId": "update/delete post"
+    "/post/:postId": "get/update/delete post",
+    "/post/photo/:postId": "get post photo"
 }
-
-

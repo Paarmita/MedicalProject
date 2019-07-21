@@ -62,11 +62,6 @@
     transition: all .1s ease-in-out;
   }
 
-  .signIn {
-    margin-top: 70px !important;
-  }
-  
-
   .signBtn {
     background: #0062cc;
   }

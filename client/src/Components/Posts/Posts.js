@@ -1,8 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-shadow */
-/* eslint-disable no-return-assign */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-console */
 import React from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
@@ -45,7 +40,7 @@ class Posts extends React.Component {
 									alt={post.title}
 									onError={i => (i.target.src = `${DefaultPost}`)}
 									className="img-thunbnail mb-3"
-									style={{ height: '200px', width: '300px' }}
+									style={{ height: '200px', width: '100%' }}
 								/>
 								<h5 className="card-title">{post.title}</h5>
 								<p className="card-text">{post.body.substring(0, 100)}</p>
@@ -74,7 +69,7 @@ class Posts extends React.Component {
 		return (
 			<div>
 				{' '}
-				<h2 className="mt-5 mb-5">{!posts.length ? 'Loading...' : 'Recent Posts'}</h2>
+				{/* <h2 className="mt-5 mb-5">{!posts.length ? 'Loading...' : 'Recent Posts'}</h2> */}
 				{this.renderPosts(posts)}
 			</div>
 		);

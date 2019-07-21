@@ -8,15 +8,27 @@
     "plugins": ["prettier"],
     "rules": {
       "prettier/prettier": ["error"],
+      "jsx-a11y/label-has-for": [0],
       "indent": 0,
       "no-tabs": 0,
       "no-underscore-dangle": 0,
-  
+      "no-console": "off",
+      "no-restricted-syntax": [
+        "error",
+        {
+            "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+            "message": "Unexpected property on console object was called"
+        }
+      ],
       "react/jsx-indent": 0,
       "react/jsx-indent-props": 0,
       "react/jsx-filename-extension": 0,
       "react/jsx-one-expression-per-line": 0,
       "react/forbid-prop-types": 0,
-      "react/prefer-stateless-function": [1, { "ignorePureComponents": true }]
+      "react/prop-types": [0],
+      "react/prefer-stateless-function": [0],
+      "react/no-unescaped-entities": [0],
+      "react/destructuring-assignment": 0,
+      "react/no-multi-comp": 0
     }
   }

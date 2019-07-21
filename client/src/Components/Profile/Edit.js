@@ -1,12 +1,3 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-return-assign */
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/prop-types */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/sort-comp */
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import './style.css';
@@ -31,6 +22,13 @@ class EditProfile extends React.Component {
 		};
 	}
 
+	componentDidMount() {
+		// api that takes files
+		this.userData = new FormData();
+		const userId = this.props.match.params.userId;
+		this.init(userId);
+	}
+
 	init = userId => {
 		const token = isAuthenticated().token;
 		read(userId, token).then(data => {
@@ -48,12 +46,6 @@ class EditProfile extends React.Component {
 		});
 	};
 
-	componentDidMount() {
-		// api that takes files
-		this.userData = new FormData();
-		const userId = this.props.match.params.userId;
-		this.init(userId);
-	}
 
 	isValid = () => {
 		const { name, email, password, fileSize } = this.state;
@@ -67,7 +59,7 @@ class EditProfile extends React.Component {
 			return false;
 		}
 		// email@domain.com
-		if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+		if (!/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/.test(email)) {
 			this.setState({ error: 'A valid Email is required', loading: false });
 			return false;
 		}
@@ -118,9 +110,9 @@ class EditProfile extends React.Component {
 	};
 
 	signupForm = (id, name, email, password, about, photoUrl) => (
-		<div className="container emp-profile mainProfile">
+		<div className="container">
 			<div className="col-lg-4">
-				<h2>Edit Profile</h2>
+			<h2 className="my-5">Edit Profile</h2>
 			</div>
 			<form>
 				<div className="row">

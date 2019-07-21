@@ -1,9 +1,3 @@
-/* eslint-disable jsx-a11y/accessible-emoji */
-/* eslint-disable react/style-prop-object */
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/no-autofocus */
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import './style.css';
 
@@ -25,7 +19,10 @@ class ShareExperience extends Component {
 									</h3>
 									<p className="card-text text-center">
 										Post experience of patient for others to get inspiration and
-										it will be posted as a blog 😀
+										it will be posted as a blog{' '}
+										<span role="img" aria-label="Smile">
+											😀
+										</span>
 									</p>
 									<form>
 										<div className="form-group">

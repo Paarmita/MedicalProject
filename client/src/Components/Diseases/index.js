@@ -18,7 +18,7 @@ class Diseases extends React.Component {
 			<div className="container">
 				<div className="mt-2">
 					<div>
-						<h1 className="diseases_title">Diseases</h1>
+						<h2 className="my-5">Diseases</h2>
 					</div>
 					<div>
 						<Autocomplete

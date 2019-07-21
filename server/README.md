@@ -56,3 +56,6 @@ GET<-->READ
 POST<-->CREATE
 PUT<-->UPDATE
 DELETE<-->DELETE
+
+
+- GCP images with apollo graphQL https://www.youtube.com/watch?v=pGSzMfKBV9Q

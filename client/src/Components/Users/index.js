@@ -1,9 +1,3 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-console */
-/* eslint-disable no-shadow */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-return-assign */
 // https://bootsnipp.com/snippets/35E8q
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
@@ -62,7 +56,7 @@ class Users extends Component {
 								<p>
 									<small>Followers</small>
 								</p>
-								<button className="btn btn-success btn-block">
+								<button type="button" className="btn btn-success btn-block">
 									<span className="fa fa-plus-circle" /> Follow{' '}
 								</button>
 								{/* <FollowProfileButton
@@ -146,8 +140,8 @@ class Users extends Component {
 	render() {
 		const { users } = this.state;
 		return (
-			<div className="container main">
-				<h2 className="mt-6 mb-5">Users</h2>
+			<div className="container">
+				<h2 className="my-5">Users</h2>
 				{this.renderUsers(users)}
 			</div>
 		);

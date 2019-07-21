@@ -1,5 +1,3 @@
-/* eslint-disable react/prefer-stateless-function */
-/* eslint-disable jsx-a11y/iframe-has-title */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';

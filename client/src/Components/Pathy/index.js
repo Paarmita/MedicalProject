@@ -1,4 +1,3 @@
-/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import './style.css';
 
@@ -6,7 +5,7 @@ class Pathy extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<h1 className="my-4 aboutTitle text-center">Pathy</h1>
+				<h2 className="my-5">Pathy</h2>
 				<div className="text-wrap vcenter">
 					<h3 className="text-bold">Homeopathy</h3>
 					<p>

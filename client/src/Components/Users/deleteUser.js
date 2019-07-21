@@ -1,9 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable no-console */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-alert */
-/* eslint-disable react/button-has-type */
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { signout, isAuthenticated } from '../../Api';
@@ -30,7 +24,7 @@ class DeleteUser extends Component {
 	};
 
 	deleteConfirmed = () => {
-		const answer = window.confirm('Are you sure you want to delete your account?');
+		const answer = window.customConfirm('Are you sure you want to delete your account?');
 		if (answer) {
 			this.deleteAccount();
 		}
@@ -41,7 +35,11 @@ class DeleteUser extends Component {
 			return <Redirect to="/" />;
 		}
 		return (
-			<button onClick={this.deleteConfirmed} className="btn btn-raised btn-danger">
+			<button
+				type="button"
+				onClick={this.deleteConfirmed}
+				className="btn btn-raised btn-danger"
+			>
 				Delete Profile
 			</button>
 		);

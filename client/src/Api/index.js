@@ -1,34 +1,31 @@
-/* eslint-disable no-console */
-export const signup = async user => {
-	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/signup`, {
-			method: 'POST',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(user),
-		});
-		return response.json();
-	} catch (err) {
-		return console.log(err);
-	}
+export const signup = user => {
+	return fetch(`${process.env.REACT_APP_API_URL}/api/signup`, {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(user),
+	})
+		.then(response => {
+			return response.json();
+		})
+		.catch(err => console.log(err));
 };
 
-export const signin = async user => {
-	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/signin`, {
-			method: 'POST',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(user),
-		});
-		return response.json();
-	} catch (err) {
-		return console.log(err);
-	}
+export const signin = user => {
+	return fetch(`${process.env.REACT_APP_API_URL}/api/signin`, {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(user),
+	})
+		.then(response => {
+			return response.json();
+		})
+		.catch(err => console.log(err));
 };
 
 export const authenticate = (jwt, next) => {
@@ -46,18 +43,17 @@ export const setName = (name, next) => {
 	}
 };
 
-export const signout = async next => {
-	if (typeof window !== 'undefined') localStorage.removeItem('jwt'); // access localstorage and remove jwt
-	next(); // callback function to redirect the user
-	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/signout`, {
-			method: 'GET',
-		});
-		console.log('signout', response);
-		return response.json();
-	} catch (err) {
-		return console.log(err);
-	}
+export const signout = next => {
+	if (typeof window !== 'undefined') localStorage.removeItem('jwt');
+	next();
+	return fetch(`${process.env.REACT_APP_API_URL}/api/signout`, {
+		method: 'GET',
+	})
+		.then(response => {
+			// console.log('signout', response);
+			return response.json();
+		})
+		.catch(err => console.log(err));
 };
 
 export const isAuthenticated = () => {

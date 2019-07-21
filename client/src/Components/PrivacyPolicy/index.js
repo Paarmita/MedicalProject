@@ -1,13 +1,11 @@
-/* eslint-disable react/prefer-stateless-function */
-/* eslint-disable import/no-unresolved */
 import React from 'react';
 import './style.css';
 
 class PrivacyPolicy extends React.Component {
 	render() {
 		return (
-			<div className="container mb-5">
-				<h1 className="my-4 blogTitle">Privacy Policy</h1>
+			<div className="container">
+				<h2 className="my-5">Privacy Policy</h2>
 				<p>
 					Putting patients first is one of our founding principles, and that includes
 					being open and transparent about how your data is collected, shared, and used.

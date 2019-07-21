@@ -1,32 +1,47 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { singlePost, update } from '../../Api/Post';
 import { isAuthenticated } from '../../Api';
-import { create } from '../../Api/Post';
-import loader from '../../Images/loader2.gif';
+import DefaultPost from '../../Images/mountains.jpg';
 
-class NewPost extends Component {
+class EditPost extends Component {
 	constructor() {
 		super();
 		this.state = {
+			id: '',
 			title: '',
 			body: '',
-			photo: '',
+			redirectToSinglePost: false,
 			error: '',
-			user: {},
 			fileSize: 0,
 			loading: false,
-			redirectToPosts: false,
 		};
 	}
 
 	componentDidMount() {
 		this.postData = new FormData();
-		this.setState({ user: isAuthenticated().user });
+		const postId = this.props.match.params.postId;
+		this.init(postId);
 	}
+
+	init = postId => {
+		singlePost(postId).then(data => {
+			if (data.error) {
+				this.setState({ redirectToSinglePost: true });
+			} else {
+				this.setState({
+					id: data._id,
+					title: data.title,
+					body: data.body,
+					error: '',
+				});
+			}
+		});
+	};
 
 	isValid = () => {
 		const { title, body, fileSize } = this.state;
-		if (fileSize > 100000) {
+		if (fileSize > 1000000) {
 			this.setState({
 				error: 'File size should be less than 100kb',
 				loading: false,
@@ -54,28 +69,27 @@ class NewPost extends Component {
 		this.setState({ loading: true });
 
 		if (this.isValid()) {
-			const userId = isAuthenticated().user._id;
+			const postId = this.state.id;
 			const token = isAuthenticated().token;
 
-			create(userId, token, this.postData).then(data => {
+			update(postId, token, this.postData).then(data => {
 				if (data.error) this.setState({ error: data.error });
 				else {
 					this.setState({
 						loading: false,
 						title: '',
 						body: '',
-						redirectToPosts: true,
+						redirectToSinglePost: true,
 					});
-					// console.log('New Post:', data);
 				}
 			});
 		}
 	};
 
-	newPostForm = (title, body) => (
+	editPostForm = (title, body) => (
 		<form>
 			<div className="form-group">
-				<label className="text-muted">Profile Photo</label>
+				<label className="text-muted">Post Photo</label>
 				<input
 					onChange={this.handleChange('photo')}
 					type="file"
@@ -103,38 +117,49 @@ class NewPost extends Component {
 				/>
 			</div>
 
-			<button onClick={this.clickSubmit} className="btn btn-raised btn-primary">
-				Create Post
+			<button type="button" onClick={this.clickSubmit} className="btn btn-raised btn-primary">
+				Update Post
 			</button>
 		</form>
 	);
 
 	render() {
-		const { title, body, photo, user, error, loading, redirectToPosts } = this.state;
+		const { id, title, body, redirectToSinglePost, error, loading } = this.state;
 
-		if (redirectToPosts) {
-			return <Redirect to="/posts" />;
+		if (redirectToSinglePost) {
+			// return <Redirect to={`/user/${isAuthenticated().user._id}`} />;
+			return <Redirect to={`/post/${id}`} />;
 		}
 
 		return (
 			<div className="container">
-				<h2 className="my-5">Create a new post</h2>
+				<h2 className="my-5">{title}</h2>
 				<div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
 					{error}
 				</div>
 
 				{loading ? (
-					<div>
-						<img src={loader} alt="Loading..." />
+					<div className="jumbotron text-center">
+						<h2>Loading...</h2>
 					</div>
 				) : (
 					''
 				)}
 
-				{this.newPostForm(title, body)}
+				<img
+					style={{ height: '200px', width: 'auto' }}
+					className="img-thumbnail"
+					src={`${
+						process.env.REACT_APP_API_URL
+					}/api/post/photo/${id}?${new Date().getTime()}`}
+					onError={i => (i.target.src = `${DefaultPost}`)}
+					alt={title}
+				/>
+
+				{this.editPostForm(title, body)}
 			</div>
 		);
 	}
 }
 
-export default NewPost;
+export default EditPost;

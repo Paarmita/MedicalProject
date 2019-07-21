@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 // https://www.benaroyaresearch.org/what-is-bri/disease-information
 // https://www.cdc.gov/diseasesconditions/az/c.html
 import Diabetes from '../Images/Diseases/1.png';

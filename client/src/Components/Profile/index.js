@@ -1,21 +1,9 @@
-/* eslint-disable react/no-access-state-in-setstate */
-/* eslint-disable no-console */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-return-assign */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable react/sort-comp */
-/* eslint-disable import/named */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-shadow */
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/prefer-stateless-function */
 import React, * as react from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import './style.css';
 import { isAuthenticated } from '../../Api';
 import { read } from '../../Api/User';
+import { listByUser } from '../../Api/Post';
 import DefaultProfile from '../../Images/avatar.png';
 import FollowProfileButton from '../Users/FollowProfileButton';
 import ProfileTabs from './ProfileTabs';
@@ -29,6 +17,7 @@ class Profile extends react.Component {
 			redirectToSignin: false,
 			following: false,
 			error: '',
+			posts: [],
 		};
 	}
 
@@ -65,6 +54,18 @@ class Profile extends react.Component {
 			} else {
 				const following = this.checkFollow(data);
 				this.setState({ user: data, following });
+				this.loadPosts(data._id);
+			}
+		});
+	};
+
+	loadPosts = userId => {
+		const token = isAuthenticated().token;
+		listByUser(userId, token).then(data => {
+			if (data.error) {
+				console.log(data.error);
+			} else {
+				this.setState({ posts: data });
 			}
 		});
 	};
@@ -80,7 +81,7 @@ class Profile extends react.Component {
 	}
 
 	render() {
-		const { redirectToSignin, user } = this.state;
+		const { redirectToSignin, user, posts } = this.state;
 		if (redirectToSignin) return <Redirect to="/signin" />;
 
 		const photoUrl = user._id
@@ -88,7 +89,10 @@ class Profile extends react.Component {
 			: DefaultProfile;
 
 		return (
-			<div className="container emp-profile mainProfile">
+			<div className="container">
+				<div className="col-lg-4">
+				<h2 className="my-5">Profile</h2>
+				</div>
 				<form>
 					<div className="row">
 						<div className="col-md-4">
@@ -240,6 +244,7 @@ class Profile extends react.Component {
 						<div className="col-md-12">
 							<hr />
 							<ProfileTabs followers={user.followers} following={user.following} />
+							{/* <MyPosts posts={posts} /> */}
 						</div>
 					</div>
 				</form>

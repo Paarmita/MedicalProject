@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 export const read = async (userId, token) => {
 	try {
 		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/${userId}`, {
