@@ -91,11 +91,11 @@ class Profile extends react.Component {
 		return (
 			<div className="container">
 				<div className="col-lg-4">
-				<h2 className="my-5">Profile</h2>
+					<h2 className="my-5">Profile</h2>
 				</div>
 				<form>
 					<div className="row">
-						<div className="col-md-4">
+						<div className="col-md-3">
 							<div className="profile-img">
 								{/* <img src={profile.pr ofile_pic} alt="profile pic" /> */}
 								{/* <img src={DefaultProfile} alt={user.name} /> */}
@@ -108,7 +108,7 @@ class Profile extends react.Component {
 								/>
 							</div>
 						</div>
-						<div className="col-md-6">
+						<div className="col-md-7">
 							<div className="profile-head">
 								<h5>
 									{' '}
@@ -160,7 +160,7 @@ class Profile extends react.Component {
 						</div>
 					</div>
 					<div className="row">
-						<div className="col-md-4">
+						<div className="col-md-3">
 							{/* {isAuthenticated().user && isAuthenticated().user._id === user._id && (
 								<FollowProfileButton
 									following={this.state.following}
@@ -169,7 +169,7 @@ class Profile extends react.Component {
 							)} */}
 							{/* <FollowProfileButton /> */}
 						</div>
-						<div className="col-md-8">
+						<div className="col-md-7">
 							<div className="tab-content profile-tab" id="myTabContent">
 								<div
 									className="tab-pane fade show active"
@@ -243,7 +243,22 @@ class Profile extends react.Component {
 						{/* <div className="col-md-1" /> */}
 						<div className="col-md-12">
 							<hr />
-							<ProfileTabs followers={user.followers} following={user.following} />
+
+							{/* {isAuthenticated().user && isAuthenticated().user._id === user._id ? (
+								<ProfileTabs
+									followers={user.followers}
+									following={user.following}
+								/>
+							) : (
+								<div>
+									<ProfileTabs
+										followers={user.followers}
+										following={user.following}
+										posts={posts}
+									/>
+								</div>
+							)} */}
+							<ProfileTabs followers={user.followers} following={user.following}/>
 							{/* <MyPosts posts={posts} /> */}
 						</div>
 					</div>

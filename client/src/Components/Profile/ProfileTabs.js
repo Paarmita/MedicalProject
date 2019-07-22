@@ -7,10 +7,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import DefaultProfile from '../../Images/avatar.png';
 import Tabs from '../Settings/Tabs';
+import { isAuthenticated } from '../../Api';
 
 class ProfileTabs extends Component {
 	render() {
-		const { following, followers } = this.props;
+		const { following, followers, posts } = this.props;
 		return (
 			<div>
 				<Tabs>
@@ -70,6 +71,24 @@ class ProfileTabs extends Component {
 							</div>
 						))}
 					</span>
+					{/* {isAuthenticated().user && (
+						<div>
+							<h6>Posts</h6>
+							<span>
+								{posts.map((post, i) => (
+									<div key={i}>
+										<div>
+											<Link to={`/post/${post._id}`}>
+												<div>
+													<p className="lead">{post.title}</p>
+												</div>
+											</Link>
+										</div>
+									</div>
+								))}
+							</span>
+						</div>
+					)} */}
 				</Tabs>
 			</div>
 		);

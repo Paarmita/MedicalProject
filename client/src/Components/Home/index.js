@@ -15,7 +15,7 @@ class Home extends Component {
 					src="https://www.youtube.com/embed/tgbNymZ7vqY"
 				/>
 				<div className="container">
-					<h1 className="text-center intro">Experience of common man help each other</h1>
+					<h1 className="text-center">Experience of common man help each other</h1>
 				</div>
 				<CardLayout />
 				<Stats />

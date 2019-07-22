@@ -59,3 +59,4 @@ DELETE<-->DELETE
 
 
 - GCP images with apollo graphQL https://www.youtube.com/watch?v=pGSzMfKBV9Q
+- Rich text editor https://medium.com/@siobhanpmahoney/building-a-rich-text-editor-with-draft-js-react-redux-and-rails-ef8d2e2897bf

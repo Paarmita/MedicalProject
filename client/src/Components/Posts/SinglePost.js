@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import Disqus from 'disqus-react';
 import { singlePost, remove, like, unlike } from '../../Api/Post';
 import DefaultPost from '../../Images/mountains.jpg';
 import { isAuthenticated } from '../../Api';
 
 class SinglePost extends Component {
+	
 	state = {
 		post: '',
 		redirectToPosts: false,
@@ -22,6 +24,7 @@ class SinglePost extends Component {
 
 	componentDidMount = () => {
 		const postId = this.props.match.params.postId;
+		// console.log("dsjhbfjdhbgdbg", this);
 		singlePost(postId).then(data => {
 			if (data.error) {
 				console.log(data.error);
@@ -115,6 +118,14 @@ class SinglePost extends Component {
 				)}
 
 				<p className="card-text">{post.body}</p>
+				{/* <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
+                    Comments
+                </Disqus.CommentCount>
+				<Disqus.CommentEmbed 
+                    commentId={this.props.article.featuredComment}
+                    showMedia={true}
+                    height={160}
+                /> */}
 				<br />
 				<p className="font-italic mark">
 					Posted by <Link to={`${posterId}`}>{posterName} </Link>
@@ -156,6 +167,14 @@ class SinglePost extends Component {
 		if (redirectToSignin) {
 			return <Redirect to="/signin" />;
 		}
+		// console.log("dsjhbfjdhbgdbg", this);
+		const disqusShortname = 'medicalcouncelling'; // found in your Disqus.com dashboard
+		const disqusConfig = {
+			url: this.props.match.params.url, // this.props.pageUrl {}`/post/${post._id}`}
+			identifier: this.props.match.params.postId, // this.props.uniqueId
+			title: post.title, // this.props.title
+		};
+
 		return (
 			<div className="container mb-5">
 				<h2 className="my-5">{post.title}</h2>
@@ -168,6 +187,7 @@ class SinglePost extends Component {
 				) : (
 					this.renderPost(post)
 				)}
+				<Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
 			</div>
 		);
 	}
