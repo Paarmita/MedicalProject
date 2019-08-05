@@ -1,4 +1,5 @@
 /* https://codepen.io/alexdevero/pen/rzqxpG */
+// https://bootsnipp.com/snippets/BxA1B
 import React, { Component } from 'react';
 import './style.css';
 

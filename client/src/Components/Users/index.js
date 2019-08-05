@@ -41,7 +41,7 @@ class Users extends Component {
 							<div className="col-xs-12 col-sm-8">
 								<h3>{user.name}</h3>
 								<p>
-									<b>About: </b> {user.about}
+									{user.about}
 								</p>
 								<p>
 									<b>Email: </b> {user.email}

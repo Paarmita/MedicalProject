@@ -117,7 +117,7 @@ class SideNavbar extends React.Component {
 							style={isActive(history, '/termsofuse')}
 							to="/termsofuse"
 						>
-							<i className="fa fa-hand-o-right mr-2" /> Terms and Conditions
+							<i className="fa fa-hand-o-right mr-2" /> Terms & Conditions
 						</Link>
 					</li>
 				</ul>

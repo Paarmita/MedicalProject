@@ -6,7 +6,6 @@ import DefaultPost from '../../Images/mountains.jpg';
 import { isAuthenticated } from '../../Api';
 
 class SinglePost extends Component {
-	
 	state = {
 		post: '',
 		redirectToPosts: false,

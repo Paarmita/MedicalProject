@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
 import { list } from '../../Api/Post';
-import DefaultPost from '../../Images/mountains.jpg';
+// import DefaultPost from '../../Images/mountains.jpg';
 
 class Posts extends React.Component {
 	constructor() {
@@ -31,9 +31,9 @@ class Posts extends React.Component {
 					const posterName = post.postedBy ? post.postedBy.name : ' Unknown';
 
 					return (
-						<div className="card col-md-4" key={i}>
+						<div className="card bg-light col-md-12 my-2" key={i}>
 							<div className="card-body">
-								<img
+								{/* <img
 									src={`${process.env.REACT_APP_API_URL}/api/post/photo/${
 										post._id
 									}`}
@@ -41,15 +41,26 @@ class Posts extends React.Component {
 									onError={i => (i.target.src = `${DefaultPost}`)}
 									className="img-thunbnail mb-3"
 									style={{ height: '200px', width: '100%' }}
-								/>
-								<h5 className="card-title">{post.title}</h5>
-								<p className="card-text">{post.body.substring(0, 100)}</p>
-								{/* only some charaters are visible in the posts */}
-								<br />
-								<p className="font-italic mark">
-									Posted by <Link to={`${posterId}`}>{posterName} </Link>
+								/> */}
+								<h2 className="card-title">{post.title}</h2>
+								<p>
+									<span className="fa fa-clock-o" /> Posted by{' '}
+									<Link to={`${posterId}`}>{posterName} </Link>
 									on {new Date(post.created).toDateString()}
 								</p>
+								<p>
+									<span className="badge badge-secondary">Food</span>{' '}
+									<span className="badge badge-secondary">Ipsum</span>
+								</p>
+								<br />
+								{/* <p className="card-text">{post.body.substring(0, 100)}</p> */}
+								<p className="card-text">{post.body}</p>
+								{/* only some charaters are visible in the posts */}
+								<br />
+								{/* <p className="font-italic mark">
+									Posted by <Link to={`${posterId}`}>{posterName} </Link>
+									on {new Date(post.created).toDateString()}
+								</p> */}
 								<Link
 									to={`/post/${post._id}`}
 									className="btn btn-raised btn-primary btn-sm"

@@ -258,7 +258,11 @@ class Profile extends react.Component {
 									/>
 								</div>
 							)} */}
-							<ProfileTabs followers={user.followers} following={user.following}/>
+							<ProfileTabs
+								followers={user.followers}
+								following={user.following}
+								posts={posts}
+							/>
 							{/* <MyPosts posts={posts} /> */}
 						</div>
 					</div>

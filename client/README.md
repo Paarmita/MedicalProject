@@ -9,7 +9,7 @@ git clone https://github.com/Paarmita/MedicalProject
 ```
 * Cd into that root folder you just cloned locally.
 ```
-cd MedicalProject && cd client
+cd MedicalProject && cd Client
 ```
 * Open terminal in the current folder and to install all dependencies type and 
 ```
@@ -19,5 +19,6 @@ npm install
 ``` 
  npm start
  ```
+ * Window will automatically open at http://localhost:3000
 
  

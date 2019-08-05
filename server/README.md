@@ -1,5 +1,4 @@
 ## Installation Instructions
-
  
 ### Backend
 * Clone or download the repo. into any fresh temporary folder.
@@ -18,7 +17,7 @@ npm install
 ``` 
  npm start
  ```
-
+* Server will start at http://localhost:8080
 
 ## Description
 * A restful Api built for serving as a Backend for a Medical Councelling app.
@@ -56,7 +55,3 @@ GET<-->READ
 POST<-->CREATE
 PUT<-->UPDATE
 DELETE<-->DELETE
-
-
-- GCP images with apollo graphQL https://www.youtube.com/watch?v=pGSzMfKBV9Q
-- Rich text editor https://medium.com/@siobhanpmahoney/building-a-rich-text-editor-with-draft-js-react-redux-and-rails-ef8d2e2897bf
