@@ -24,6 +24,7 @@ import PrivacyPolicy from './Components/PrivacyPolicy';
 import Faq from './Components/Faq';
 import TermsofUse from './Components/TermsofUse';
 import Settings from './Components/Settings';
+import Admin from './Components/Admin';
 import Notfound from './Components/Notfound';
 
 const MainRouter = () => (
@@ -55,6 +56,7 @@ const MainRouter = () => (
 			{/* <PrivateRoute exact path="/post/ask_suggestion" component={AskSuggestion} /> */}
 			{/* <PrivateRoute exact path="/user/testimonial/:userId" component={AddTestimonial} /> */}
 			<PrivateRoute exact path="/user/settings/:userId" component={Settings} />
+			<PrivateRoute exact path="/admin" component={Admin} />
 
 			<Route component={Notfound} />
 		</Switch>

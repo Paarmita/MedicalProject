@@ -10,6 +10,8 @@ class NewPost extends Component {
 		this.state = {
 			title: '',
 			body: '',
+			description: '',
+			treatmentTaken: '',
 			photo: '',
 			error: '',
 			user: {},
@@ -63,6 +65,8 @@ class NewPost extends Component {
 					this.setState({
 						loading: false,
 						title: '',
+						description: '',
+						treatmentTaken: '',
 						body: '',
 						redirectToPosts: true,
 					});
@@ -72,7 +76,7 @@ class NewPost extends Component {
 		}
 	};
 
-	newPostForm = (title, body) => (
+	newPostForm = (title, body, treatmentTaken, description) => (
 		<form>
 			<div className="form-group">
 				<label className="text-muted">Profile Photo</label>
@@ -92,9 +96,28 @@ class NewPost extends Component {
 					value={title}
 				/>
 			</div>
+			<div className="form-group">
+				<label className="text-muted">Summary</label>
+				<input
+					onChange={this.handleChange('description')}
+					type="text"
+					className="form-control"
+					value={description}
+				/>
+			</div>
 
 			<div className="form-group">
-				<label className="text-muted">Body</label>
+				<label className="text-muted">Treatment Taken</label>
+				<textarea
+					onChange={this.handleChange('treatmentTaken')}
+					type="text"
+					className="form-control"
+					value={treatmentTaken}
+				/>
+			</div>
+
+			<div className="form-group">
+				<label className="text-muted">Detailed Description</label>
 				<textarea
 					onChange={this.handleChange('body')}
 					type="text"
@@ -110,7 +133,17 @@ class NewPost extends Component {
 	);
 
 	render() {
-		const { title, body, photo, user, error, loading, redirectToPosts } = this.state;
+		const {
+			title,
+			body,
+			photo,
+			user,
+			error,
+			loading,
+			redirectToPosts,
+			treatmentTaken,
+			description,
+		} = this.state;
 
 		if (redirectToPosts) {
 			return <Redirect to="/posts" />;
@@ -131,7 +164,7 @@ class NewPost extends Component {
 					''
 				)}
 
-				{this.newPostForm(title, body)}
+				{this.newPostForm(title, body, treatmentTaken, description)}
 			</div>
 		);
 	}

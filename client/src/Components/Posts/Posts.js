@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
@@ -9,25 +10,41 @@ class Posts extends React.Component {
 		super();
 		this.state = {
 			posts: [],
+			page: 1,
+			noMorePosts: false,
 		};
 	}
 
-	componentDidMount() {
-		list().then(data => {
+	loadPosts = page => {
+		list(page).then(data => {
 			if (data.error) {
 				console.log(data.error);
 			} else {
 				this.setState({ posts: data });
 			}
 		});
+	};
+
+	componentDidMount() {
+		this.loadPosts(this.state.page);
 	}
+
+	loadMore = number => {
+		this.setState({ page: this.state.page + number });
+		this.loadPosts(this.state.page + number);
+	};
+
+	loadLess = number => {
+		this.setState({ page: this.state.page - number });
+		this.loadPosts(this.state.page - number);
+	};
 
 	renderPosts = posts => {
 		return (
 			<div className="row">
 				{posts.map((post, i) => {
 					// map only works with arrays
-					const posterId = post.postedBy ? `api/user/${post.postedBy._id}` : '';
+					const posterId = post.postedBy ? `/user/${post.postedBy._id}` : '';
 					const posterName = post.postedBy ? post.postedBy.name : ' Unknown';
 
 					return (
@@ -76,12 +93,35 @@ class Posts extends React.Component {
 	};
 
 	render() {
-		const { posts } = this.state;
+		const { posts, page } = this.state;
 		return (
 			<div>
 				{' '}
+				<h2 className="mt-5 mb-5">{!posts.length ? 'No more posts!' : 'Recent Posts'}</h2>
 				{/* <h2 className="mt-5 mb-5">{!posts.length ? 'Loading...' : 'Recent Posts'}</h2> */}
 				{this.renderPosts(posts)}
+				{page > 1 ? (
+					<button
+						className="btn btn-raised btn-warning mr-5 mt-5 mb-5"
+						onClick={() => this.loadLess(1)}
+						type="button"
+					>
+						Previous ({this.state.page - 1})
+					</button>
+				) : (
+					''
+				)}
+				{posts.length ? (
+					<button
+						className="btn btn-raised btn-success mt-5 mb-5"
+						onClick={() => this.loadMore(1)}
+						type="button"
+					>
+						Next ({page + 1})
+					</button>
+				) : (
+					''
+				)}
 			</div>
 		);
 	}

@@ -86,7 +86,116 @@ class SinglePost extends Component {
 		const { like, likes } = this.state;
 
 		return (
-			<div className="card-body">
+			<div className="container mb-5">
+				<Link to="/posts" className="btn btn-raised btn-primary my-3 mt-5">
+					<span>
+						<i className="fa fa-chevron-left mr-4" />
+					</span>
+					Back to posts
+				</Link>
+				<div className="row">
+					<div className="col-md-8">
+						<h2>{post.title}</h2>{' '}
+					</div>
+					<div className="col-md-4">
+						{isAuthenticated().user &&
+							isAuthenticated().user._id === post.postedBy._id && (
+								<>
+									<Link
+										to={`/post/edit/${post._id}`}
+										className="btn btn-raised btn-warning btn-sm mx-2"
+									>
+										<span>
+											<i className="fa fa-edit mr-2" />
+										</span>{' '}
+										Update Post
+									</Link>
+									<button
+										type="button"
+										onClick={this.deleteConfirmed}
+										className="btn btn-raised btn-danger btn-sm mx-2"
+									>
+										<span>
+											<i className="fa fa-trash mr-2" />
+										</span>
+										Delete Post
+									</button>
+								</>
+							)}
+						{isAuthenticated().user && isAuthenticated().user.role === 'admin' && (
+							<nav className="navbar fixed-bottom navbar-light bg-light">
+								<div className="navbar-brand">
+									<span className="navbar-text mr-3">Admin</span>
+									<Link
+										to={`/post/edit/${post._id}`}
+										className="btn btn-raised btn-success"
+									>
+										Update Post
+									</Link>{' '}
+									<button
+										type="button"
+										onClick={this.deleteConfirmed}
+										className="btn btn-raised btn-danger"
+									>
+										Delete Post
+									</button>
+								</div>
+							</nav>
+							// <div className="card mt-5">
+							// 	<div className="card-body">
+							// 		<h5 className="card-title">Admin</h5>
+							// 		<p className="mb-2 text-danger">Edit/Delete as an Admin</p>
+							// 		<Link
+							// 			to={`/post/edit/${post._id}`}
+							// 			className="btn btn-raised btn-warning btn-sm mr-5"
+							// 		>
+							// 			Update Post
+							// 		</Link>
+							// 		<button
+							// 			onClick={this.deleteConfirmed}
+							// 			className="btn btn-raised btn-danger"
+							// 		>
+							// 			Delete Post
+							// 		</button>
+							// 	</div>
+							// </div>
+						)}
+					</div>
+				</div>
+
+				<p>
+					<span className="fa fa-clock-o" /> Posted by{' '}
+					<Link to={`${posterId}`}>{posterName} </Link>
+					on {new Date(post.created).toDateString()}
+				</p>
+				<p>
+					<span className="badge badge-secondary">Food</span>{' '}
+					<span className="badge badge-secondary">Ipsum</span>
+				</p>
+				<div className="row">
+					<div className="col-md-12">
+						<h5>Summary </h5>
+					</div>
+					<div className="col-md-12">
+						<p>{post.description}</p>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-md-12">
+						<h5>Treatment Taken </h5>
+					</div>
+					<div className="col-md-12">
+						<p>{post.treatmentTaken}</p>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-md-12">
+						<h5>Detailed Description</h5>
+					</div>
+					<div className="col-md-12">
+						<p>{post.body}</p>
+					</div>
+				</div>
 				<img
 					src={`${process.env.REACT_APP_API_URL}/api/post/photo/${post._id}`}
 					alt={post.title}
@@ -115,8 +224,6 @@ class SinglePost extends Component {
 						{likes} Like
 					</h3>
 				)}
-
-				<p className="card-text">{post.body}</p>
 				{/* <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
                     Comments
                 </Disqus.CommentCount>
@@ -126,30 +233,6 @@ class SinglePost extends Component {
                     height={160}
                 /> */}
 				<br />
-				<p className="font-italic mark">
-					Posted by <Link to={`${posterId}`}>{posterName} </Link>
-					on {new Date(post.created).toDateString()}
-				</p>
-				<Link to="/posts" className="btn btn-raised btn-primary btn-sm mx-2">
-					Back to posts
-				</Link>
-				{isAuthenticated().user && isAuthenticated().user._id === post.postedBy._id && (
-					<>
-						<Link
-							to={`/post/edit/${post._id}`}
-							className="btn btn-raised btn-warning btn-sm mx-2"
-						>
-							Update Post
-						</Link>
-						<button
-							type="button"
-							onClick={this.deleteConfirmed}
-							className="btn btn-raised btn-danger btn-sm mx-2"
-						>
-							Delete Post
-						</button>
-					</>
-				)}
 			</div>
 		);
 	};
@@ -175,18 +258,19 @@ class SinglePost extends Component {
 		};
 
 		return (
-			<div className="container mb-5">
-				<h2 className="my-5">{post.title}</h2>
+			<div>
 				{/* {this.props.match.params.postId} */}
 				{/* {JSON.stringify(this.state.post)} */}
-				{!post ? (
-					<div className="jumbotron text-center">
-						<h2>Loading...</h2>
-					</div>
-				) : (
-					this.renderPost(post)
-				)}
-				<Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+				<div className="container">
+					{!post ? (
+						<div className="jumbotron text-center">
+							<h2>Loading...</h2>
+						</div>
+					) : (
+						this.renderPost(post)
+					)}
+					<Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+				</div>
 			</div>
 		);
 	}

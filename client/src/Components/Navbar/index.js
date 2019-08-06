@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'; // withRouter is higher order componenet which means it takes anaother component as argument
 import logo from '../../Images/logo.svg';
@@ -181,6 +182,17 @@ class Navigation extends React.Component {
 										</Link>
 									</li>
 								</>
+							)}
+							{isAuthenticated() && isAuthenticated().user.role === 'admin' && (
+								<li className="nav-item">
+									<Link
+										to="/admin"
+										style={isActive(history, `/admin`)}
+										className="nav-link"
+									>
+										Admin
+									</Link>
+								</li>
 							)}
 
 							{isAuthenticated() && ( // user authenticated show logout and username

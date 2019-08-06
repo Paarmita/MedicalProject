@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, * as react from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import './style.css';
@@ -7,6 +9,7 @@ import { listByUser } from '../../Api/Post';
 import DefaultProfile from '../../Images/avatar.png';
 import FollowProfileButton from '../Users/FollowProfileButton';
 import ProfileTabs from './ProfileTabs';
+import DeleteUser from '../Users/deleteUser';
 
 class Profile extends react.Component {
 	constructor() {
@@ -157,6 +160,32 @@ class Profile extends react.Component {
 									</Link>
 								</div>
 							)}
+							{isAuthenticated().user && isAuthenticated().user.role === 'admin' && (
+								// <div className="card mt-5">
+								// 	<div className="card-body">
+								// 		<p className="mb-2 text-danger">Edit/Delete as an Admin</p>
+								// 		<Link
+								// 			className="btn btn-raised btn-success mr-5"
+								// 			to={`/user/edit/${user._id}`}
+								// 		>
+								// 			Edit Profile
+								// 		</Link>
+								// 		<DeleteUser userId={user._id} />
+								// 	</div>
+								// </div>
+								<nav className="navbar fixed-bottom navbar-light bg-light">
+									<div className="navbar-brand">
+										<span className="navbar-text mr-3">Admin</span>
+										<Link
+											className="btn btn-raised btn-success mr-2"
+											to={`/user/edit/${user._id}`}
+										>
+											Edit Profile
+										</Link>
+										<DeleteUser userId={user._id} />
+									</div>
+								</nav>
+							)}
 						</div>
 					</div>
 					<div className="row">
@@ -179,7 +208,7 @@ class Profile extends react.Component {
 								/>
 								<div className="row">
 									<div className="col-md-6">
-										<label>Email</label>
+										<p>Email</p>
 									</div>
 									<div className="col-md-6">
 										<p>{user.email}</p>
@@ -187,7 +216,7 @@ class Profile extends react.Component {
 								</div>
 								<div className="row">
 									<div className="col-md-6">
-										<label>Joined</label>
+										<p>Joined</p>
 									</div>
 									<div className="col-md-6">
 										<p>{`${new Date(user.created).toDateString()}`}</p>
@@ -195,7 +224,7 @@ class Profile extends react.Component {
 								</div>
 								<div className="row">
 									<div className="col-md-6">
-										<label>Phone</label>
+										<p>Phone</p>
 									</div>
 									<div className="col-md-6">
 										{/* <p>{profile.basicInformation.phoneno}</p> */}
@@ -203,7 +232,7 @@ class Profile extends react.Component {
 								</div>
 								<div className="row">
 									<div className="col-md-6">
-										<label>Age</label>
+										<p>Age</p>
 									</div>
 									<div className="col-md-6">
 										{/* <p>{profile.basicInformation.age}</p> */}
@@ -211,7 +240,7 @@ class Profile extends react.Component {
 								</div>
 								<div className="row">
 									<div className="col-md-6">
-										<label>Gender</label>
+										<p>Gender</p>
 									</div>
 									<div className="col-md-6">
 										{/* <p>{profile.basicInformation.gender}</p> */}
@@ -219,7 +248,7 @@ class Profile extends react.Component {
 								</div>
 								<div className="row">
 									<div className="col-md-6">
-										<label>Location</label>
+										<p>Location</p>
 									</div>
 									<div className="col-md-6">
 										{/* <p>
@@ -230,7 +259,7 @@ class Profile extends react.Component {
 								</div>
 								<div className="row">
 									<div className="col-md-6">
-										<label>Birthday</label>
+										<p>Birthday</p>
 									</div>
 									<div className="col-md-6">
 										{/* <p>{profile.basicInformation.birthday}</p> */}

@@ -11,6 +11,8 @@ class EditPost extends Component {
 			id: '',
 			title: '',
 			body: '',
+			description: '',
+			treatmentTaken: '',
 			redirectToSinglePost: false,
 			error: '',
 			fileSize: 0,
@@ -33,6 +35,8 @@ class EditPost extends Component {
 					id: data._id,
 					title: data.title,
 					body: data.body,
+					description: data.description,
+					treatmentTaken: data.treatmentTaken,
 					error: '',
 				});
 			}
@@ -79,6 +83,8 @@ class EditPost extends Component {
 						loading: false,
 						title: '',
 						body: '',
+						description: '',
+						treatmentTaken: '',
 						redirectToSinglePost: true,
 					});
 				}
@@ -86,7 +92,7 @@ class EditPost extends Component {
 		}
 	};
 
-	editPostForm = (title, body) => (
+	editPostForm = (title, body, description, treatmentTaken) => (
 		<form>
 			<div className="form-group">
 				<label className="text-muted">Post Photo</label>
@@ -124,7 +130,16 @@ class EditPost extends Component {
 	);
 
 	render() {
-		const { id, title, body, redirectToSinglePost, error, loading } = this.state;
+		const {
+			id,
+			title,
+			body,
+			redirectToSinglePost,
+			error,
+			loading,
+			description,
+			treatmentTaken,
+		} = this.state;
 
 		if (redirectToSinglePost) {
 			// return <Redirect to={`/user/${isAuthenticated().user._id}`} />;
@@ -156,7 +171,10 @@ class EditPost extends Component {
 					alt={title}
 				/>
 
-				{this.editPostForm(title, body)}
+				{/* {this.editPostForm(title, body, description, treatmentTaken)} */}
+				{isAuthenticated().user.role === 'admin' ||
+					(isAuthenticated().user._id === id &&
+						this.editPostForm(title, body, description, treatmentTaken))}
 			</div>
 		);
 	}

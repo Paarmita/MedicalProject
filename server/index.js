@@ -43,6 +43,10 @@ app.get("/api", (req, res) => {
     });
 });
 
+app.get("/hello", (req, res) => {
+    res.json("Welcome to Medical Councelling");    
+});
+
 // middleware
 app.use(morgan("dev"));             // Middleware: using morgan to log requests to the console
 app.use(bodyParser.json());         // to parse the msg otherwise it shows undefined

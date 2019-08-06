@@ -14,15 +14,26 @@ export const create = async (userId, token, post) => {
 	}
 };
 
-export const list = async () => {
-	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/posts`, {
-			method: 'GET',
-		});
-		return response.json();
-	} catch (err) {
-		return console.log(err);
-	}
+// export const list = async () => {
+// 	try {
+// 		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/posts`, {
+// 			method: 'GET',
+// 		});
+// 		return response.json();
+// 	} catch (err) {
+// 		return console.log(err);
+// 	}
+// };
+
+// with pagination
+export const list = page => {
+	return fetch(`${process.env.REACT_APP_API_URL}/api/posts/?page=${page}`, {
+		method: 'GET',
+	})
+		.then(response => {
+			return response.json();
+		})
+		.catch(err => console.log(err));
 };
 
 export const singlePost = postId => {

@@ -6,10 +6,20 @@ exports.createPostValidator = (req, res, next) => {
         max: 150
     });
     // body
-    req.check("body", "Write a body").notEmpty();
-    req.check("body", "Body must be between 4 to 2000 characters").isLength({
+    req.check("description", "Write a summary of the experience").notEmpty();
+    req.check("description", "Summary must be between 4 to 100 characters").isLength({
+        min: 4,
+        max: 100
+    });
+    req.check("treatmentTaken", "Write the detail about the treatment taken").notEmpty();
+    req.check("treatmentTaken", "Treatment taken must be between 4 to 2000 characters").isLength({
         min: 4,
         max: 2000
+    });
+    req.check("body", "Write a body").notEmpty();
+    req.check("body", "Body must be between 20 to 3000 characters").isLength({
+        min: 50,
+        max: 3000
     });
     // check for errors
     const errors = req.validationErrors();

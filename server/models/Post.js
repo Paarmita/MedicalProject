@@ -9,6 +9,14 @@ const postSchema = new mongoose.Schema({
     // minlength: 4,
     // maxlength: 150
   },
+  description: {
+    type: String,
+    required: true
+  },
+  treatmentTaken: {
+    type: String,
+    required: true
+  },
   body: {
     type: String,
     required: true

@@ -46,7 +46,6 @@ class EditProfile extends React.Component {
 		});
 	};
 
-
 	isValid = () => {
 		const { name, email, password, fileSize } = this.state;
 		if (fileSize > 100000) {
@@ -83,28 +82,56 @@ class EditProfile extends React.Component {
 		this.setState({ [name]: value, fileSize });
 	};
 
+	// clickSubmit = event => {
+	// 	event.preventDefault();
+	// 	// const { name, email, password } = this.state;
+	// 	this.setState({ loading: true });
+	// 	// const user = {		removed bz we are sending user.data now
+	// 	// 	name,
+	// 	// 	email,
+	// 	// 	password: password || undefined,
+	// 	// };
+	// 	// console.log(user);
+	// 	if (this.isValid()) {
+	// 		const userId = this.props.match.params.userId;
+	// 		const token = isAuthenticated().token;
+
+	// 		update(userId, token, this.userData).then(data => {
+	// 			if (data.error) this.setState({ error: data.error });
+	// 			else
+	// 				updateUser(data, () => {
+	// 					this.setState({
+	// 						redirectToProfile: true,
+	// 					});
+	// 				});
+	// 		});
+	// 	}
+	// };
+
 	clickSubmit = event => {
 		event.preventDefault();
-		// const { name, email, password } = this.state;
 		this.setState({ loading: true });
-		// const user = {		removed bz we are sending user.data now
-		// 	name,
-		// 	email,
-		// 	password: password || undefined,
-		// };
-		// console.log(user);
+
 		if (this.isValid()) {
 			const userId = this.props.match.params.userId;
 			const token = isAuthenticated().token;
 
 			update(userId, token, this.userData).then(data => {
-				if (data.error) this.setState({ error: data.error });
-				else
+				if (data.error) {
+					this.setState({ error: data.error });
+					// if admin only redirect
+				} else if (isAuthenticated().user.role === 'admin') {
+					this.setState({
+						redirectToProfile: true,
+					});
+				} else {
+					// if same user update localstorage and redirect
 					updateUser(data, () => {
 						this.setState({
 							redirectToProfile: true,
 						});
 					});
+				}
 			});
 		}
 	};
@@ -112,7 +139,7 @@ class EditProfile extends React.Component {
 	signupForm = (id, name, email, password, about, photoUrl) => (
 		<div className="container">
 			<div className="col-lg-4">
-			<h2 className="my-5">Edit Profile</h2>
+				<h2 className="my-5">Edit Profile</h2>
 			</div>
 			<form>
 				<div className="row">
@@ -241,7 +268,7 @@ class EditProfile extends React.Component {
 							type="text"
 							className="form-control"
 							value={about}
-						/> 
+						/>
 					</div>
 				</div>
 				<div className="form-group row">

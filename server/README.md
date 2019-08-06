@@ -17,7 +17,7 @@ npm install
 ``` 
  npm start
  ```
-* Server will start at http://localhost:8080
+* Server will start at http://localhost:8080/api/
 
 ## Description
 * A restful Api built for serving as a Backend for a Medical Councelling app.

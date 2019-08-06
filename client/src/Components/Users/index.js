@@ -74,7 +74,7 @@ class Users extends Component {
 								</p>
 
 								<Link
-									to={`/user/${user._id}`}
+									to={`/api/user/${user._id}`}
 									className="btn btn-info btn-block"
 									style={{ margin: 'auto' }}
 								>
