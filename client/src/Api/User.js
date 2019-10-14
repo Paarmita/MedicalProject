@@ -1,6 +1,6 @@
 export const read = async (userId, token) => {
 	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/${userId}`, {
+		const response = await fetch(`https://medical-umbrella.herokuapp.com/api/user/${userId}`, {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',
@@ -17,7 +17,7 @@ export const read = async (userId, token) => {
 export const update = async (userId, token, user) => {
 	// console.log('USER DATA UPDATE:', user);
 	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/${userId}`, {
+		const response = await fetch(`https://medical-umbrella.herokuapp.com/api/user/${userId}`, {
 			method: 'PUT',
 			headers: {
 				Accept: 'application/json',
@@ -35,7 +35,7 @@ export const update = async (userId, token, user) => {
 
 export const remove = async (userId, token) => {
 	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/${userId}`, {
+		const response = await fetch(`https://medical-umbrella.herokuapp.com/api/user/${userId}`, {
 			method: 'DELETE',
 			headers: {
 				Accept: 'application/json',
@@ -51,7 +51,7 @@ export const remove = async (userId, token) => {
 
 export const list = async () => {
 	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users`, {
+		const response = await fetch(`https://medical-umbrella.herokuapp.com/api/users`, {
 			method: 'GET',
 		});
 		return response.json();
@@ -74,7 +74,7 @@ export const updateUser = (user, next) => {
 
 export const follow = async (userId, token, followId) => {
 	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/follow`, {
+		const response = await fetch(`https://medical-umbrella.herokuapp.com/api/user/follow`, {
 			method: 'PUT',
 			headers: {
 				Accept: 'application/json',
@@ -90,7 +90,7 @@ export const follow = async (userId, token, followId) => {
 };
 
 export const unfollow = (userId, token, unfollowId) => {
-	return fetch(`${process.env.REACT_APP_API_URL}/api/user/unfollow`, {
+	return fetch(`https://medical-umbrella.herokuapp.com/api/user/unfollow`, {
 		method: 'PUT',
 		headers: {
 			Accept: 'application/json',
@@ -106,7 +106,7 @@ export const unfollow = (userId, token, unfollowId) => {
 };
 
 export const findPeople = (userId, token) => {
-	return fetch(`${process.env.REACT_APP_API_URL}/api/user/findpeople/${userId}`, {
+	return fetch(`https://medical-umbrella.herokuapp.com/api/user/findpeople/${userId}`, {
 		method: 'GET',
 		headers: {
 			Accept: 'application/json',

@@ -88,7 +88,9 @@ class Profile extends react.Component {
 		if (redirectToSignin) return <Redirect to="/signin" />;
 
 		const photoUrl = user._id
-			? `${process.env.REACT_APP_API_URL}/api/user/photo/${user._id}?${new Date().getTime()}`
+			? `https://medical-umbrella.herokuapp.com/api/user/photo/${
+					user._id
+			  }?${new Date().getTime()}`
 			: DefaultProfile;
 
 		return (

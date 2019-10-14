@@ -197,7 +197,7 @@ class SinglePost extends Component {
 					</div>
 				</div>
 				<img
-					src={`${process.env.REACT_APP_API_URL}/api/post/photo/${post._id}`}
+					src={`https://medical-umbrella.herokuapp.com/api/post/photo/${post._id}`}
 					alt={post.title}
 					onError={i => (i.target.src = `${DefaultPost}`)}
 					className="img-thunbnail mb-3"

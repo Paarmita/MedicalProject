@@ -12,5 +12,6 @@
     "/post/new/:userId": "create new post",
     "/posts/by/:userId": "get posts by user",
     "/post/:postId": "get/update/delete post",
-    "/post/photo/:postId": "get post photo"
+    "/post/photo/:postId": "get post photo",
+    "url": "https://medical-umbrella.herokuapp.com"
 }

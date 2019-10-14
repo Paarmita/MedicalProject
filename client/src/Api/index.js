@@ -1,5 +1,5 @@
 export const signup = user => {
-	return fetch(`${process.env.REACT_APP_API_URL}/api/signup`, {
+	return fetch(`https://medical-umbrella.herokuapp.com/api/signup`, {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',
@@ -14,7 +14,7 @@ export const signup = user => {
 };
 
 export const signin = user => {
-	return fetch(`${process.env.REACT_APP_API_URL}/api/signin`, {
+	return fetch(`https://medical-umbrella.herokuapp.com/api/signin`, {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',
@@ -46,7 +46,7 @@ export const setName = (name, next) => {
 export const signout = next => {
 	if (typeof window !== 'undefined') localStorage.removeItem('jwt');
 	next();
-	return fetch(`${process.env.REACT_APP_API_URL}/api/signout`, {
+	return fetch(`https://medical-umbrella.herokuapp.com/api/signout`, {
 		method: 'GET',
 	})
 		.then(response => {

@@ -10,13 +10,14 @@ const expressValidator = require("express-validator");
 const fs = require("fs");
 // dotenv to remove this error MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
 const dotenv = require("dotenv");
+const config = require("./config");
 dotenv.config();
 
 // db
 // MONGO_URI=mongodb://localhost/nodeapi
 mongoose
     .connect(
-        process.env.MONGO_URI,
+        config.mongoUrl,
         { useNewUrlParser: true }
     )
     .then(() => console.log("DB Connected"));

@@ -1,13 +1,16 @@
 export const create = async (userId, token, post) => {
 	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/post/new/${userId}`, {
-			method: 'POST',
-			headers: {
-				Accept: 'application/json',
-				Authorization: `Bearer ${token}`,
+		const response = await fetch(
+			`https://medical-umbrella.herokuapp.com/api/post/new/${userId}`,
+			{
+				method: 'POST',
+				headers: {
+					Accept: 'application/json',
+					Authorization: `Bearer ${token}`,
+				},
+				body: post,
 			},
-			body: post,
-		});
+		);
 		return response.json();
 	} catch (err) {
 		return console.log(err);
@@ -27,7 +30,7 @@ export const create = async (userId, token, post) => {
 
 // with pagination
 export const list = page => {
-	return fetch(`${process.env.REACT_APP_API_URL}/api/posts/?page=${page}`, {
+	return fetch(`https://medical-umbrella.herokuapp.com/api/posts/?page=${page}`, {
 		method: 'GET',
 	})
 		.then(response => {
@@ -37,7 +40,7 @@ export const list = page => {
 };
 
 export const singlePost = postId => {
-	return fetch(`${process.env.REACT_APP_API_URL}/api/post/${postId}`, {
+	return fetch(`https://medical-umbrella.herokuapp.com/api/post/${postId}`, {
 		method: 'GET',
 	})
 		.then(response => {
@@ -48,14 +51,17 @@ export const singlePost = postId => {
 
 export const listByUser = async (userId, token) => {
 	try {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/posts/by/${userId}`, {
-			method: 'GET',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
+		const response = await fetch(
+			`https://medical-umbrella.herokuapp.com/api/posts/by/${userId}`,
+			{
+				method: 'GET',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${token}`,
+				},
 			},
-		});
+		);
 		return response.json();
 	} catch (err) {
 		return console.log(err);
@@ -63,7 +69,7 @@ export const listByUser = async (userId, token) => {
 };
 
 export const remove = (postId, token) => {
-	return fetch(`${process.env.REACT_APP_API_URL}/api/post/${postId}`, {
+	return fetch(`https://medical-umbrella.herokuapp.com/api/post/${postId}`, {
 		method: 'DELETE',
 		headers: {
 			Accept: 'application/json',
@@ -79,7 +85,7 @@ export const remove = (postId, token) => {
 
 export const update = (postId, token, post) => {
 	console.log(postId, token, post);
-	return fetch(`${process.env.REACT_APP_API_URL}/api/post/${postId}`, {
+	return fetch(`https://medical-umbrella.herokuapp.com/api/post/${postId}`, {
 		method: 'PUT',
 		headers: {
 			Accept: 'application/json',
@@ -94,7 +100,7 @@ export const update = (postId, token, post) => {
 };
 
 export const like = (userId, token, postId) => {
-	return fetch(`${process.env.REACT_APP_API_URL}/post/like`, {
+	return fetch(`https://medical-umbrella.herokuapp.com/post/like`, {
 		method: 'PUT',
 		headers: {
 			Accept: 'application/json',
@@ -110,7 +116,7 @@ export const like = (userId, token, postId) => {
 };
 
 export const unlike = (userId, token, postId) => {
-	return fetch(`${process.env.REACT_APP_API_URL}/post/unlike`, {
+	return fetch(`https://medical-umbrella.herokuapp.com/post/unlike`, {
 		method: 'PUT',
 		headers: {
 			Accept: 'application/json',

@@ -15,9 +15,10 @@ npm install
 ```
 * Now typing to start client 
 ``` 
- npm start
+ npm run server
  ```
 * Server will start at http://localhost:8080/api/
+* Hosted URl  https://medical-umbrella.herokuapp.com
 
 ## Description
 * A restful Api built for serving as a Backend for a Medical Councelling app.

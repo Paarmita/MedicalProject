@@ -33,7 +33,7 @@ exports.signin = (req, res) => {
     }
     // generate a token with user id and secret
     // const token = jwt.sign({ _id: user._id  }, process.env.JWT_SECRET);
-    const token = jwt.sign({ _id: user._id, role: user.role}, process.env.JWT_SECRET);
+    const token = jwt.sign({ _id: user._id, role: user.role}, "secret");
     // persist the token as 't' in cookie with expiry date
     res.cookie("t", token, { expire: new Date() + 9999 });
     // return response with user and token to frontend client
@@ -51,7 +51,7 @@ exports.signout = (req, res) => {
 
 exports.requireSignin = expressJwt({
   //only when sign in access the post routes
-  secret: process.env.JWT_SECRET,
+  secret: "secret",
   userProperty: "auth"
 });
 // if user is signed in, it checks the secret key and token,so this should match with our requireSignin function

@@ -32,7 +32,7 @@ class Users extends Component {
 						<div className="col-sm-12 row">
 							<div className="col-xs-12 col-sm-4 text-center my-3">
 								<img
-									src={`${process.env.REACT_APP_API_URL}/api/user/photo/${user._id}`}
+									src={`https://medical-umbrella.herokuapp.com/api/user/photo/${user._id}`}
 									onError={i => (i.target.src = `${DefaultProfile}`)}
 									alt={user.name}
 									className="rounded-circle img-fluid"

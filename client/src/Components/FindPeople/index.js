@@ -54,7 +54,7 @@ class FindPeople extends Component {
 					<img
 						style={{ height: '200px', width: '200px', margin: 'auto' }}
 						className="img-thumbnail"
-						src={`${process.env.REACT_APP_API_URL}/api/user/photo/${user._id}`}
+						src={`https://medical-umbrella.herokuapp.com/api/user/photo/${user._id}`}
 						onError={i => (i.target.src = `${DefaultProfile}`)}
 						alt={user.name}
 					/>
