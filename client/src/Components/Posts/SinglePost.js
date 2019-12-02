@@ -168,10 +168,10 @@ class SinglePost extends Component {
 					<Link to={`${posterId}`}>{posterName} </Link>
 					on {new Date(post.created).toDateString()}
 				</p>
-				<p>
+				{/* <p>
 					<span className="badge badge-secondary">Food</span>{' '}
 					<span className="badge badge-secondary">Ipsum</span>
-				</p>
+				</p> */}
 				<div className="row">
 					<div className="col-md-12">
 						<h5>Summary </h5>
@@ -207,7 +207,7 @@ class SinglePost extends Component {
 						objectFit: 'cover',
 					}}
 				/>
-				{like ? (
+				{/* {like ? (
 					<h3 onClick={this.likeToggle}>
 						<i
 							className="fa fa-thumbs-up text-success bg-dark"
@@ -223,7 +223,7 @@ class SinglePost extends Component {
 						/>{' '}
 						{likes} Like
 					</h3>
-				)}
+				)} */}
 				{/* <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
                     Comments
                 </Disqus.CommentCount>

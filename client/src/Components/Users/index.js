@@ -50,12 +50,12 @@ class Users extends Component {
 						</div>
 						<div className="col-xs-12 divider text-center row">
 							<div className="col-xs-12 col-sm-6">
-								<h5>
+								{/* <h5>
 									<b> 20,7K </b>
 								</h5>
 								<p>
 									<small>Followers</small>
-								</p>
+								</p> */}
 								<button type="button" className="btn btn-success btn-block">
 									<span className="fa fa-plus-circle" /> Follow{' '}
 								</button>
@@ -66,12 +66,12 @@ class Users extends Component {
 									/> */}
 							</div>
 							<div className="col-xs-12 col-sm-6">
-								<h5>
+								{/* <h5>
 									<b>245</b>
 								</h5>
 								<p>
 									<small>Following</small>
-								</p>
+								</p> */}
 
 								<Link
 									to={`/api/user/${user._id}`}

@@ -65,10 +65,10 @@ class Posts extends React.Component {
 									<Link to={`${posterId}`}>{posterName} </Link>
 									on {new Date(post.created).toDateString()}
 								</p>
-								<p>
+								{/* <p>
 									<span className="badge badge-secondary">Food</span>{' '}
 									<span className="badge badge-secondary">Ipsum</span>
-								</p>
+								</p> */}
 								<br />
 								{/* <p className="card-text">{post.body.substring(0, 100)}</p> */}
 								<p className="card-text">{post.body}</p>
@@ -97,7 +97,7 @@ class Posts extends React.Component {
 		return (
 			<div>
 				{' '}
-				<h2 className="mt-5 mb-5">{!posts.length ? 'No more posts!' : 'Recent Posts'}</h2>
+				<h2 className="mt-5 mb-5">{!posts.length ? 'No more posts!' : ''}</h2>
 				{/* <h2 className="mt-5 mb-5">{!posts.length ? 'Loading...' : 'Recent Posts'}</h2> */}
 				{this.renderPosts(posts)}
 				{page > 1 ? (

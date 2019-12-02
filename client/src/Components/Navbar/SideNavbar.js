@@ -18,7 +18,7 @@ class SideNavbar extends React.Component {
 							<i className="fa fa-list-ul mr-2" /> Dashboard
 						</Link>
 					</li>
-					<li className="nav-item">
+					{/* <li className="nav-item">
 						<Link
 							className="nav-link"
 							style={isActive(history, '/findpeople')}
@@ -26,7 +26,7 @@ class SideNavbar extends React.Component {
 						>
 							<i className="fa fa-address-card mr-2" /> Find People
 						</Link>
-					</li>
+					</li> */}
 					<li className="nav-item">
 						<Link
 							className="nav-link "
@@ -50,11 +50,11 @@ class SideNavbar extends React.Component {
 							<i className="fa fa-tag mr-2" /> My Posts
 						</Link>
 					</li>
-					<li className="nav-item">
+					{/* <li className="nav-item">
 						<Link className="nav-link" style={isActive(history, '/like')} to="/like">
 							<i className="fa fa-thumbs-up mr-2" /> Posts I Like
 						</Link>
-					</li>
+					</li> */}
 					<span className="border-top my-3" />
 					<li className="nav-item">
 						<Link
@@ -70,14 +70,14 @@ class SideNavbar extends React.Component {
 						<i className="fa fa-battery" /> Ask Suggestion
 						</Link>
 					</li> */}
-					<li className="nav-item">
+					{/* <li className="nav-item">
 						<Link
 							className="nav-link"
 							to={`/user/testimonial/${isAuthenticated().user._id}`}
 						>
 							<i className="fa fa-plus-circle mr-2" /> Add Testimonial
 						</Link>
-					</li>
+					</li> */}
 					<span className="border-top my-3" />
 					<li className="nav-item">
 						<Link
