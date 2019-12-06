@@ -5,8 +5,16 @@
   .card-shadow {
     border: 0;
   }
+
+  .card {
+    padding: 1em;
+  }
   .card-shadow:hover {
     box-shadow: 0 0.3rem 0.6rem #0000001c;
+  }
+
+  .parent-container {
+    margin-bottom: 1em;
   }
 
   .cardHeight {
@@ -110,4 +118,10 @@
   
   .suggestions li:not(:last-of-type) {
     border-bottom: 1px solid #999;
+  }
+
+  .img-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }

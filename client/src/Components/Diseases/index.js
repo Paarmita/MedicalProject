@@ -32,54 +32,67 @@ const data = [
 	{
 		name: 'Diabetes',
 		icon: Diabetes,
+		type: ['A', 'B', 'C', 'D'],
 	},
 	{
 		name: 'Multiple Sclerosis',
 		icon: MultipleSclerosis,
+		type: ['E', 'F', 'G', 'H'],
 	},
 	{
 		name: "Crohn's & Colitis",
 		icon: Colitis,
+		type: ['I', 'J', 'K'],
 	},
 	{
 		name: 'Lupus',
 		icon: Lupus,
+		type: ['L', 'M'],
 	},
 	{
 		name: 'Rheumatoid Arthritis',
 		icon: Arthritis,
+		type: ['N', 'Ö'],
 	},
 	{
 		name: 'Allergies & Asthma',
 		icon: Asthma,
+		type: ['P', 'Q', 'R'],
 	},
 	{
 		name: 'Celiac Disease',
 		icon: Celiac,
+		type: ['S'],
 	},
 	{
 		name: 'Relapsing Polychondritis',
 		icon: Polychondritis,
+		type: ['Type 1', 'Type 2'],
 	},
 	{
 		name: 'Scleroderma',
 		icon: Scleroderma,
+		type: ['T', 'U', 'V'],
 	},
 	{
 		name: 'Liver Disease',
 		icon: Liver,
+		type: ['W'],
 	},
 	{
 		name: 'Infectious Diseases',
 		icon: Infectious,
+		type: ['X'],
 	},
 	{
 		name: 'Cancer',
 		icon: Cancer,
+		type: ['Y'],
 	},
 	{
 		name: 'Heart Disease',
 		icon: Heart,
+		type: ['Z'],
 	},
 ];
 class Diseases extends React.Component {
@@ -97,9 +110,7 @@ class Diseases extends React.Component {
 	}
 
 	render() {
-		const html = this.state.filteredData.map((x, key) => (
-			<Card key={key} image={x.icon} name={x.name} />
-		));
+		const html = this.state.filteredData.map((x, key) => <Card key={key} data={x} />);
 		return (
 			<div className="container">
 				<div className="mt-2">
