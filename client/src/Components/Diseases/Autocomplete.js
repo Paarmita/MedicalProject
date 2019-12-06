@@ -33,7 +33,7 @@ class Autocomplete extends Component {
 
 		// Filter our suggestions that don't contain the user's input
 		const filteredSuggestions = suggestions.filter(
-			suggestion => suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1,
+			suggestion => suggestion.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1,
 		);
 
 		this.setState({
@@ -42,6 +42,8 @@ class Autocomplete extends Component {
 			showSuggestions: true,
 			userInput: e.currentTarget.value,
 		});
+		console.log(filteredSuggestions);
+		this.props.filteredData(filteredSuggestions);
 	};
 
 	onClick = e => {
@@ -105,8 +107,8 @@ class Autocomplete extends Component {
 							}
 
 							return (
-								<li className={className} key={suggestion} onClick={onClick}>
-									{suggestion}
+								<li className={className} key={suggestion.name} onClick={onClick}>
+									{suggestion.name}
 								</li>
 							);
 						})}

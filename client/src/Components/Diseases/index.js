@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unused-state */
+/* eslint-disable no-undef */
+/* eslint-disable class-methods-use-this */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable import/named */
 /* eslint-disable react/no-array-index-key */
@@ -11,9 +14,92 @@ import Card from './Card';
 import Autocomplete from './Autocomplete';
 import './style.css';
 
-const html = [...diseaseData].map((x, key) => <Card key={key} image={x.icon} name={x.name} />);
+import Diabetes from '../../Images/Diseases/1.png';
+import MultipleSclerosis from '../../Images/Diseases/2.png';
+import Colitis from '../../Images/Diseases/3.png';
+import Lupus from '../../Images/Diseases/4.png';
+import Arthritis from '../../Images/Diseases/5.png';
+import Asthma from '../../Images/Diseases/6.png';
+import Celiac from '../../Images/Diseases/7.png';
+import Polychondritis from '../../Images/Diseases/8.png';
+import Scleroderma from '../../Images/Diseases/9.png';
+import Liver from '../../Images/Diseases/10.png';
+import Infectious from '../../Images/Diseases/11.png';
+import Cancer from '../../Images/Diseases/12.png';
+import Heart from '../../Images/Diseases/13.png';
+
+const data = [
+	{
+		name: 'Diabetes',
+		icon: Diabetes,
+	},
+	{
+		name: 'Multiple Sclerosis',
+		icon: MultipleSclerosis,
+	},
+	{
+		name: "Crohn's & Colitis",
+		icon: Colitis,
+	},
+	{
+		name: 'Lupus',
+		icon: Lupus,
+	},
+	{
+		name: 'Rheumatoid Arthritis',
+		icon: Arthritis,
+	},
+	{
+		name: 'Allergies & Asthma',
+		icon: Asthma,
+	},
+	{
+		name: 'Celiac Disease',
+		icon: Celiac,
+	},
+	{
+		name: 'Relapsing Polychondritis',
+		icon: Polychondritis,
+	},
+	{
+		name: 'Scleroderma',
+		icon: Scleroderma,
+	},
+	{
+		name: 'Liver Disease',
+		icon: Liver,
+	},
+	{
+		name: 'Infectious Diseases',
+		icon: Infectious,
+	},
+	{
+		name: 'Cancer',
+		icon: Cancer,
+	},
+	{
+		name: 'Heart Disease',
+		icon: Heart,
+	},
+];
 class Diseases extends React.Component {
+	constructor(props) {
+		super(props);
+		this.filteredData = this.filteredData.bind(this);
+		this.state = {
+			disease: data,
+			filteredData: data,
+		};
+	}
+
+	filteredData(filteredData) {
+		this.setState({ filteredData });
+	}
+
 	render() {
+		const html = this.state.filteredData.map((x, key) => (
+			<Card key={key} image={x.icon} name={x.name} />
+		));
 		return (
 			<div className="container">
 				<div className="mt-2">
@@ -22,21 +108,8 @@ class Diseases extends React.Component {
 					</div>
 					<div>
 						<Autocomplete
-							suggestions={[
-								'Diabetes',
-								'Multiple Sclerosis',
-								"Crohn's & Colitis",
-								'Lupus',
-								'Rheumatoid Arthritis',
-								'Allergies & Asthma',
-								'Celiac Disease',
-								'Relapsing Polychondritis',
-								'Scleroderma',
-								'Liver Disease',
-								'Infectious Diseases',
-								'Cancer',
-								'Heart Disease',
-							]}
+							filteredData={this.filteredData}
+							suggestions={this.state.disease}
 						/>
 					</div>
 					<div className="col-xs-12 col-md-12 col-sm-12 col-xs-12 mt-5 mx-40">
