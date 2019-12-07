@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Card = ({ data }) => (
 	<div className="col-lg-4 parent-container">
@@ -16,16 +18,10 @@ const Card = ({ data }) => (
 			</div>
 			<div>
 				{data.type.map((x, i) => {
-					if (data.type.length - 1 === i) {
-						return (
-							<span>
-								<a href="x">{x}</a>
-							</span>
-						);
-					}
 					return (
-						<span>
-							<a href="x">{x}</a> ,
+						<span key={x.title.name}>
+							<Link to={`/diseases/${x.title.id}`}>{x.title.name},</Link>
+
 						</span>
 					);
 				})}

@@ -35,7 +35,7 @@ const MainRouter = () => (
 			<Route exact path="/post/:postId" component={SinglePost} />
 			<Route exact path="/pathy" component={Pathy} />
 			<Route exact path="/diseases" component={Diseases} />
-			<Route exact path="/disease" component={DiseaseDetail} />
+			<Route exact path="/diseases/:id" component={DiseaseDetail} />
 			{/* <Route exact path="/disease/:diseasename" component={DiseaseDetail} /> */}
 			<Route exact path="/aboutus" component={AboutUs} />
 			<Route exact path="/contactus" component={ContactUs} />

@@ -1,3 +1,10 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-var */
+/* eslint-disable vars-on-top */
+/* eslint-disable no-loop-func */
+/* eslint-disable eqeqeq */
+/* eslint-disable func-names */
+/* eslint-disable no-plusplus */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/prefer-stateless-function */
@@ -6,6 +13,7 @@ import './style.css';
 // import data from '../../Data/DiseasesDetailData';
 import Tabs from '../Settings/Tabs';
 import Posts from '../Posts/Posts';
+import { fakeData } from './data';
 
 class DiseaseDetail extends React.Component {
 	constructor(title) {
@@ -14,10 +22,20 @@ class DiseaseDetail extends React.Component {
 	}
 
 	render() {
+		const { id } = this.props.match.params;
+		let test = {};
+		for (var i = 0; i < fakeData.length; i++) {
+			Object.keys(fakeData[i]).forEach(function(key) {
+				if (key == id) {
+					const stringID = id.toString();
+					test = fakeData[i][stringID];
+				}
+			});
+		}
 		return (
 			<div className="container">
 				<div className="row">
-					<h1 className="my-5 col-md-2">Migrane</h1>
+					<h1 className="my-5 col-md-2">{test.Disease}</h1>
 					<div className=" my-5 col-md-10">
 						<button
 							type="button"
@@ -31,7 +49,7 @@ class DiseaseDetail extends React.Component {
 
 				<div className="row">
 					<div className="col-md-2">
-						<h5>Description </h5>
+						<h5>{test.Description} </h5>
 					</div>
 					<div className="col-md-10">
 						<p>
