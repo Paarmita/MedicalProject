@@ -33,7 +33,7 @@ npm install
 
 ### How it works !
 * Checks if a verified ordinary user also has admin privileges.
-* Allow an ordinary user to perform GET,POST,DELETE,MODIFY operatioins
+* Allow an ordinary user to perform GET,POST,DELETE,MODIFY operations
 * Only allows Admin to perform operations to POST other static details.
 * Only allows Admin to be able to GET all the registered users' information from the database
 

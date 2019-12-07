@@ -21,6 +21,7 @@ const Card = ({ data }) => (
 					return (
 						<span key={x.title.name}>
 							<Link to={`/diseases/${x.title.id}`}>{x.title.name},</Link>
+
 						</span>
 					);
 				})}

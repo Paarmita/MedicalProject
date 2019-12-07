@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import React, { Component } from 'react';
 import './style.css';
 import DeleteUser from '../Users/deleteUser';
