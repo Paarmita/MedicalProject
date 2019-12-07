@@ -10,7 +10,7 @@ The project deals with collection of data from large number of patients , throug
 
 ### Project Status
 
-This project is currently in development. Users can post some posts and view them. See the profiles, follow other users. Many functionalitites are in progress.
+This project is currently in development. Users can post some posts and view them. See the profiles, follow other users. Many other functionalitites are in progress.
 
 ### Tech stack:
 

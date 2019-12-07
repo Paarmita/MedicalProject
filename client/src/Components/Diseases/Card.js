@@ -25,7 +25,7 @@ const Card = ({ data }) => (
 					}
 					return (
 						<span>
-							<a href="x">{ x }</a> ,
+							<a href="x">{x}</a> ,
 						</span>
 					);
 				})}

@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react/jsx-no-undef */
+/* eslint-disable no-undef */
+/* eslint-disable no-restricted-globals */
 import React, { Component } from 'react';
 import { signup } from '../../Api';
 import './style.css';
@@ -121,7 +125,10 @@ class Signup extends Component {
 									</button>
 									<hr className="my-4" />
 									<p className="text-center">
-										Already have an account?<a href="/signin"> Sign In</a>
+										Already have an account?
+										<Link style={isActive(history, '/')} to="/signin">
+											Sign In
+										</Link>
 									</p>
 								</form>
 							</div>

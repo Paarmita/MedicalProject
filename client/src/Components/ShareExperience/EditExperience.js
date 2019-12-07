@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
+/* eslint-disable prefer-destructuring */
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { singlePost, update } from '../../Api/Post';
