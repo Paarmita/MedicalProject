@@ -1,6 +1,6 @@
+/* eslint-disable react/sort-comp */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import './style.css';
 import { Link } from 'react-router-dom';
 import { list } from '../../Api/Post';
 // import DefaultPost from '../../Images/mountains.jpg';
@@ -44,6 +44,7 @@ class Posts extends React.Component {
 			<div className="row">
 				{posts.map((post, i) => {
 					// map only works with arrays
+
 					const posterId = post.postedBy ? `/user/${post.postedBy._id}` : '';
 					const posterName = post.postedBy ? post.postedBy.name : ' Unknown';
 
@@ -60,18 +61,25 @@ class Posts extends React.Component {
 									style={{ height: '200px', width: '100%' }}
 								/> */}
 								<h2 className="card-title">{post.title}</h2>
+								{/* <p>
+									<span className="fa fa-clock-o" /> Posted by{' '}
+									<Link to={`${posterId}`}>{posterName} </Link>
+									on {new Date(post.created).toDateString()}
+								</p> */}
 								<p>
 									<span className="fa fa-clock-o" /> Posted by{' '}
 									<Link to={`${posterId}`}>{posterName} </Link>
 									on {new Date(post.created).toDateString()}
-								</p>
+        </p>
 								{/* <p>
 									<span className="badge badge-secondary">Food</span>{' '}
 									<span className="badge badge-secondary">Ipsum</span>
 								</p> */}
 								<br />
 								{/* <p className="card-text">{post.body.substring(0, 100)}</p> */}
-								<p className="card-text">{post.body}</p>
+								<p className="card-text" style={{ wordBreak: 'break-word' }}>
+									{post.body}
+								</p>
 								{/* only some charaters are visible in the posts */}
 								<br />
 								{/* <p className="font-italic mark">
@@ -106,7 +114,9 @@ class Posts extends React.Component {
 						onClick={() => this.loadLess(1)}
 						type="button"
 					>
-						Previous ({this.state.page - 1})
+						{' '}
+						Previous
+						{/* Previous ({this.state.page - 1}) */}
 					</button>
 				) : (
 					''
@@ -117,7 +127,8 @@ class Posts extends React.Component {
 						onClick={() => this.loadMore(1)}
 						type="button"
 					>
-						Next ({page + 1})
+						Next
+						{/* Next ({page + 1}) */}
 					</button>
 				) : (
 					''

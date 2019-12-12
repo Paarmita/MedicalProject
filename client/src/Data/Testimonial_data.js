@@ -1,27 +1,28 @@
 const Testimonialdata = [
 	{
 		content:
-			'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ',
-		author: 'Amit Bhatkal',
-		source: 'Machine Learning Engineer at Mercedes Benz Research',
+			'I researched other people who have gone through the clinical trials I was going to be doing, and I was able to make an informed decision… You feel less alone on the site, like you’re not the only one going through this.',
+		author: 'Laura',
+		source: 'Living with IPF',
 	},
 	{
 		content:
-			'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ',
-		author: 'Santhosh Subramanian',
-		source: 'University of California, Berkeley',
+			'The Healthcare Success team has proven to be extremely effective in increasing Urgent Care patient volume. Their expertise in search engine optimization, social media, and online advertising continue to generate a high volume of new patient referrals to our centers. I would highly recommend them.',
+		author: 'Michael S. Buckley',
+		source:
+			'Director of Business Development & Physician Relations, Pomona Valley Health Centers',
 	},
 	{
 		content:
-			'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lore',
-		author: 'Walter Bender',
-		source: 'Former Executive Director MIT Media Lab',
+			'We were highly impressed with the thoroughness of the onsite review and the overall marketing plan’s in-depth assessment. The Healthcare Success team was extremely knowledgeable in their areas of expertise and comprehensiveness of their review. Their recommendations were very detailed and provided us with a clear understanding of how we needed to proceed with program growth. I highly recommend the Healthcare Success team to any organization seeking ways to improve their patient volume and financial growth opportunities.',
+		author: 'Debra Proulx',
+		source: 'RN, BHS, MBA, CBN – Director of Bariatric Services – Gwinnett Medical Center',
 	},
 	{
 		content:
-			"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
-		author: 'Shreya Mahipal Jain',
-		source: 'University of Southern California, Los Angeles',
+			'You guys are blowing me away with the quality, commitment and passion of your collective work!',
+		author: 'Mark Kim',
+		source: 'MD, Vein Specialist, Eterna Vein & Medical Aesthetics, Puyallup, WA',
 	},
 ];
 

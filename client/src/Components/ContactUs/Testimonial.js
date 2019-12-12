@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* https://codepen.io/alexdevero/pen/rzqxpG */
 // https://bootsnipp.com/snippets/BxA1B
 import React, { Component } from 'react';

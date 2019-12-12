@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Posts from '../Posts/Posts';
-import Users from '../Users';
 import { isAuthenticated } from '../../Api';
 
 class Admin extends Component {

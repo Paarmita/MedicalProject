@@ -7,11 +7,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import DefaultProfile from '../../Images/avatar.png';
 import Tabs from '../Settings/Tabs';
-import { isAuthenticated } from '../../Api';
 
 class ProfileTabs extends Component {
 	render() {
-		const { following, followers, posts } = this.props;
+		// const { following, followers, posts } = this.props;
+		const { following, followers } = this.props;
 		return (
 			<div>
 				<Tabs>

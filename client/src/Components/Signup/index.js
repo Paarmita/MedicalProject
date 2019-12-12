@@ -126,9 +126,9 @@ class Signup extends Component {
 									<hr className="my-4" />
 									<p className="text-center">
 										Already have an account?
-										<Link style={isActive(history, '/')} to="/signin">
+										<a href="/signin">
 											Sign In
-										</Link>
+										</a>
 									</p>
 								</form>
 							</div>

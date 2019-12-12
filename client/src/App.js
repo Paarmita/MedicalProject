@@ -32,7 +32,7 @@ class App extends React.Component {
 				<div>
 					<Navigation />
 					{isAuthenticated() ? (
-						<div style={{ marginLeft: '165px', marginTop: '70px' }}>
+						<div style={{ marginLeft: '160px', marginTop: '70px' }}>
 							<MainRouter />
 						</div>
 					) : (

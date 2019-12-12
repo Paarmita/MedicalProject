@@ -1,3 +1,8 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react/no-array-index-key */
 // https://bootsnipp.com/snippets/35E8q
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
@@ -25,62 +30,70 @@ class Users extends Component {
 	}
 
 	renderUsers = users => (
-		<div className="row">
+		<div
+			className="col-xs-12 col-md-12 col-sm-12 col-xs-12 mt-5 mx-40 row"
+			style={{ justifyContent: 'center' }}
+		>
 			{users.map((user, i) => (
-				<div className="card col-lg-4 my-1 mx-1" key={i}>
-					<div className="profile">
-						<div className="col-sm-12 row">
-							<div className="col-xs-12 col-sm-4 text-center my-3">
-								<img
-									src={`https://medical-umbrella.herokuapp.com/api/user/photo/${user._id}`}
-									onError={i => (i.target.src = `${DefaultProfile}`)}
-									alt={user.name}
-									className="rounded-circle img-fluid"
-								/>
-							</div>
-							<div className="col-xs-12 col-sm-8">
-								<h3>{user.name}</h3>
-								<p>
-									{user.about}
-								</p>
-								<p>
-									<b>Email: </b> {user.email}
-								</p>
-							</div>
+				<div className="card col-lg-3 my-2 mx-1" key={i}>
+					<div className="profile text-center">
+						{/* <div className="col-sm-12 row"> */}
+						<div className="text-center my-3">
+							<img
+								src={`https://medical-umbrella.herokuapp.com/api/user/photo/${
+									user._id
+								}`}
+								onError={i => (i.target.src = `${DefaultProfile}`)}
+								alt={user.name}
+								style={{ height: '50px', width: 'auto' }}
+								className="rounded-circle img-fluid"
+							/>
 						</div>
-						<div className="col-xs-12 divider text-center row">
-							<div className="col-xs-12 col-sm-6">
-								{/* <h5>
+						<div className="text-center">
+							<h3>{user.name}</h3>
+							<p>{user.about}</p>
+							<p>{user.email}</p>
+							{/* </div> */}
+						</div>
+						<div className="col-lg-12">
+							{/* <div className="col-xs-12 col-sm-6">
+								<h5>
 									<b> 20,7K </b>
 								</h5>
 								<p>
 									<small>Followers</small>
-								</p> */}
-								<button type="button" className="btn btn-success btn-block">
+								</p>
+								<button
+									type="button"
+									className="btn btn-success btn-sm btn-block"
+									following={this.state.following}
+									onButtonClick={this.clickFollowButton}
+								>
 									<span className="fa fa-plus-circle" /> Follow{' '}
 								</button>
-								{/* <FollowProfileButton
+								<FollowProfileButton
 										className="profile-edit-btn btn btn-success btn-block"
 										following={this.state.following}
 										onButtonClick={this.clickFollowButton}
-									/> */}
-							</div>
-							<div className="col-xs-12 col-sm-6">
-								{/* <h5>
+									/>
+							</div> */}
+							<Link
+								to={`/user/${user._id}`}
+								className="btn btn-info btn-block btn-sm"
+								style={{ margin: 'auto', padding: '5px' }}
+							>
+								<span className="fa fa-user" /> View Profile{' '}
+							</Link>
+							{/* <div className="col-xs-12 col-sm-6">
+								<h5>
 									<b>245</b>
 								</h5>
 								<p>
 									<small>Following</small>
-								</p> */}
+								</p>
 
-								<Link
-									to={`/api/user/${user._id}`}
-									className="btn btn-info btn-block"
-									style={{ margin: 'auto' }}
-								>
-									<span className="fa fa-user" /> View Profile{' '}
-								</Link>
-							</div>
+								
+							</div> */}
 							{/* <div className="col-xs-12 col-sm-4 emphasis">
 						<h2>
 							<strong>43</strong>

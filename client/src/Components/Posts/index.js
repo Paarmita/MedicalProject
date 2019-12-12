@@ -1,5 +1,4 @@
 import React from 'react';
-import './style.css';
 import Posts from './Posts';
 
 class ViewPosts extends React.Component {

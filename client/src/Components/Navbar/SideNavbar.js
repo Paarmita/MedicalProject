@@ -1,3 +1,7 @@
+/* eslint-disable consistent-return */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import './style.css';
@@ -117,7 +121,7 @@ class SideNavbar extends React.Component {
 							style={isActive(history, '/termsofuse')}
 							to="/termsofuse"
 						>
-							<i className="fa fa-hand-o-right mr-2" /> Terms & Conditions
+							<i className="fa fa-hand-o-right mr-2" /> Terms of use
 						</Link>
 					</li>
 				</ul>

@@ -157,9 +157,9 @@ class Profile extends react.Component {
 										following={this.state.following}
 										onButtonClick={this.clickFollowButton}
 									/>
-									<Link className="profile-edit-btn my-3" to="/">
+									{/* <Link className="profile-edit-btn my-3" to="/">
 										Report Profile
-									</Link>
+									</Link> */}
 								</div>
 							)}
 							{isAuthenticated().user && isAuthenticated().user.role === 'admin' && (

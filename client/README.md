@@ -1,4 +1,4 @@
-Running on - medical_councelling.surge.sh
+Running on - medical-platform.surge.sh
 
 
 ## Installation Instructions

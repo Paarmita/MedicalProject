@@ -10,14 +10,10 @@ class ContactUs extends Component {
 				<h2 className="my-5">Contact Us</h2>
 				<p> Contact Us now to know more about the diseases and its cure</p>
 				<p>
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-					Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-					unknown printer took a galley of type and scrambled it to make a type specimen
-					book. It has survived not only five centuries, but also the leap into electronic
-					typesetting, remaining essentially unchanged. It was popularised in the 1960s
-					with the release of Letraset sheets containing Lorem Ipsum passages, and more
-					recently with desktop publishing software like Aldus PageMaker including
-					versions of Lorem Ipsum.
+					Tell us about your company, your data, and your analytic goals. We can help you
+					use your data to make better decisions. And if you don't currently have the data
+					you need, we can help design data-capture and data-management strategies today
+					that will power your analytics tomorrow.
 				</p>
 				<div className="contactDesc">
 					<h6 className="col-md-2">Follow us on:</h6>

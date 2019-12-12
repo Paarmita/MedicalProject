@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable prefer-destructuring */
 import React, { Component } from 'react';
@@ -138,8 +139,6 @@ class NewPost extends Component {
 		const {
 			title,
 			body,
-			photo,
-			user,
 			error,
 			loading,
 			redirectToPosts,

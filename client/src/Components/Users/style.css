@@ -1,12 +1,13 @@
 
 .profile 
 {
-    min-height: 300px;
+    min-height: 100px;
 	display: inline-block;
-	padding: 10px;
     }
 
-.divider 
+    .card 
 {
-    border-top:1px solid rgba(0,0,0,0.1);
+    word-wrap: initial;
+    padding: 0.5em;
     }
+

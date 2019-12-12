@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Disqus from 'disqus-react';
@@ -72,7 +73,7 @@ class SinglePost extends Component {
 	};
 
 	deleteConfirmed = () => {
-		const answer = window.customconfirm('Are you sure you want to delete your account?');
+		const answer = window.customconfirm('Are you sure you want to delete the post?');
 		if (answer) {
 			this.deletePost();
 		}
@@ -83,7 +84,7 @@ class SinglePost extends Component {
 		// const posterName = post.postedBy ? post.postedBy.name : ' Unknown';
 		const posterId = post.postedBy ? `/user/${post.postedBy._id}` : '';
 		const posterName = post.postedBy ? post.postedBy.name : ' Unknown';
-		const { like, likes } = this.state;
+		// const { like, likes } = this.state;
 
 		return (
 			<div className="container mb-5">

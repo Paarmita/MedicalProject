@@ -158,7 +158,7 @@ class Footer extends Component {
 							<p>© 2018 Copyright</p>
 							<p>
 								{' '}
-								!All rights reserved. Information on the website is reported by our
+								All rights reserved! Information on the website is reported by our
 								members and is not a medical advice.
 							</p>
 						</div>

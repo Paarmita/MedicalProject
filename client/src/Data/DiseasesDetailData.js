@@ -1,69 +1,60 @@
-export const diseasesDetailData = [
+
+
+export const fakeData = [
 	{
-		name: 'Diabetes',
-		description:
-			'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-		therapy:
-			'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-		pathy: {
-			first: {
-				name: 'Allopathy',
-				efficiency: 'Allopathy',
-				advantages: 'Allopathy',
-				disadvantages: 'Allopathy',
-				summary: 'Allopathy',
-				suggestions: 'Allopathy',
+		21: {
+			Name: 'Type1',
+			Description: 'ABC',
+			BestTherapy: 'BestTherapy',
+			Disease: 'Diabities',
+			Allopathy: {
+				Efficiency: 'Allopathy Efficiency',
+				Advantages: 'Allopathy Advantages',
+				Disadvantages: 'Allopathy Disadvantages',
+				Summary: 'Allopathy Summary',
+				Ratings: 'Allopathy Ratings',
 			},
-			second: {
-				name: 'Homeopathy',
-				efficiency: 'Allopathy',
-				advantages: 'Allopathy',
-				disadvantages: 'Allopathy',
-				summary: 'Allopathy',
-				suggestions: 'Allopathy',
+			Homeopathy: {
+				Efficiency: ' Homeopathy Efficiency',
+				Advantages: ' Homeopathy Advantages',
+				Disadvantages: 'Homeopathy Disadvantages',
+				Summary: 'Homeopathy Summary',
+				Ratings: 'Homeopathy Ratings',
 			},
-			third: {
-				name: 'Ayurveda',
-				efficiency: 'Allopathy',
-				advantages: 'Allopathy',
-				disadvantages: 'Allopathy',
-				summary: 'Allopathy',
-				suggestions: 'Allopathy',
+			Ayurveda: {
+				Efficiency: 'Ayurveda Efficiency',
+				Advantages: 'Ayurveda Advantages',
+				Disadvantages: 'Ayurveda Disadvantages',
+				Summary: 'Ayurveda Summary',
+				Ratings: 'Ayurveda Ratings',
 			},
 		},
-	},
-	{
-		name: 'Diabetes',
-		description:
-			'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-		therapy:
-			'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-		pathy: {
-			first: {
-				name: 'Allopathy',
-				efficiency: 'Allopathy',
-				advantages: 'Allopathy',
-				disadvantages: 'Allopathy',
-				summary: 'Allopathy',
-				suggestions: 'Allopathy',
+		22: {
+			Name: 'Type2',
+			Description: 'XYZ',
+			BestTherapy: 'BestTherapy',
+			Allopathy: {
+				Efficiency: 'Allopathy Efficiency',
+				Advantages: 'Allopathy Advantages',
+				Disadvantages: 'Allopathy Disadvantages',
+				Summary: 'Allopathy Summary',
+				Ratings: 'Allopathy Ratings',
 			},
-			second: {
-				name: 'Homeopathy',
-				efficiency: 'Allopathy',
-				advantages: 'Allopathy',
-				disadvantages: 'Allopathy',
-				summary: 'Allopathy',
-				suggestions: 'Allopathy',
+			Homeopathy: {
+				Efficiency: ' Homeopathy Efficiency',
+				Advantages: ' Homeopathy Advantages',
+				Disadvantages: 'Homeopathy Disadvantages',
+				Summary: 'Homeopathy Summary',
+				Ratings: 'Homeopathy Ratings',
 			},
-			third: {
-				name: 'Ayurveda',
-				efficiency: 'Allopathy',
-				advantages: 'Allopathy',
-				disadvantages: 'Allopathy',
-				summary: 'Allopathy',
-				suggestions: 'Allopathy',
+			Ayurveda: {
+				Efficiency: 'Ayurveda Efficiency',
+				Advantages: 'Ayurveda Advantages',
+				Disadvantages: 'Ayurveda Disadvantages',
+				Summary: 'Ayurveda Summary',
+				Ratings: 'Ayurveda Ratings',
 			},
 		},
 	},
 ];
-export default diseasesDetailData;
+export default fakeData;
