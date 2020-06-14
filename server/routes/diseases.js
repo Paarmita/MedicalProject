@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 const {hasAdminAuthorization} = require("../controllers/diseases");
 
-//pending middlewares
+
 router.get('/diseases',hasAdminAuthorization,function(req,res){
     Disease.find({},function(err,diseases){
         if(err){
@@ -34,11 +34,10 @@ router.post('/disease',hasAdminAuthorization,function(req,res){
                 error: err
             })
         }
-        // else{
-        //     res.redirect('/diseases');
-        // }
+        else{
+            res.json("Disease added "+dis);
+        }
     })
-    res.json(dis);
 })
 
 router.put('/disease/:diseaseId',hasAdminAuthorization,function(req,res){
@@ -50,8 +49,16 @@ router.put('/disease/:diseaseId',hasAdminAuthorization,function(req,res){
         }
         dis=req.body;
         dis.save();
-        res.json(dis);
-        //res.redirect('/diseases');
+        res.json("Disease updated "+dis);
+        // res.redirect('/diseases');
+    })
+})
+
+router.delete('/disease/:diseaseId',hasAdminAuthorization,function(req,res){
+    Disease.findByIdAndDelete(req.params.diseaseId,function(err){
+        if(err)
+            return res.status(400).json({error: err});
+        res.json("Disease deleted");
     })
 })
 
